@@ -1,0 +1,191 @@
+﻿<!-- ***** Welcome Area Start ***** -->
+<div class="welcome-area" id="welcome" style="position: unset;">
+
+  <!-- ***** Header Text Start ***** -->
+  <div class="header-text">
+    <div class="container">
+      <div class="row">
+        <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+          <h1 ng-if="langKey == 'en'">One account <strong>many applications</strong></h1>
+          <h1 ng-if="langKey == 'tr'">Tek hesap <strong>bir çok uygulama</strong></h1>
+          <h1 ng-if="langKey == 'ru'">Одна учетная запись <strong>много приложений</strong></h1>
+
+          <p ng-if="langKey == 'en'">Open an account with a single email and password. Register to many applications
+            with a lemoras account, access from anywhere with a single account... </p>
+          <p ng-if="langKey == 'tr'">Tek bir e-posta ve şifre ile hesap açın.Bir çok uygulamaya lemoras hesap ile kayıt
+            olun, tek hesap ile heryerden erişin... </p>
+          <p ng-if="langKey == 'ru'">Откройте учетную запись с одним адресом электронной почты и паролем.
+            Зарегистрируйтесь во многих приложениях с помощью учетной записи Lemoras и получите доступ из любой точки
+            мира с помощью одной учетной записи. </p>
+
+          <a ng-if="langKey == 'en'" href="" ng-click="vm.goRegister()" class="main-button-slider">Create an account</a>
+          <a ng-if="langKey == 'tr'" href="" ng-click="vm.goRegister()" class="main-button-slider">Hesap oluştur</a>
+          <a ng-if="langKey == 'ru'" href="" ng-click="vm.goRegister()" class="main-button-slider">Завести аккаунт</a>
+          <br><br>
+        </div>
+        <!-- flex: 0 0 100%; -->
+        <!-- style="max-width: 100%;" -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+          <div class="container">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div id="preLoginForm" ng-if="!vm.loginFormDisplay">
+                <form class="form" name="form" ng-submit="vm.login()" role="form">
+                  <div class="card card-login card-plain text-center">
+                    <div class="card-header ">
+
+                      <h4 class="card-title">
+                        <div ng-if="langKey == 'en'">Login to account</div>
+                        <div ng-if="langKey == 'tr'">Hesaba giriş</div>
+                        <div ng-if="langKey == 'ru'">Войти в аккаунт</div>
+                      </h4>
+
+                    </div>
+                    <div class="card-body ">
+                      <div class="input-group no-border form-control-lg">
+                        <span class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="now-ui-icons users_circle-08"></i>
+                          </div>
+                        </span>
+                        <input ng-if="langKey == 'en'" type="text" class="form-control" placeholder="E-mail"
+                          name="email" id="email" ng-model="vm.email">
+                        <input ng-if="langKey == 'tr'" type="text" class="form-control" placeholder="E-posta"
+                          name="email" id="email" ng-model="vm.email">
+                        <input ng-if="langKey == 'ru'" type="text" class="form-control" placeholder="Электронная почта"
+                          name="email" id="email" ng-model="vm.email">
+                      </div>
+                      <div class="input-group no-border form-control-lg">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="now-ui-icons text_caps-small"></i>
+                          </div>
+                        </div>
+                        <input ng-if="langKey == 'en'" type="password" name="password" id="password"
+                          ng-model="vm.password" type="text" placeholder="Password" class="form-control">
+                        <input ng-if="langKey == 'tr'" type="password" name="password" id="password"
+                          ng-model="vm.password" type="text" placeholder="Şifre" class="form-control">
+                        <input ng-if="langKey == 'ru'" type="password" name="password" id="password"
+                          ng-model="vm.password" type="text" placeholder="Пароль" class="form-control">
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row justify-content-center align-self-center">
+                        <button type="submit" class="col-md-10 btn btn-primary">
+                          <div ng-if="langKey == 'en'">Login</div>
+                          <div ng-if="langKey == 'tr'">Giriş</div>
+                          <div ng-if="langKey == 'ru'">Авторизоваться</div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div id="LoginForm" ng-if="vm.loginFormDisplay">
+
+                <form name="form2" ng-submit="vm.buildToken()" role="form" class="form">
+                  <div class="card card-login card-plain text-center">
+                    <div class="card-header ">
+
+                      <h4 class="card-title">
+                        <div ng-if="langKey == 'en'">Select application</div>
+                        <div ng-if="langKey == 'tr'">Uygulama seçiniz</div>
+                        <div ng-if="langKey == 'ru'">Выберите приложение</div>
+                      </h4>
+                      <br>
+                      <div ng-if="langKey == 'en'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
+                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                         View
+                        </label>
+                      </div>
+                      <div ng-if="langKey == 'tr'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
+                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                         Görünüm
+                        </label>
+                      </div>
+                      <div ng-if="langKey == 'ru'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
+                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                         Вид
+                        </label>
+                      </div>
+                    </div>
+                    <div class="card-body ">
+                      <div class="form-group">
+
+                        <!-- <select class="form-control" ng-model="vm.selectedApplication" ng-options="x.appName + ' ' + x.projectName for x in vm.allApplication track by x.appId"></select> -->
+                        <select ng-if="!vm.viewSelectApp" class="form-control"
+                          ng-model="vm.selectedApplication" ng-options="x.projectName for x in vm.allApplication track by x.projectName"></select>
+
+                        <div ng-if="vm.viewSelectApp">
+                          <div style="position: absolute; z-index: 10; left: 0px; top: 150px;"><svg
+                              xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd"
+                                d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223" />
+                            </svg></div>
+                          <div class="row flex-nowrap overflow-auto" style="padding-top: 10px;">
+                            <div class="col col-lg-4 col-md-4 col-sm-6" style="padding-bottom: 40px;" ng-repeat="item in vm.allApplication | orderBy: 'projectName'">
+                              <div ng-if="!item.record" style="position: absolute; font-size: 10px; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: green; color: white; padding: 3px;;">
+                                <span ng-if="langKey == 'en'">Sign up</span>
+                                <span ng-if="langKey == 'tr'">Üye o</span>
+                                <span ng-if="langKey == 'ru'">Зарегистрироваться</span>
+                              </div>
+                              <div ng-if="item.roleId < 6" style="position: absolute; font-size: 10px; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">
+                                <span ng-if="langKey == 'en'">Control Panel</span>
+                                <span ng-if="langKey == 'tr'">Kontrol Paneli</span>
+                                <span ng-if="langKey == 'ru'">Панель управления</span>
+                              </div>
+                              <a ng-click="vm.selectedApplication = item; vm.buildToken()">
+                                <div class="item service-item" style="padding: 10px;  border-radius: 50px;">
+                                  <div class="icon" style="width: 50px; height: 50px;">
+                                    <i><img style="margin: 0px; width: 30px; height: 30px;" ng-src="/{{item.icon}}" alt=""></i>
+                                  </div>
+                                  <h5 ng-if="langKey == 'en'" style="margin-top: -25px; font-size: 12px;"
+                                    class="service-title">Notes</h5>
+                                  <h5 ng-if="langKey == 'tr'" style="margin-top: -25px; font-size: 12px;"
+                                    class="service-title">Notlar</h5>
+                                  <h5 ng-if="langKey == 'ru'" style="margin-top: -25px; font-size: 12px;"
+                                    class="service-title">Примечания</h5>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div style="position: absolute; z-index: 10; right: 0px;; top: 150px;"><svg
+                              xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd"
+                                d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671" />
+                            </svg></div>
+                        </div>
+                      </div>
+
+                      <div class="form-check">
+                        <a href="javascript:location.reload();" class="btn btn-link float-left">
+                          <div ng-if="langKey == 'en'">Return to the back</div>
+                          <div ng-if="langKey == 'tr'">Girişe dön</div>
+                          <div ng-if="langKey == 'ru'">Вернуться назад</div>
+                        </a>
+                        <button type="submit" class="btn btn-primary float-right">
+                          <div ng-if="langKey == 'en'">Enter</div>
+                          <div ng-if="langKey == 'tr'">Aç</div>
+                          <div ng-if="langKey == 'ru'">Входить</div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Header Text End ***** -->
+</div>
+<!-- ***** Welcome Area End ***** -->

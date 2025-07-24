@@ -1,0 +1,50 @@
+﻿
+<div class="content">
+    <form id="RegisterValidation" ng-submit="vm.submitMember()">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Mevcut üye rol oluştur</h5>
+                </div>
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group has-label">
+                                    <label for="exampleInputEmail1">E-Posta adresi</label>
+                                    <label style="color:red">
+                                        *
+                                    </label>
+                                    <input type="email" ng-model="vm.member.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                </div>
+                            </div>
+                           <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Rolü</label>
+                                    <select ng-model="vm.selectedRole" class="form-control" data-size="7" data-style="btn btn-primary btn-round btn-block" title="Single Select">
+                                        <option disabled selected>Seçiniz</option>
+                                        <option ng-repeat="item in vm.roles" value="{{item.value}}">{{item.text}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center text-center">
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+                <button class="btn btn-secondary btn-lg btn-block" type="reset" ng-click="vm.leave()">Vazgeç</button>
+            </div>
+        </div>
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+                <button class="btn btn-info btn-lg btn-block" type="submit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+

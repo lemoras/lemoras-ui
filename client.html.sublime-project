@@ -1,0 +1,36 @@
+  {
+    "folders": [{
+        "path": ".",
+        "folder_exclude_patterns": [
+          "Dockerfile",
+          "domain.apache.conf",
+          "service.sh",
+          ".vscode",
+          "system",
+          "templates",
+          ".gitmodules",
+          "system.md",
+          "README.md",
+          "index.html",
+          "index.html",
+          "reset.html",
+          "client.html.sublime-project",
+          ".gitignore"
+        ],
+        "file_exclude_patterns": [
+        	"Dockerfile",
+	          "domain.apache.conf",
+	          "service.sh",
+	          ".vscode",
+	          "system",
+	          "templates",
+	          ".gitmodules",
+	          "system.md",
+	          "README.md",
+	          "index.html",
+	          "error.html",
+            "client.html.sublime-project",
+            ".gitignore"
+        ]
+    }]
+}

@@ -1,0 +1,197 @@
+﻿
+    <!-- ***** Features Small Start ***** -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="row justify-content-center align-self-center">
+                <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;" ng-repeat="item in vm.applications | orderBy: 'appName'">
+                    <!-- <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: green; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Very soon</span>
+                        <span ng-if="langKey == 'tr'">Çok yakında</span>
+                        <span ng-if="langKey == 'ru'">Очень скоро</span>
+                    </div> -->
+                    <a ng-click="vm.login(item.domains[0])">
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img ng-src="{{item.icon}}" alt=""></i>
+                        </div>
+                        <h5 class="service-title">{{ item.appName }}</h5>
+                        <!-- <h5 ng-if="langKey == 'en'" class="service-title">Notes</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Notlar</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Примечания</h5> -->
+                        <!-- <a href="#" class="main-button">Read More</a> -->
+                    </div>
+                    </a>
+                </div>
+                <!-- <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: green; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Very soon</span>
+                        <span ng-if="langKey == 'tr'">Çok yakında</span>
+                        <span ng-if="langKey == 'ru'">Очень скоро</span>
+                    </div>
+                    <a ng-click="vm.login('drive.'+ mainLandUrl)">
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/drive.png" alt=""></i>
+                        </div>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Cloud Storage</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Bulut Depo</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Облачное хранилище</h5>
+                    </div>
+                    </a>
+                </div>
+                <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Soon</span>
+                        <span ng-if="langKey == 'tr'">Yakında</span>
+                        <span ng-if="langKey == 'ru'">Скоро</span>
+                    </div>
+                    <a ng-click="vm.login('passwords.'+ mainLandUrl)">
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/password.png" alt=""></i>
+                        </div>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Passwords</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Şifreler</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Пароли</h5>
+                    </div>
+                    </a>
+                </div>
+                <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Soon</span>
+                        <span ng-if="langKey == 'tr'">Yakında</span>
+                        <span ng-if="langKey == 'ru'">Скоро</span>
+                    </div>
+                    <a ng-click="vm.login('planner.'+ mainLandUrl)">
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/checklist.png" alt=""></i>
+                        </div>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Daily Plan</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Günlük Plan</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Ежедневный план</h5>
+                    </div>
+                    </a>
+                </div> -->
+
+
+
+
+
+                <!-- <div id="expandApp1" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/mail.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">E-Posta</h5>
+                    </div>
+                </div>
+                <div id="expandApp2" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/chat.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Sohbet</h5>
+                    </div>
+                </div>
+                <div id="expandApp3" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/career.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Kariyer</h5>
+                    </div>
+                </div>
+                <div id="expandApp4" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2;border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">Yakında</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/coach.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Koç Danışmanlığı</h5>
+                    </div>
+                </div>
+                <div id="expandApp5" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/agile.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Çevik - Planlayıcı</h5>
+                    </div>
+                </div>
+                <div id="expandApp6" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2;border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">Yakında</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/dues.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Aidat Takip</h5>
+                    </div>
+                </div>
+                <div id="expandApp7" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999;border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/smartlock.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Akıllı Kilit</h5>
+                    </div>
+                </div>
+                <div id="expandApp8" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/renovation.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Ev Tadilat</h5>
+                    </div>
+                </div>
+                <div id="expandApp9" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/search.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">İnternet Arama</h5>
+                    </div>
+                </div>
+                <div id="expandApp10" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/vpn.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Kripto Özel Ağ - VPN</h5>
+                    </div>
+                </div>
+                <div id="expandApp11" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/remotepc.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Uzak PC Bağlantısı</h5>
+                    </div>
+                </div>
+                <div id="expandApp12" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/meeting.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Birebir Toplantı</h5>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class=".col  .content-center .text-align:center">
+                <center>
+                <a href="#" onclick="myFunction()" id="myBtn" class="main-button-slider">Daha fazla..</a>
+            </center>
+            </div> -->
+        </div>
+    </section>
+    <!-- ***** Features Small End ***** -->

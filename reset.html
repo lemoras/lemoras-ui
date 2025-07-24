@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  
+</head>
+
+<body>
+
+  <script src="system/requires/jquery-3.5.1.min.js"></script>
+
+  <script type="text/javascript">
+  
+            window.localStorage.removeItem("refreshTime", { path: '/' });
+            window.localStorage.removeItem("globals", { path: '/' }); 
+            window.localStorage.removeItem("globals"); 
+	          window.localStorage.removeItem("refreshTime");
+            window.localStorage.removeItem("sectoken");
+
+            window.localStorage.removeItem("fakeuserid");
+            window.localStorage.removeItem("authorization"); 
+            window.localStorage.removeItem("config"); 
+	          window.localStorage.removeItem("app");
+            window.localStorage.removeItem("role");
+            window.localStorage.removeItem("template");
+
+            window.localStorage.removeItem("appId");
+            window.localStorage.removeItem("configType");
+            window.localStorage.removeItem("merhantId");
+            window.localStorage.removeItem("sessions");
+            
+            window.localStorage.removeItem("lemorasApplications");
+            window.localStorage.removeItem("loginbydomain");
+
+            deleteAllCookies();
+
+            window.location.replace("index.html");
+
+
+          function deleteAllCookies() {
+            document.cookie.split(';').forEach(cookie => {
+            const eqPos = cookie.indexOf('=');
+            const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    });
+}
+  </script>
+	
+</body>
+
+</html>

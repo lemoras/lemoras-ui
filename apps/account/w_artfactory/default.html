@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Template Mo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+      <!--Favicon-->
+    <link rel="icon" href="./../../../templates/w_artfactory/assets/images/favicon.png" type="image/x-icon">
+
+    <title id="configTitle">
+        <!-- Sayfa Yükleniyor.. -->
+    </title>
+<!--
+
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/templatemo-art-factory.css">
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/owl-carousel.css">
+
+    <link href="./../../../templates/w_default/assets/demo/demo.css" rel="stylesheet" />
+  
+  <link href="../../../system/requires/angular-notify.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../../system/requires/loading.js"></script>
+
+    </head>
+    
+    <body id="rootBody" onload="loadProgressBar();" class="login-page sidebar-mini ">
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="#!/home" class="logo">Lemoras Account</a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section">
+                                <a href="javascript:window.location.href = 'http://' + mainLandUrl[0]">Lemoras</a>
+                            </li>
+                           <li class="scroll-to-section">
+                                <a ng-if="langKey == 'en'" href="#!/home#frequently-question">FAQ</a>
+                                <a ng-if="langKey == 'tr'" href="#!/home#frequently-question">SSS</a>
+                                <a ng-if="langKey == 'ru'" href="#!/home#frequently-question">Часто задаваемые вопросы</a>
+                            </li>
+                            <li class="submenu">
+                                <a ng-if="langKey == 'en'" href="javascript:;">APPLICATIONS</a>
+                                <a ng-if="langKey == 'tr'" href="javascript:;">Uygulamalar</a>
+                                <a ng-if="langKey == 'ru'" href="javascript:;">ПРИЛОЖЕНИЯ</a>
+                                <ul>
+                                    <li>
+                                        <a ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Notes</a>
+                                        <a ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Notlar</a>
+                                        <a ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Примечания</a>
+                                    </li>
+                                    <li>
+                                        <a ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Storage</a>
+                                        <a ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Depolama</a>
+                                        <a ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Хранилище</a>
+                                    </li>
+                                    <li>
+                                        <a  ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Passwords</a>
+                                        <a  ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Şifreler</a>
+                                        <a  ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Пароли</a>
+                                    </li>
+                                    <li>
+                                        <a  ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Planner</a>
+                                        <a  ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Planlayıcı</a>
+                                        <a  ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Планировщик</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section">
+                                <a ng-if="langKey == 'en'" href="#!/register">REGISTRATION</a>
+                                <a ng-if="langKey == 'tr'" href="#!/register">Kayıt</a>
+                                <a ng-if="langKey == 'ru'" href="#!/register">РЕГИСТРАЦИЯ</a>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span ng-if="langKey == 'en'">Menu</span>
+                            <span ng-if="langKey == 'tr'">Menü</span>
+                            <span ng-if="langKey == 'ru'">Меню</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <div id="pageContent" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0"> 
+        <ng-view ng-if="config == undefined"></ng-view>
+        <div id="configDisplay" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0" ng-if="config != undefined" data-ng-init="loadProgressBar2()" class="wrapper ">
+           
+       </div> 
+   </div> 
+
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    <p class="copyright">Copyright &copy; 2025 LEMORAS
+                    </p>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <ul class="social">
+                        <!-- <li><a href="https://www.instagram.com/_lemoras_/"><i class="fa fa-instagram"></i></a></li> -->
+                        <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        <!-- <li><a target="_blank" href="https://www.youtube.com/watch?v=BuUA1wRykFI"><i class="fa fa-youtube"></i></a></li> -->
+                        <!-- <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- jQuery -->
+    <script src="./../../../templates/w_artfactory/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="./../../../templates/w_artfactory/assets/js/popper.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="./../../../templates/w_artfactory/assets/js/owl-carousel.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/scrollreveal.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/waypoints.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/jquery.counterup.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/imgfix.min.js"></script> 
+
+    <script src="./../../../templates/w_artfactory/assets/js/sweetalert2.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/demo.js"></script>
+    
+    <!-- Global Init -->
+    <script src="./../../../templates/w_artfactory/assets/js/custom.js"></script>
+
+  
+  <script src="../../../system/requires/require.min.js"></script>
+  <script type="text/javascript" src="../../../system/requires/code-msg.js"></script>
+  <script type="text/javascript" src="../../../system/requires/main.js"></script>
+
+  </body>
+</html>

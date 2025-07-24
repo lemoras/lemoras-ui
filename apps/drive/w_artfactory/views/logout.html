@@ -1,0 +1,59 @@
+﻿<link rel="stylesheet" href="../../../../system/requires/jquery-3.3.0.min.css">
+<link rel="stylesheet" href="../../../../system/requires/jquery-confirm.min.js">
+
+<script type="text/javascript">
+
+
+function askQuestion($msg, $title, $btnLogout, $btnCanceled, logout){
+
+var isLogout = false;
+
+    $.confirm({
+        title: $title,
+        icon : 'fa fa-question-circle',
+        content : ''+$msg+'',
+        autoClose: 'Confirm|6000',
+        theme : 'dark', // light, supervan  'supervan' // 'material', 'bootstrap'
+        closeIcon: true,
+        animation: 'scale',
+        type: 'black',
+        draggable:'true',
+        buttons:{
+            'Confirm' : {
+                text: $btnLogout,
+                keys : ['enter'],
+                action : function(){
+                    isLogout = true;
+                    logout();
+                    //window.location.replace(window.location.origin + "/#!/login");
+                }
+            },
+            'Cancel': {
+                text: $btnCanceled,
+                keys : ['esc'],
+                action: function(){
+                    this.close();
+                    canceled();
+                }
+            }
+        },
+        close: function () {;
+          $('.jconfirm').hide();
+          $('.jconfirm').remove();
+          if (!isLogout) {
+                canceled();
+            }
+        }
+    });
+
+    //$.confirm.hide();
+};
+
+function canceled() { 
+  var scope = angular.element(document.getElementById('rootBody')).scope();
+  scope.setNav();
+  window.location.replace("#!/");
+};
+</script>
+
+        

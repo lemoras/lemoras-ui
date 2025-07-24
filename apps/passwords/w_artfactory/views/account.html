@@ -1,0 +1,202 @@
+
+    <link href="./../../../../templates/w_artfactory/assets/css/now-ui-dashboard.css?v=1.6.0" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+   
+
+    <!-- ***** Features Small Start ***** -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 ng-if="langKey == 'en'" class="title">My profile</h5>
+                            <h5 ng-if="langKey == 'tr'" class="title">Profilim</h5>
+                            <h5 ng-if="langKey == 'ru'" class="title">Мой профиль</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="RegisterValidation" ng-submit="vm.submitProfile()">
+                                <div class="row">
+                                    <div class="col-md-5 pl-1">
+                                        <div class="form-group has-label">
+                                            <label ng-if="langKey == 'en'"  for="exampleInputEmail1">E-Mail Address</label>
+                                            <label ng-if="langKey == 'tr'"  for="exampleInputEmail1">E-Posta adresi</label>
+                                            <label ng-if="langKey == 'ru'"  for="exampleInputEmail1">Адрес электронной почты</label>
+                                            <label style="color:red">
+                                                *
+                                            </label>
+                                            <span  ng-if="globals.currentUser.hasId && langKey == 'en'" disabled class="form-control">  {{ vm.account.email === undefined ? 'None' :  vm.account.email }} </span>
+                                            <span  ng-if="globals.currentUser.hasId && langKey == 'tr'" disabled class="form-control">  {{ vm.account.email === undefined ? 'Yok' :  vm.account.email }} </span>
+                                            <span  ng-if="globals.currentUser.hasId && langKey == 'ru'" disabled class="form-control">  {{ vm.account.email === undefined ? 'Никто' :  vm.account.email }} </span>
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'en'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Mail">
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'tr'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'ru'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="Электронная почта">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label ng-if="langKey == 'en'" >Nickname</label>
+                                            <label ng-if="langKey == 'tr'" >Takma ad</label>
+                                            <label ng-if="langKey == 'ru'" >Псевдоним</label>
+                                            <label style="color:red">
+                                                *
+                                            </label>
+                                            <input ng-if="langKey == 'en'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
+                                            <input ng-if="langKey == 'tr'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="takma ad">
+                                            <input ng-if="langKey == 'ru'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="прозвище">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 px-1">
+                                        <div class="form-group">
+                                            <label ng-if="langKey == 'en'">His/Her Duty</label>
+                                            <label ng-if="langKey == 'tr'">Görevi</label>
+                                            <label ng-if="langKey == 'ru'">Гёреви</label>
+                                            <span ng-if="langKey == 'en'" disabled class="form-control">  {{ globals.currentUser.roleId === undefined ? 'None' :  vm.getAsName(globals.currentUser.roleId) }} </span>
+                                            <span ng-if="langKey == 'tr'" disabled class="form-control">  {{ globals.currentUser.roleId === undefined ? 'Yok' :  vm.getAsName(globals.currentUser.roleId) }} </span>
+                                            <span ng-if="langKey == 'ru'" disabled class="form-control">  {{ globals.currentUser.roleId === undefined ? 'Никто' :  vm.getAsName(globals.currentUser.roleId) }} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 pr-1">
+                                        <div class="form-group has-label">
+                                            <label ng-if="langKey == 'en'">About me</label>
+                                            <label ng-if="langKey == 'tr'">Hakkında</label>
+                                            <label ng-if="langKey == 'ru'">Обо</label>
+                                            <label style="color:red">
+                                                *
+                                            </label>
+                                            <input ng-if="langKey == 'en'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="about me" value="">
+                                            <input ng-if="langKey == 'tr'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="hakkında" value="">
+                                            <input ng-if="langKey == 'ru'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="Обо" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pr-1">
+                                        <div class="form-group">
+                                            <label ng-if="langKey == 'en'" >Registered Date</label>
+                                            <label ng-if="langKey == 'tr'" >Kayıt tarihi</label>
+                                            <label ng-if="langKey == 'ru'" >Дата регистрации</label>
+                                            <span ng-if="langKey == 'en'" disabled class="form-control">  {{ vm.account.CreatedAt  === null ? 'None' : vm.account.CreatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'tr'" disabled class="form-control">  {{ vm.account.CreatedAt  === null ? 'Yok' : vm.account.CreatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'ru'" disabled class="form-control">  {{ vm.account.CreatedAt  === null ? 'Никто' : vm.account.CreatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-1">
+                                        <div class="form-group">
+                                            <label ng-if="langKey == 'en'">Last edited date</label>
+                                            <label ng-if="langKey == 'tr'">Son düzenlenme tarihi</label>
+                                            <label ng-if="langKey == 'ru'">Дата последнего редактирования</label>
+                                            <span ng-if="langKey == 'en'" disabled class="form-control">  {{ vm.account.UpdatedAt === null ? 'None' : vm.account.UpdatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'tr'" disabled class="form-control">  {{ vm.account.UpdatedAt === null ? 'Yok' : vm.account.UpdatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'ru'" disabled class="form-control">  {{ vm.account.UpdatedAt === null ? 'Никто' : vm.account.UpdatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <div class="form-group">
+                                            <label ng-if="langKey == 'en'">Last entry date</label>
+                                            <label ng-if="langKey == 'tr'">Son giriş tarihi</label>
+                                            <label ng-if="langKey == 'ru'">Дата последней записи</label>
+                                            <span ng-if="langKey == 'en'" disabled class="form-control">  {{ globals.currentUser.lastLoginDate === null ? 'None' : globals.currentUser.lastLoginDate | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'tr'" disabled class="form-control">  {{ globals.currentUser.lastLoginDate === null ? 'Yok' : globals.currentUser.lastLoginDate | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                            <span ng-if="langKey == 'ru'" disabled class="form-control">  {{ globals.currentUser.lastLoginDate === null ? 'Никто' : globals.currentUser.lastLoginDate | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 pr-1">
+                                        <div class="form-group">
+                                            <button ng-if="langKey == 'en'" class="btn btn-info float-right" type="submit">Save</button>
+                                            <button ng-if="langKey == 'tr'" class="btn btn-info float-right" type="submit">Kaydet</button>
+                                            <button ng-if="langKey == 'ru'" class="btn btn-info float-right" type="submit">Сохранять</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="../../../system/assets/img/bg5.jpg" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <div class="author">
+                                <a href="#!/profile">
+                                    <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                                    <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                                    <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                                    
+                                    <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--ng-model="vm.account.photoUrl"-->
+                                    <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
+                                    <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
+                                    <!-- <h5 class="title"> {{ vm.account.firstName }} {{ vm.account.lastName }}</h5> -->
+                                </a>
+                                <input type="file" id="file" accept="image/png, image/gif, image/jpeg, image/jpg" file-model="vm.myFile" onchange="angular.element(this).scope().vm.uploadFile(this.files)" style="display:none;" name="file" />
+                                <p class="description">
+                                    #{{  vm.account.nickname }}
+                                </p>
+                            </div>
+                            <hr><br>
+                            <div ng-if="!globals.currentUser.hasId" class="container justify-content-center text-center">
+                                <form id="RegisterValidation" ng-submit="vm.submitZOE()">
+                                    <div class="row">
+                                        <div class="col-md-12 px-1">
+                                            <div class="form-group">
+                                                <label ng-if="langKey == 'en'">Current password</label>
+                                                <label ng-if="langKey == 'tr'">Mevcut şifre</label>
+                                                <label ng-if="langKey == 'ru'">Текущий пароль</label>
+                                                <input ng-if="langKey == 'en'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Current password">
+                                                <input ng-if="langKey == 'tr'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
+                                                <input ng-if="langKey == 'ru'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Текущий пароль">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 px-1">
+                                            <div class="form-group">
+                                                <label ng-if="langKey == 'en'">New password</label>
+                                                <label ng-if="langKey == 'tr'">Yeni şifre</label>
+                                                <label ng-if="langKey == 'ru'">Новый пароль</label>
+                                                <input ng-if="langKey == 'en'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="New password">
+                                                <input ng-if="langKey == 'tr'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
+                                                <input ng-if="langKey == 'ru'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Новый пароль">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 px-1">
+                                            <div class="form-group">
+                                                <label ng-if="langKey == 'en'">New password again</label>
+                                                <label ng-if="langKey == 'tr'">Yeni şifre tekrar</label>
+                                                <label ng-if="langKey == 'ru'">Новый пароль снова</label>
+                                                <input ng-if="langKey == 'en'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="New password again">
+                                                <input ng-if="langKey == 'tr'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
+                                                <input ng-if="langKey == 'ru'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Новый пароль снова">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 px-1">
+                                            <div class="form-group">
+                                                <button ng-if="langKey == 'en'" class="btn btn-warning" type="submit">Update</button>
+                                                <button ng-if="langKey == 'tr'" class="btn btn-warning" type="submit">Güncelle</button>
+                                                <button ng-if="langKey == 'ru'" class="btn btn-warning" type="submit">Обновлять</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <!-- ***** Features Small End ***** -->
+
+<!-- <script src="../../../../system/requires/file.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script> 

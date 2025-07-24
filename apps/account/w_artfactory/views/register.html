@@ -1,0 +1,168 @@
+﻿<!-- ***** Welcome Area Start ***** -->
+<div class="welcome-area" id="welcome">
+
+  <!-- ***** Header Text Start ***** -->
+  <div class="header-text">
+    <div class="container">
+      <div class="row">
+        <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+          <div class="info-area info-horizontal mt-5">
+            <div class="icon icon-primary">
+              <i class="now-ui-icons media-2_sound-wave"></i>
+            </div>
+            <div class="description">
+              <h5 ng-if="langKey == 'en'" class="info-title" style="color: whitesmoke;">Why Lemoras account?</h5>
+              <h5 ng-if="langKey == 'tr'" class="info-title" style="color: whitesmoke;">Neden Lemoras hesap ?</h5>
+              <h5 ng-if="langKey == 'ru'" class="info-title" style="color: whitesmoke;">Почему аккаунт Lemoras?</h5>
+              <p ng-if="langKey == 'en'" class="description">
+                Have one account, easy access to every application
+              </p>
+              <p ng-if="langKey == 'tr'" class="description">
+                Tek hesabınız olsun, her uygulamaya kolay erişin
+              </p>
+              <p ng-if="langKey == 'ru'" class="description">
+                Одна учетная запись, легкий доступ к каждому приложению
+              </p>
+            </div>
+          </div>
+          <div class="info-area info-horizontal">
+            <div class="icon icon-primary">
+              <i class="now-ui-icons media-1_button-pause"></i>
+            </div>
+            <div class="description">
+              <h5 ng-if="langKey == 'en'" class="info-title" style="color:whitesmoke;">Do you need help?</h5>
+              <h5 ng-if="langKey == 'tr'" class="info-title" style="color:whitesmoke;">Yardıma mı ihtiyacınız var ?</h5>
+              <h5 ng-if="langKey == 'ru'" class="info-title" style="color:whitesmoke;">Вам нужна помощь?</h5>
+              <p ng-if="langKey == 'en'" class="description">
+                If you need help, <a style="color: black;" href="mailto:onxorg@proton.me"> you can send an email
+                  here</a>
+              </p>
+              <p ng-if="langKey == 'tr'" class="description">
+                Yardıma ihtiyacınız var ise, <a style="color: black;" href="mailto:onxorg@proton.me"> buradan e-posta
+                  gonderebilirsiniz</a>
+              </p>
+              <p ng-if="langKey == 'ru'" class="description">
+                Если вам нужна помощь, <a style="color: black;" href="mailto:onxorg@proton.me"> Вы можете отправить
+                  электронное письмо здесь</a>
+              </p>
+            </div>
+          </div>
+          <div class="info-area info-horizontal">
+            <div class="icon icon-info">
+              <i class="now-ui-icons users_single-02"></i>
+            </div>
+            <div class="description">
+              <h5 ng-if="langKey == 'en'" class="info-title" style="color: whitesmoke;">Do you have an existing account?
+              </h5>
+              <h5 ng-if="langKey == 'tr'" class="info-title" style="color: whitesmoke;">Mevcut bir hesabınız mı var ?
+              </h5>
+              <h5 ng-if="langKey == 'ru'" class="info-title" style="color: whitesmoke;">У вас уже есть аккаунт?</h5>
+              <p ng-if="langKey == 'en'" class="description">
+                If you have an existing account, <a style="color: black;" href="" ng-click="vm.goLogin()"> log in
+                  here</a>
+              </p>
+              <p ng-if="langKey == 'tr'" class="description">
+                Mevcut bir hesabınız var ise, <a style="color: black;" href="" ng-click="vm.goLogin()"> buradan giriş
+                  yapınız</a>
+              </p>
+              <p ng-if="langKey == 'ru'" class="description">
+                Если у вас уже есть учетная запись, <a style="color: black;" href="" ng-click="vm.goLogin()"> войдите
+                  здесь</a>
+              </p>
+              <!-- <div class="pull-left">
+                <h6><a href="#!/login" class="btn btn-primary">
+                  <div ng-if="langKey == 'tr'">Giriş yap</div></a></h6>
+              </div>
+              <div class="pull-right">
+                <h6><a href="mailto:iletisim@onuryasar.org" style="color: whitesmoke;" class="link footer-link">
+    <div ng-if="langKey == 'tr'">Yardım!</div></a></h6>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div style="float: right; height: fit-content; vertical-align: bottom;"
+          class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+
+          <div class="card card-signup text-center align-bottom">
+            <div class="card-header ">
+              <h4 class="card-title">
+                <div ng-if="langKey == 'en'">Create an account</div>
+                <div ng-if="langKey == 'tr'">Hesap oluştur</div>
+                <div ng-if="langKey == 'ru'">Завести аккаунт</div>
+              </h4>
+            </div>
+
+
+            <form class="form" ng-submit="vm.register()" role="form">
+              <div class="card-body ">
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="now-ui-icons ui-1_email-85"></i>
+                    </div>
+                  </div>
+                  <input ng-change="vm.setAutoNickname()" ng-model="vm.email" name="email" id="email"
+                    ng-if="langKey == 'en'" type="text" class="form-control" placeholder="E-mail...">
+                  <input ng-change="vm.setAutoNickname()" ng-model="vm.email" name="email" id="email"
+                    ng-if="langKey == 'tr'" type="text" class="form-control" placeholder="E-posta...">
+                  <input ng-change="vm.setAutoNickname()" ng-model="vm.email" name="email" id="email"
+                    ng-if="langKey == 'ru'" type="text" class="form-control" placeholder="Электронная почта...">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="now-ui-icons text_caps-small"></i>
+                    </div>
+                  </div>
+                  <input name="password" id="password" ng-model="vm.password" ng-if="langKey == 'en'" type="password"
+                    placeholder="Password..." class="form-control">
+                  <input name="password" id="password" ng-model="vm.password" ng-if="langKey == 'tr'" type="password"
+                    placeholder="Şifre..." class="form-control">
+                  <input name="password" id="password" ng-model="vm.password" ng-if="langKey == 'ru'" type="password"
+                    placeholder="Пароль..." class="form-control">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="now-ui-icons users_circle-08"></i>
+                    </div>
+                  </div>
+                  <input ng-model="vm.nickname" name="nickname" id="nickname" ng-if="langKey == 'en'" type="text"
+                    class="form-control" placeholder="Nickname...">
+                  <input ng-model="vm.nickname" name="nickname" id="nickname" ng-if="langKey == 'tr'" type="text"
+                    class="form-control" placeholder="Takma ad...">
+                  <input ng-model="vm.nickname" name="nickname" id="nickname" ng-if="langKey == 'ru'" type="text"
+                    class="form-control" placeholder="Псевдоним...">
+                </div>
+                <div class="form-check text-left">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">
+                    <span class="form-check-sign"></span>
+                    <div ng-if="langKey == 'en'"> I agree to the <a href="#something">terms and conditions</a>. </div>
+                    <div ng-if="langKey == 'tr'"> <a href="#something">Hükümlere ve koşullara</a> katılıyorum. </div>
+                    <div ng-if="langKey == 'ru'"> Я согласен с <a href="#something">условиями. </a> </div>
+                  </label>
+                </div>
+
+              </div>
+              <div class="card-footer ">
+                <button type="submit" class="col-md-10 main-button">
+                  <div ng-if="langKey == 'en'">Register</div>
+                  <div ng-if="langKey == 'tr'">Gönder</div>
+                  <div ng-if="langKey == 'ru'">Зарегистрироваться</div>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Header Text End ***** -->
+</div>
+<!-- ***** Welcome Area End ***** -->

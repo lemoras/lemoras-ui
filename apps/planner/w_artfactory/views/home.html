@@ -1,0 +1,228 @@
+﻿<!-- ***** Welcome Area Start ***** -->
+<div class="welcome-area" id="welcome">
+  <!-- ***** Header Text Start ***** -->
+  <div class="header-text">
+      <div class="container">
+          <div class="row">
+              <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                  <h1 ng-if="langKey == 'en'">Today is <strong>your most precious day</strong></h1>
+                  <h1 ng-if="langKey == 'tr'">Bugün senin <strong>en kıymetli günün</strong></h1>
+                  <h1 ng-if="langKey == 'ru'">Сегодня Ваш <strong>Самый Драгоценный День</strong></h1>
+                  <p ng-if="langKey == 'en'">Plan your tasks, stay disciplined, and boost your confidence. For days filled with inner peace and motivation, Lemoras Planner is always with you. </p>
+                  <p ng-if="langKey == 'tr'">Tek bir e-posta ve şifre ile hesap açın. Lemoras hesabınızla birçok uygulamaya kayıt olun ve tek hesap ile her yerden erişim sağlayın. </p>
+                  <p ng-if="langKey == 'ru'">Планируйте задачи, будьте дисциплинированы, повышайте уверенность в себе. Для дней, наполненных внутренним спокойствием и мотивацией, Lemoras Planner всегда с вами. </p>
+                  <div ng-if="langKey == 'en'"> <a href="#" class="main-button-slider" ng-click="vm.externalLogin()"> LOGIN BY LEMORAS  </a> </div>
+                  <div ng-if="langKey == 'tr'"> <a href="#" class="main-button-slider" ng-click="vm.externalLogin()"> Lemoras ile Giriş </a> </div>
+                  <div ng-if="langKey == 'ru'"> <a href="#" class="main-button-slider" ng-click="vm.externalLogin()"> Войти через Lemoras  </a> </div>  
+                 
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                  <img src="./../../../templates/w_artfactory/assets/images/planner-logo.png" class="rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+    <!-- ***** Frequently Question Start ***** -->
+    <section class="section" id="frequently-question">
+        <div class="container">
+            <!-- ***** Section Title Start ***** -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2 ng-if="langKey == 'en'">Frequently Asked Questions</h2>
+                        <h2 ng-if="langKey == 'tr'">Sıkça Sorulan Sorular</h2>
+                        <h2 ng-if="langKey == 'ru'">Часто задаваемые вопросы</h2>
+                    </div>
+                </div>
+                <div class="offset-lg-3 col-lg-6">
+                    <div class="section-heading">
+                        <p ng-if="langKey == 'en'">All frequently asked questions about Lemoras Planner.</p>
+                        <p ng-if="langKey == 'tr'">Lemoras Planlayıcı hakkında merak edilen tüm sıkça sorulan sorular.</p>
+                        <p ng-if="langKey == 'ru'">Все часто задаваемые вопросы о планировщике Lemoras.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ***** Section Title End ***** -->
+
+            <div class="row">
+       
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="accordions is-first-expanded" id="accordionExample">
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseOne">
+                                <span ng-if="langKey == 'en'">What is the Lemoras?</span>
+                                <span ng-if="langKey == 'tr'">Lemoras Nedir ?</span>
+                                <span ng-if="langKey == 'ru'">Что такое Lemoras?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Integrated applications are central/platform and/or primarily identity management system. Integrated local applications are applications such as notes, cloud storage, etc.
+                                    <br><br>
+                                    It also hosts a local dues tracking system and similar applications. These applications are included later.</p>
+                                    <p ng-if="langKey == 'tr'">Tümleşik uygulamalar merkezi/platformu ve/esasen kimlik yönetim sistemidir. Tümleşik yerel uygulamaları; notlar, bulut depo vb. uygulamalarıdır.
+                                    <br><br>
+                                    Ayrıca aidat takip sistemi ve benzeri uygulaması yerelinde barındırır. Bu uygulamalara sonradan dahil olunur.</p>
+                                    <p ng-if="langKey == 'ru'">Интегрированные приложения — это центральная/платформенная и/или в первую очередь система управления идентификацией. Интегрированные локальные приложения — это такие приложения, как заметки, облачное хранилище и т. д.
+                                    <br><br>
+                                    Он также размещает локальную систему отслеживания взносов и аналогичные приложения. Эти приложения будут включены позже.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseTwo">
+                                <span ng-if="langKey == 'en'">What is the Lemoras Planner? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Planlayıcı Nedir ? </span>
+                                <span ng-if="langKey == 'ru'">Что такое планировщик Lemoras? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras Planner is an application designed to help you plan and track your daily tasks in an organized manner. Based on the philosophy, "Today is your most precious day," it aims to help you be more consistent and disciplined throughout the day.
+                                    <br><br>
+                                    By completing your tasks according to a set plan, it seeks to boost your self-confidence, provide inner peace and satisfaction at the end of the day, which will be a significant source of motivation for you.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras Planner, günlük işlerinizi düzenli bir şekilde planlayarak takip etmenizi sağlayan bir uygulamadır. "Bugün sizin en değerli gününüz" felsefesiyle yola çıkarak, gün içinde daha tutarlı ve disiplinli olmanıza yardımcı olmayı hedefler.
+                                    <br><br>
+                                    İşlerinizi belirli planlar dahilinde tamamlayarak gün sonunda özgüveninizi artırmayı, içsel huzur ve tatminlik sağlamayı amaçlar. Bu da sizin için önemli bir motivasyon kaynağı olacaktır.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras Planner — это приложение, разработанное для организации и отслеживания ваших ежедневных задач. Основываясь на философии "Сегодня ваш самый драгоценный день", оно призвано помочь вам быть более последовательными и дисциплинированными в течение дня.
+                                    <br><br>
+                                    Завершая свои дела в соответствии с намеченным планом, Lemoras Planner стремится повысить вашу уверенность в себе, обеспечить внутренний покой и удовлетворение в конце дня, что станет для вас важным источником мотивации.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseThree">
+                                <span ng-if="langKey == 'en'">What is Lemoras Identity Management System? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Kimlik Yönetim Sistemi Nedir ? </span>
+                                <span ng-if="langKey == 'ru'">Что такое система управления идентификацией Lemoras? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras Identity Management System is the core component of the Lemoras platform, responsible for managing user accounts, authentication, and access control for all integrated applications. 
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras Kimlik Yönetim Sistemi, Lemoras platformunun temel bileşenidir ve entegre tüm uygulamalar için kullanıcı hesaplarının, kimlik doğrulamanın ve erişim kontrolünün yönetiminden sorumludur.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Система управления идентификацией Lemoras — это основной компонент платформы Lemoras, отвечающий за управление учетными записями пользователей, аутентификацию и контроль доступа для всех интегрированных приложений.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseFour">
+                                <span ng-if="langKey == 'en'">Why is the Lemoras Free?</span>
+                                <span ng-if="langKey == 'tr'">Lemoras Neden Ücretsiz ?</span>
+                                <span ng-if="langKey == 'ru'">Почему Lemoras бесплатный?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras is free, within certain limits, for everyone, as a reflection of its journey from a development test project to a robust, integrated platform.
+                                    <br><br>
+                                    Always Free, With Premium Options
+                                    <br><br>
+                                    This commitment to accessibility is why Lemoras will always be free within certain limits for everyone. However, for users needing enhanced features or capabilities, premium packages will also be available. This approach ensures that Lemoras remains broadly accessible while offering advanced options for those who need them.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras, bir geliştirme test projesinden sağlam ve entegre bir platforma dönüşme serüveninin bir yansıması olarak, belirli limitler dahilinde herkes için ücretsizdir.
+                                    <br><br>
+                                    Her Zaman Ücretsiz, Premium Seçeneklerle
+                                    <br><br>
+                                    Bu erişilebilirlik taahhüdümüz nedeniyle Lemoras, belirli limitler dahilinde herkes için her zaman ücretsiz olacaktır. Ancak, gelişmiş özelliklere veya yeteneklere ihtiyaç duyan kullanıcılar için premium paketler de sunulacaktır. Bu yaklaşım, Lemoras'ın geniş kitleler tarafından erişilebilir kalmasını sağlarken, ihtiyaç duyanlara gelişmiş seçenekler sunar.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras бесплатен для всех в определенных пределах, что является отражением его пути от тестового проекта разработки до надежной, интегрированной платформы.
+                                    <br><br>
+                                    Всегда бесплатно, с премиум-опциями
+                                    <br><br>
+                                    Эта приверженность доступности является причиной того, почему Lemoras всегда будет бесплатным для всех в определенных пределах. Однако для пользователей, которым нужны расширенные функции или возможности, также будут доступны премиум-пакеты. Такой подход гарантирует, что Lemoras останется широко доступным, предлагая расширенные опции для тех, кто в них нуждается.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseFive">
+                                <span ng-if="langKey == 'en'">Is the Lemoras Safe? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Güvenli midir ? </span>
+                                <span ng-if="langKey == 'ru'">Безопасны ли Lemoras ? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseFive" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Yes, Lemoras prioritizes security, as evidenced by its evolution and foundational principles.
+                                    <br><br>
+                                    Our Commitment to Security
+                                    <br><br>
+                                    Lemoras began as a development test project in late 2017, and by 2018, it underwent a significant rebuild with a strong structural design. Throughout its development, a stable and robust core was engineered to be compatible with evolving technology trends.
+                                    Today, Lemoras stands as a fast, high-performance, and cost-effective integrated application platform. Our future vision is firmly rooted in providing a more secure and privileged experience, backed by our open-source nature, user-friendly design, transparent operations, and strict privacy policy. These core tenets directly contribute to Lemoras's commitment to user safety and data protection.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Evet, Lemoras gelişimi ve temel prensipleriyle güvenliği ön planda tutmaktadır.
+                                    <br><br>
+                                    Güvenliğe Bağlılığımız
+                                    <br><br>
+                                    Lemoras, 2017'nin sonlarında bir geliştirme test projesi olarak başladı ve 2018'e gelindiğinde, güçlü bir yapısal tasarımla önemli bir yeniden yapılanmaya gitti. Gelişimi boyunca, değişen teknoloji trendleriyle uyumlu istikrarlı ve sağlam bir çekirdek tasarlandı.
+                                    Bugün Lemoras, hızlı, yüksek performanslı ve uygun maliyetli entegre bir uygulama platformu olarak konumlanmaktadır. Gelecek vizyonumuz, açık kaynak yapımız, kullanıcı dostu tasarımımız, şeffaf operasyonlarımız ve katı gizlilik politikamızla desteklenen daha güvenli ve ayrıcalıklı bir deneyim sunmaya sıkı sıkıya bağlıdır. Bu temel ilkeler, Lemoras'ın kullanıcı güvenliğine ve veri korumasına olan bağlılığına doğrudan katkıda bulunmaktadır.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Да, Lemoras уделяет приоритетное внимание безопасности, что подтверждается его развитием и основополагающими принципами.
+                                    <br><br>
+                                    Наша приверженность безопасности
+                                    <br><br>
+                                    Lemoras начинался как тестовый проект по разработке в конце 2017 года, и к 2018 году он претерпел значительную перестройку с сильным структурным дизайном. На протяжении всего периода разработки было создано стабильное и надежное ядро, совместимое с развивающимися технологическими тенденциями.
+                                    Сегодня Lemoras является быстрой, высокопроизводительной и экономичной интегрированной платформой приложений. Наше будущее видение прочно основано на обеспечении более безопасного и привилегированного опыта, поддерживаемого нашей открытой архитектурой, удобным дизайном, прозрачными операциями и строгой политикой конфиденциальности. Эти основные принципы напрямую способствуют приверженности Lemoras безопасности пользователей и защите данных.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseSix">
+                                <span ng-if="langKey == 'en'">Are My Personal Data Processed or Shared with Third Parties?</span>
+                                <span ng-if="langKey == 'tr'">Kişisel verilerim işleniyor mu, üçüncü taraflarla paylaşımı var mıdır ?</span>
+                                <span ng-if="langKey == 'ru'">Обрабатываются ли мои персональные данные или передаются ли они третьим лицам?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseSix" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras handles your personal data with a strong commitment to privacy and security.
+                                    <br><br>
+                                    How Your Data is Handled
+                                    <br><br>
+                                    Your data is primarily stored on servers and in databases located abroad, which are necessary for the system's operation. Access to your personal information is restricted and managed by Lemoras itself. Only authorized personnel, specifically system users who have explicit administrative roles, can access limited personal data, and only in ways that prevent direct identification. Your personal data is not shared with unauthorized third parties. Our design, guided by an open-source, transparent, and privacy-focused policy, underpins our commitment to safeguarding your information.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras, kişisel verilerinizi gizlilik ve güvenliğe güçlü bir bağlılıkla işler.
+                                    <br><br>
+                                    Verileriniz Nasıl İşleniyor?
+                                    <br><br>
+                                    Verileriniz öncelikli olarak sistemin çalışması için gerekli olan yurt dışındaki sunucularda ve veri tabanlarında saklanır. Kişisel bilgilerinize erişim Lemoras'ın kendisi tarafından kısıtlanır ve yönetilir. Yalnızca yetkili personel, yani açıkça idari rollere sahip sistem kullanıcıları, sınırlı kişisel verilere erişebilir ve bu erişim doğrudan kimlik tespitini engelleyecek şekildedir. Kişisel verileriniz yetkisiz üçüncü taraflarla paylaşılmaz. Açık kaynaklı, şeffaf ve gizlilik odaklı politikamızla yönlendirilen tasarımımız, bilgilerinizin korunmasına olan bağlılığımızın temelini oluşturur.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras обрабатывает ваши личные данные с высокой приверженностью конфиденциальности и безопасности.
+                                    <br><br>
+                                    Как обрабатываются ваши данные
+                                    <br><br>
+                                    Ваши данные в основном хранятся на серверах и в базах данных, расположенных за границей, что необходимо для работы системы. Доступ к вашей личной информации ограничен и управляется самой Lemoras. Только уполномоченный персонал, в частности пользователи системы, обладающие явными административными ролями, могут получить доступ к ограниченным личным данным, и только таким образом, чтобы исключить прямую идентификацию. Ваши личные данные не передаются несанкционированным третьим лицам. Наш дизайн, основанный на открытой архитектуре, прозрачности и политике конфиденциальности, лежит в основе нашего обязательства по защите вашей информации.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Frequently Question End ***** -->
+
+    <hr>

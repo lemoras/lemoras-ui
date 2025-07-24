@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./../../../templates/w_default/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./../../../templates/w_default/assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title id="configTitle">
+        Sayfa Yükleniyor..
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+
+    <link href="./../../../system/requires/angular-notify.css" rel="stylesheet" />
+    <script type="text/javascript" src="./../../../system/requires/loading.js"></script>
+
+</head>
+
+<body id="rootBody" onload="loadProgressBar();" id="page-top" class=" sidebar-mini">
+
+    <div id="pageContent" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0" class="wrapper">
+        <div ng-if="config == undefined" ng-view></div>
+        <div id="configDisplay" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0"
+            ng-show="config !== undefined" data-ng-init="loadProgressBar2()">
+            <div style="position: absolute; right: 100px;">
+            <p  style="border: 2px solid black; border-radius: 5px; padding: 2px; padding-left: 10px;" id="countdownTimer"></p>
+            <a href="#!/logout">Çıkış yap</a>
+        </div>
+            <br><br>
+
+            <div class="content">
+                <content ng-view></content>
+            </div>
+
+            <center>
+
+                <div class="copyright" id="copyright">
+                    &copy;
+                    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                    , Designed & Coded by <a href="javascript:window.location.href = 'http://' + mainLandUrl[0]" target="_blank">Lemoras</a>.
+                </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="./../../../system/requires/require.min.js"></script>
+    <script type="text/javascript" src="../../../system/requires/code-msg.js"></script>
+    <script type="text/javascript" src="./../../../system/requires/loadapp.js"></script>
+
+    <input hidden disabled type="text" id="sessionCreatedTime" value="{{ globals.currentUser.createdTime }}">
+
+    <script>
+
+        // Set the date we're counting down to
+        //var countDownDate = new Date("Apr 26, 2024 15:37:25").getTime();
+        // var nowDate = new Date(document.getElementById("sessionCreatedTime").value);
+        //     nowDate.setSeconds(nowDate.getSeconds() + 58);
+
+        // var countDownDate = nowDate.getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+            var nowDate = new Date(document.getElementById("sessionCreatedTime").value);
+            nowDate.setSeconds(nowDate.getSeconds() + 58);
+
+        var countDownDate = nowDate.getTime();
+          // Get today's date and time
+          var now = new Date().getTime();
+        
+          // Find the distance between now and the count down date
+        var distance =  countDownDate -now;
+        
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+          // Display the result in the element with id="demo"
+        //   document.getElementById("countdownTimer").innerHTML = days + "d " + hours + "h "
+        //   + minutes + "m " + seconds + "s ";
+
+        document.getElementById("countdownTimer").innerHTML ="00:" + seconds;
+        
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdownTimer").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+        </script>
+
+
+</body>
+
+</html>

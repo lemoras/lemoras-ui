@@ -1,0 +1,539 @@
+﻿<!-- ***** Welcome Area Start ***** -->
+<div class="welcome-area" id="welcome">
+  <!-- ***** Header Text Start ***** -->
+  <div class="header-text">
+      <div class="container">
+          <div class="row">
+              <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                  <h1 ng-if="langKey == 'en'">One account  <strong>Lifetime Freedom</strong></h1>
+                  <h1 ng-if="langKey == 'tr'">Tek hesap  <strong>Ömür Boyu Özgürlük</strong></h1>
+                  <h1 ng-if="langKey == 'ru'">Одна учетная запись <strong>Пожизненная свобода</strong></h1>
+                  <p ng-if="langKey == 'en'">Access freedom through simple, secure, ad-free, frequently used digital-era applications that are free for life. </p>
+                  <p ng-if="langKey == 'tr'">Sade, güvenli, reklam içermeyen, dijital dönemde sıklıkla kullanılan ve ömür boyu bedava uygulamalar ile özgürlüğe erişin. </p>
+                  <p ng-if="langKey == 'ru'">Получите свободу благодаря простым, безопасным, без рекламы, часто используемым приложениям цифровой эпохи, которые бесплатны на всю жизнь. </p>
+                  <a ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/login'" class="main-button-slider">Account Login</a>
+                  <a ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/login'" class="main-button-slider">Hesaba Giriş</a>
+                  <a ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/login'" class="main-button-slider">Вход в учетную запись</a>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                  <img src="./../../../templates/w_artfactory/assets/images/rootrenkli_orjinal2.png" class="rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+ <!-- #aedbdf; -->
+<style>
+
+ /* .gridapphover {
+        border: white solid 1px;
+    } */
+
+    .gridapphover:hover {
+        /* border: #00b4c6 solid 1px; */
+        background-color: whitesmoke;
+         /* background-color: #00b4c6; */
+    }
+
+     /* .gridapphover:hover h5 {
+        color: white;
+    } */
+
+</style>
+
+    <!-- ***** Features Small Start ***** -->
+    <section class="section" id="applications" style="position: relative; padding: 120px 0px 90px 0px;">
+        <div class="container">
+            <div class="row justify-content-center align-self-center">
+                <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <!-- <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: green; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Very soon</span>
+                        <span ng-if="langKey == 'tr'">Çok yakında</span>
+                        <span ng-if="langKey == 'ru'">Очень скоро</span>
+                    </div> -->
+                    <a href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">
+                    <div class="item service-item gridapphover" style="border-radius: 50px;">
+                      
+                        <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/notes.png" alt="">
+                        <br><br>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Notes</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Notlar</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Примечания</h5>
+                        <!-- <a href="#" class="main-button">Read More</a> -->
+                         </div>
+                   
+                    </a>
+                </div>
+                <div class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: green; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Very soon</span>
+                        <span ng-if="langKey == 'tr'">Çok yakında</span>
+                        <span ng-if="langKey == 'ru'">Очень скоро</span>
+                    </div>
+                    <a href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">
+                    <div class="item service-item gridapphover" style="border-radius: 50px;">
+                       
+                        <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/drive.png" alt="">
+                        <br><br>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Cloud Storage</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Bulut Depo</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Облачное хранилище</h5>
+                    </div>
+                    </a>
+                </div>
+                <div  class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Soon</span>
+                        <span ng-if="langKey == 'tr'">Yakında</span>
+                        <span ng-if="langKey == 'ru'">Скоро</span>
+                    </div>
+                    <a href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">
+                    <div class="item service-item gridapphover" style="border-radius: 50px;">
+                       
+                        <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/password.png" alt="">
+                        <br><br>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Passwords</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Şifreler</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Пароли</h5>
+                    </div>
+                    </a>
+                </div>
+                <div  class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">
+                        <span ng-if="langKey == 'en'">Soon</span>
+                        <span ng-if="langKey == 'tr'">Yakında</span>
+                        <span ng-if="langKey == 'ru'">Скоро</span>
+                    </div>
+                    <a href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">
+                    <div class="item service-item gridapphover" style="border-radius: 50px;">
+                       
+                        <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/checklist.png" alt="">
+                        <br><br>
+                        <h5 ng-if="langKey == 'en'" class="service-title">Daily Plan</h5>
+                        <h5 ng-if="langKey == 'tr'" class="service-title">Günlük Plan</h5>
+                        <h5 ng-if="langKey == 'ru'" class="service-title">Ежедневный план</h5>
+                    </div>
+                    </a>
+                </div>
+                <!-- <div id="expandApp1" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/mail.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">E-Posta</h5>
+                    </div>
+                </div>
+                <div id="expandApp2" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/chat.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Sohbet</h5>
+                    </div>
+                </div>
+                <div id="expandApp3" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/career.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Kariyer</h5>
+                    </div>
+                </div>
+                <div id="expandApp4" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2;border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">Yakında</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/coach.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Koç Danışmanlığı</h5>
+                    </div>
+                </div>
+                <div id="expandApp5" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/agile.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Çevik - Planlayıcı</h5>
+                    </div>
+                </div>
+                <div id="expandApp6" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2;border-radius: 30px; background-color: chocolate; color: white; padding: 3px;;">Yakında</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/dues.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Aidat Takip</h5>
+                    </div>
+                </div>
+                <div id="expandApp7" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999;border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/smartlock.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Akıllı Kilit</h5>
+                    </div>
+                </div>
+                <div id="expandApp8" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/renovation.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Ev Tadilat</h5>
+                    </div>
+                </div>
+                <div id="expandApp9" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/search.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">İnternet Arama</h5>
+                    </div>
+                </div>
+                <div id="expandApp10" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/vpn.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Kripto Özel Ağ - VPN</h5>
+                    </div>
+                </div>
+                <div id="expandApp11" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/remotepc.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Uzak PC Bağlantısı</h5>
+                    </div>
+                </div>
+                <div id="expandApp12" style="display: none;" class=".col col-lg-3 col-md-4 col-sm-6" style="padding-bottom: 40px;">
+                    <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:99999999; border-radius: 30px; background-color: gray; color: white; padding: 3px;;">Plan Dahilinde</div>
+                    <div class="item service-item" style="border-radius: 50px;">
+                        <div class="icon">
+                            <i><img src="./../../../templates/w_artfactory/assets/images/meeting.png" alt=""></i>
+                        </div>
+                        <h5 class="service-title">Birebir Toplantı</h5>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class=".col  .content-center .text-align:center">
+                <center>
+                <a href="#" onclick="myFunction()" id="myBtn" class="main-button-slider">Daha fazla..</a>
+            </center>
+            </div> -->
+        </div>
+    </section>
+    <!-- ***** Features Small End ***** -->
+
+
+    <!-- ***** Features Big Item Start ***** -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <img src="./../../../templates/w_artfactory/assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                </div>
+                <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix">
+                    <div class="left-heading">
+                        <h5 ng-if="langKey == 'en'">We value privacy and freedom based on transparency</h5>
+                        <h5 ng-if="langKey == 'tr'">Şeffaflığa dayalı gizliliği, özgürlüğü önemsiyoruz</h5>
+                        <h5 ng-if="langKey == 'ru'">Мы ценим конфиденциальность и свободу, основанные на прозрачности.</h5>
+                    </div>
+                    <div class="left-text">
+                        <p ng-if="langKey == 'en'">We embrace the principles of open source, data privacy transparency and free software. With the motto "Be different, be privileged", we take your personalized digital needs to the next level by enriching them with a user-friendly and simple interface..<br><br>
+                            Liberate your digital world with us. Keep your data under control. Discover privacy and freedom. Have a more privileged experience.</p>
+                        <p ng-if="langKey == 'tr'">Açık kaynak, veri gizliliği şeffaflığı ve özgür yazılım ilkelerini benimsiyoruz. "Farklı ol, Ayrıcalıklı ol" mottosuyla, kullanıcı dostu ve basit bir arabirimle kişiselleştirilmiş dijital ihtiyaçlarınızı zenginleştirerek bir üst seviyeye taşıyoruz.<br><br>
+                            Bizimle dijital dünyanızı özgürleştirin.Verilerinizi kontrolünüzde tutun.Gizlilik ve özgürlüğü keşfedin.Daha ayrıcalıklı bir deneyim yaşayın.</p>
+                        <p ng-if="langKey == 'ru'">Мы принимаем принципы открытого исходного кода, прозрачности конфиденциальности данных и свободного программного обеспечения. С девизом «Будь другим, будь привилегированным» мы выводим ваши персонализированные цифровые потребности на новый уровень, обогащая их удобным и простым интерфейсом.<br><br>
+                            Освободите свой цифровой мир вместе с нами. Держите свои данные под контролем. Откройте для себя конфиденциальность и свободу. Получите более привилегированный опыт.</p>
+                        <a ng-if="langKey == 'en'" href="#about2" class="main-button">Discover More</a>
+                        <a ng-if="langKey == 'tr'" href="#about2" class="main-button">Daha Fazlasını Keşfedin</a>
+                        <a ng-if="langKey == 'ru'" href="#about2" class="main-button">Узнайте больше</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Big Item End ***** -->
+
+    <!-- ***** Frequently Question Start ***** -->
+    <section class="section" id="frequently-question">
+        <div class="container">
+            <!-- ***** Section Title Start ***** -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2 ng-if="langKey == 'en'">Frequently Asked Questions</h2>
+                        <h2 ng-if="langKey == 'tr'">Sıkça Sorulan Sorular</h2>
+                        <h2 ng-if="langKey == 'ru'">Часто задаваемые вопросы</h2>
+                    </div>
+                </div>
+                <div class="offset-lg-3 col-lg-6">
+                    <div class="section-heading">
+                        <p ng-if="langKey == 'en'">All frequently asked questions about Lemoras.</p>
+                        <p ng-if="langKey == 'tr'">Lemoras hakkında merak edilen tüm sıkça sorulan sorular.</p>
+                        <p ng-if="langKey == 'ru'">Все часто задаваемые вопросы о Lemorasе.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ***** Section Title End ***** -->
+
+            <div class="row">
+                <div class="left-text col-lg-6 col-md-6 col-sm-12">
+                    <h5 ng-if="langKey == 'en'">Our story's design development and vision from yesterday to today </h5>
+                    <h5 ng-if="langKey == 'tr'">Dünden bugüne hikayemizin tasarım gelişimi ve vizyonumuz </h5>
+                    <h5 ng-if="langKey == 'ru'">Развитие дизайна и видение нашей истории от вчерашнего дня к сегодняшнему дню </h5>
+                    <div class="accordion-text">
+                        <p ng-if="langKey == 'en'">Lemoras was started as a development test project in late 2017. While work on the core of the system was ongoing, it began to be rebuilt with structural design in 2018 and the first concrete example emerged. In the developing years, a stable and strong core was created that is compatible with technology trends.</p>
+                        <p ng-if="langKey == 'tr'">Lemoras, 2017'nin sonlarında bir geliştirme test projesi olarak başlandı. Sistemin çekirdeği üzerinde çalışmalar sürerken, 2018 yılında yapısal tasarım ile yeniden inşa edilmeye başlandı ve ilk somut örneği ortaya çıktı. Gelişen yıllarda, teknoloji trendleri ile uyumlu, kararlı ve güçlü bir çekirdek oluşturuldu.</p>
+                        <p ng-if="langKey == 'ru'">Lemoras был запущен как проект по тестированию разработки в конце 2017 года. Пока работа над ядром системы продолжалась, она начала перестраиваться с помощью структурного проектирования в 2018 году, и появился первый конкретный пример. В годы разработки было создано стабильное и прочное ядро, которое совместимо с технологическими тенденциями.</p>
+
+                        <p ng-if="langKey == 'en'">Today, it has transformed from a central and single point of multi-paradigm web applications into a fast, high-performance, and at the same time lower-cost integrated application platform. From this point on, we are moving towards a more secure and privileged future with our open source, user-friendly, transparent and privacy policy.</p>
+                        <p ng-if="langKey == 'tr'">Günümüzde, çoklu paradigmalı web uygulamalarının merkezi ve tek noktadan hızlı, performanslı, aynı zamanda daha düşük maliyetli bir entegre uygulama platformuna dönüşmüştür. Bu noktadan itibaren, açık kaynaklı, kullanıcı dostu, şeffaf ve gizlilik politikamız ile daha güvenli ve ayrıcalıklı bir geleceğe doğru ilerliyoruz.</p>
+                        <p ng-if="langKey == 'ru'">Сегодня он превратился из центральной и единой точки многопарадигмальных веб-приложений в быструю, высокопроизводительную и в то же время недорогую интегрированную платформу приложений. С этого момента мы движемся к более безопасному и привилегированному будущему с нашей политикой открытого исходного кода, удобной для пользователя, прозрачной и конфиденциальной.</p>
+                        <span ng-if="langKey == 'en'">E-Mail: <a href="#">onxorg@proton.me</a><br></span>
+                        <span ng-if="langKey == 'tr'">E-Posta: <a href="#">onxorg@proton.me</a><br></span>
+                        <span ng-if="langKey == 'ru'">Электронная почта: <a href="#">onxorg@proton.me</a><br></span>
+                        <a ng-if="langKey == 'en'" href="#contact-us" class="main-button">Contact us</a>
+                        <a ng-if="langKey == 'tr'" href="#contact-us" class="main-button">İletişime geç</a>
+                        <a ng-if="langKey == 'ru'" href="#contact-us" class="main-button">Связаться с нами</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="accordions is-first-expanded" id="accordionExample">
+                          <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseOne">
+                              <span ng-if="langKey == 'en'">What is the Lemoras?</span>
+                                <span ng-if="langKey == 'tr'">Lemoras Nedir ?</span>
+                                <span ng-if="langKey == 'ru'">Что такое Lemoras?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>          
+                            </div>
+                            <div>
+                            <div class="collapse show" id="collapseOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Integrated applications are central/platform and/or primarily identity management system. Integrated local applications are applications such as notes, cloud storage, etc.
+                                    <br><br>
+                                    It also hosts a local dues tracking system and similar applications. These applications are included later.</p>
+                                    <p ng-if="langKey == 'tr'">Tümleşik uygulamalar merkezi/platformu ve/esasen kimlik yönetim sistemidir. Tümleşik yerel uygulamaları; notlar, bulut depo vb. uygulamalarıdır.
+                                    <br><br>
+                                    Ayrıca aidat takip sistemi ve benzeri uygulaması yerelinde barındırır. Bu uygulamalara sonradan dahil olunur.</p>
+                                    <p ng-if="langKey == 'ru'">Интегрированные приложения — это центральная/платформенная и/или в первую очередь система управления идентификацией. Интегрированные локальные приложения — это такие приложения, как заметки, облачное хранилище и т. д.
+                                    <br><br>
+                                    Он также размещает локальную систему отслеживания взносов и аналогичные приложения. Эти приложения будут включены позже.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head"  data-toggle="collapse" data-target="#collapseTwo">
+                                <span ng-if="langKey == 'en'">What is the Lemoras Account? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Hesap Nedir ? </span>
+                                <span ng-if="langKey == 'ru'">Что такое счет Lemoras? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras is a central platform for identity management and integrated applications. To access, use, and benefit from all the services this central system offers, you need a Lemoras Account.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras, kimlik yönetimi ve entegre uygulamaları barındıran merkezi bir platformdur. Bu merkezi sisteme erişmek, kullanmak ve sunduğu tüm hizmetlerden faydalanmak için bir Lemoras Hesabı'na sahip olmanız gerekir.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras — это центральная платформа для управления учетными записями и интегрированными приложениями. Чтобы получить доступ, использовать и пользоваться всеми услугами этой центральной системы, вам необходим аккаунт Lemoras.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseThree">
+                                <span ng-if="langKey == 'en'">What is Lemoras Identity Management System? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Kimlik Yönetim Sistemi Nedir ? </span>
+                                <span ng-if="langKey == 'ru'">Что такое система управления идентификацией Lemoras? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras Identity Management System is the core component of the Lemoras platform, responsible for managing user accounts, authentication, and access control for all integrated applications. 
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras Kimlik Yönetim Sistemi, Lemoras platformunun temel bileşenidir ve entegre tüm uygulamalar için kullanıcı hesaplarının, kimlik doğrulamanın ve erişim kontrolünün yönetiminden sorumludur.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Система управления идентификацией Lemoras — это основной компонент платформы Lemoras, отвечающий за управление учетными записями пользователей, аутентификацию и контроль доступа для всех интегрированных приложений.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseFour">
+                                <span ng-if="langKey == 'en'">Why is the Lemoras Free?</span>
+                                <span ng-if="langKey == 'tr'">Lemoras Neden Ücretsiz ?</span>
+                                <span ng-if="langKey == 'ru'">Почему Lemoras бесплатный?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras is free, within certain limits, for everyone, as a reflection of its journey from a development test project to a robust, integrated platform.
+                                    <br><br>
+                                    Always Free, With Premium Options
+                                    <br><br>
+                                    This commitment to accessibility is why Lemoras will always be free within certain limits for everyone. However, for users needing enhanced features or capabilities, premium packages will also be available. This approach ensures that Lemoras remains broadly accessible while offering advanced options for those who need them.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras, bir geliştirme test projesinden sağlam ve entegre bir platforma dönüşme serüveninin bir yansıması olarak, belirli limitler dahilinde herkes için ücretsizdir.
+                                    <br><br>
+                                    Her Zaman Ücretsiz, Premium Seçeneklerle
+                                    <br><br>
+                                    Bu erişilebilirlik taahhüdümüz nedeniyle Lemoras, belirli limitler dahilinde herkes için her zaman ücretsiz olacaktır. Ancak, gelişmiş özelliklere veya yeteneklere ihtiyaç duyan kullanıcılar için premium paketler de sunulacaktır. Bu yaklaşım, Lemoras'ın geniş kitleler tarafından erişilebilir kalmasını sağlarken, ihtiyaç duyanlara gelişmiş seçenekler sunar.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras бесплатен для всех в определенных пределах, что является отражением его пути от тестового проекта разработки до надежной, интегрированной платформы.
+                                    <br><br>
+                                    Всегда бесплатно, с премиум-опциями
+                                    <br><br>
+                                    Эта приверженность доступности является причиной того, почему Lemoras всегда будет бесплатным для всех в определенных пределах. Однако для пользователей, которым нужны расширенные функции или возможности, также будут доступны премиум-пакеты. Такой подход гарантирует, что Lemoras останется широко доступным, предлагая расширенные опции для тех, кто в них нуждается.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseFive">
+                                <span ng-if="langKey == 'en'">Is the Lemoras Safe? </span>
+                                <span ng-if="langKey == 'tr'">Lemoras Güvenli midir ? </span>
+                                <span ng-if="langKey == 'ru'">Безопасны ли Lemoras ? </span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseFive" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Yes, Lemoras prioritizes security, as evidenced by its evolution and foundational principles.
+                                    <br><br>
+                                    Our Commitment to Security
+                                    <br><br>
+                                    Lemoras began as a development test project in late 2017, and by 2018, it underwent a significant rebuild with a strong structural design. Throughout its development, a stable and robust core was engineered to be compatible with evolving technology trends.
+                                    Today, Lemoras stands as a fast, high-performance, and cost-effective integrated application platform. Our future vision is firmly rooted in providing a more secure and privileged experience, backed by our open-source nature, user-friendly design, transparent operations, and strict privacy policy. These core tenets directly contribute to Lemoras's commitment to user safety and data protection.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Evet, Lemoras gelişimi ve temel prensipleriyle güvenliği ön planda tutmaktadır.
+                                    <br><br>
+                                    Güvenliğe Bağlılığımız
+                                    <br><br>
+                                    Lemoras, 2017'nin sonlarında bir geliştirme test projesi olarak başladı ve 2018'e gelindiğinde, güçlü bir yapısal tasarımla önemli bir yeniden yapılanmaya gitti. Gelişimi boyunca, değişen teknoloji trendleriyle uyumlu istikrarlı ve sağlam bir çekirdek tasarlandı.
+                                    Bugün Lemoras, hızlı, yüksek performanslı ve uygun maliyetli entegre bir uygulama platformu olarak konumlanmaktadır. Gelecek vizyonumuz, açık kaynak yapımız, kullanıcı dostu tasarımımız, şeffaf operasyonlarımız ve katı gizlilik politikamızla desteklenen daha güvenli ve ayrıcalıklı bir deneyim sunmaya sıkı sıkıya bağlıdır. Bu temel ilkeler, Lemoras'ın kullanıcı güvenliğine ve veri korumasına olan bağlılığına doğrudan katkıda bulunmaktadır.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Да, Lemoras уделяет приоритетное внимание безопасности, что подтверждается его развитием и основополагающими принципами.
+                                    <br><br>
+                                    Наша приверженность безопасности
+                                    <br><br>
+                                    Lemoras начинался как тестовый проект по разработке в конце 2017 года, и к 2018 году он претерпел значительную перестройку с сильным структурным дизайном. На протяжении всего периода разработки было создано стабильное и надежное ядро, совместимое с развивающимися технологическими тенденциями.
+                                    Сегодня Lemoras является быстрой, высокопроизводительной и экономичной интегрированной платформой приложений. Наше будущее видение прочно основано на обеспечении более безопасного и привилегированного опыта, поддерживаемого нашей открытой архитектурой, удобным дизайном, прозрачными операциями и строгой политикой конфиденциальности. Эти основные принципы напрямую способствуют приверженности Lemoras безопасности пользователей и защите данных.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head" data-toggle="collapse" data-target="#collapseSix">
+                                <span ng-if="langKey == 'en'">Are My Personal Data Processed or Shared with Third Parties?</span>
+                                <span ng-if="langKey == 'tr'">Kişisel verilerim işleniyor mu, üçüncü taraflarla paylaşımı var mıdır ?</span>
+                                <span ng-if="langKey == 'ru'">Обрабатываются ли мои персональные данные или передаются ли они третьим лицам?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="collapse" id="collapseSix" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p ng-if="langKey == 'en'">Lemoras handles your personal data with a strong commitment to privacy and security.
+                                    <br><br>
+                                    How Your Data is Handled
+                                    <br><br>
+                                    Your data is primarily stored on servers and in databases located abroad, which are necessary for the system's operation. Access to your personal information is restricted and managed by Lemoras itself. Only authorized personnel, specifically system users who have explicit administrative roles, can access limited personal data, and only in ways that prevent direct identification. Your personal data is not shared with unauthorized third parties. Our design, guided by an open-source, transparent, and privacy-focused policy, underpins our commitment to safeguarding your information.
+                                    </p>
+                                    <p ng-if="langKey == 'tr'">Lemoras, kişisel verilerinizi gizlilik ve güvenliğe güçlü bir bağlılıkla işler.
+                                    <br><br>
+                                    Verileriniz Nasıl İşleniyor?
+                                    <br><br>
+                                    Verileriniz öncelikli olarak sistemin çalışması için gerekli olan yurt dışındaki sunucularda ve veri tabanlarında saklanır. Kişisel bilgilerinize erişim Lemoras'ın kendisi tarafından kısıtlanır ve yönetilir. Yalnızca yetkili personel, yani açıkça idari rollere sahip sistem kullanıcıları, sınırlı kişisel verilere erişebilir ve bu erişim doğrudan kimlik tespitini engelleyecek şekildedir. Kişisel verileriniz yetkisiz üçüncü taraflarla paylaşılmaz. Açık kaynaklı, şeffaf ve gizlilik odaklı politikamızla yönlendirilen tasarımımız, bilgilerinizin korunmasına olan bağlılığımızın temelini oluşturur.
+                                    </p>
+                                    <p ng-if="langKey == 'ru'">Lemoras обрабатывает ваши личные данные с высокой приверженностью конфиденциальности и безопасности.
+                                    <br><br>
+                                    Как обрабатываются ваши данные
+                                    <br><br>
+                                    Ваши данные в основном хранятся на серверах и в базах данных, расположенных за границей, что необходимо для работы системы. Доступ к вашей личной информации ограничен и управляется самой Lemoras. Только уполномоченный персонал, в частности пользователи системы, обладающие явными административными ролями, могут получить доступ к ограниченным личным данным, и только таким образом, чтобы исключить прямую идентификацию. Ваши личные данные не передаются несанкционированным третьим лицам. Наш дизайн, основанный на открытой архитектуре, прозрачности и политике конфиденциальности, лежит в основе нашего обязательства по защите вашей информации.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Frequently Question End ***** -->
+
+    <hr>
+
+<!-- 
+    <script>
+        function myFunction() {
+          var expandApp1 = document.getElementById("expandApp1");
+          var expandApp2 = document.getElementById("expandApp2");
+          var expandApp3 = document.getElementById("expandApp3");
+          var expandApp4 = document.getElementById("expandApp4");
+          var expandApp5 = document.getElementById("expandApp5");
+          var expandApp6 = document.getElementById("expandApp6");
+          var expandApp7 = document.getElementById("expandApp7");
+          var expandApp8 = document.getElementById("expandApp8");
+          var expandApp9 = document.getElementById("expandApp9");
+          var expandApp10 = document.getElementById("expandApp10");
+          var expandApp11 = document.getElementById("expandApp11");
+          var expandApp12 = document.getElementById("expandApp12");
+
+          var myBtn = document.getElementById("myBtn");
+
+          if (expandApp1.style.display === "none") {
+            expandApp1.style.display = "inline";
+            expandApp2.style.display = "inline";
+            expandApp3.style.display = "inline";
+            expandApp4.style.display = "inline";
+            expandApp5.style.display = "inline";
+            expandApp6.style.display = "inline";
+            expandApp7.style.display = "inline";
+            expandApp8.style.display = "inline";
+            expandApp9.style.display = "inline";
+            expandApp10.style.display = "inline";
+            expandApp11.style.display = "inline";
+            expandApp12.style.display = "inline";
+
+            myBtn.innerHTML = "Kapat";
+          } else {
+            expandApp1.style.display = "none";
+            expandApp2.style.display = "none";
+            expandApp3.style.display = "none";
+            expandApp4.style.display = "none";
+            expandApp5.style.display = "none";
+            expandApp6.style.display = "none";
+            expandApp7.style.display = "none";
+            expandApp8.style.display = "none";
+            expandApp9.style.display = "none";
+            expandApp10.style.display = "none";
+            expandApp11.style.display = "none";
+            expandApp12.style.display = "none";
+
+            myBtn.innerHTML = "Daha Fazla..";
+          }
+        }
+        </script> -->

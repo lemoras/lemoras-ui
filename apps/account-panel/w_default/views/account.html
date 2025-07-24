@@ -1,0 +1,147 @@
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Profilim</h5>
+                </div>
+                <div class="card-body">
+                    <form id="RegisterValidation" ng-submit="vm.submitProfile()">
+                        <div class="row">
+                            <div class="col-md-5 pl-1">
+                                <div class="form-group has-label">
+                                    <label for="exampleInputEmail1">E-Posta adresi</label>
+                                    <label style="color:red">
+                                        *
+                                    </label>
+                                    <span  ng-if="globals.currentUser.hasId" disabled class="form-control">  {{ vm.account.email === undefined ? 'Yok' :  vm.account.email }} </span>
+                                    <input ng-if="!globals.currentUser.hasId" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                </div>
+                            </div>
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Takma ad</label>
+                                    <label style="color:red">
+                                        *
+                                    </label>
+                                    <input type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Görevi</label>
+                                    <span disabled class="form-control">  {{ globals.currentUser.roleId === undefined ? 'Yok' :  vm.getAsName(globals.currentUser.roleId) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group has-label">
+                                    <label>About me</label>
+                                    <label style="color:red">
+                                        *
+                                    </label>
+                                    <input type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="aboutMe" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Kayıt tarihi</label>
+                                    <span disabled class="form-control">  {{ vm.account.CreatedAt  === null ? 'Yok' : vm.account.CreatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Son düzenlenme tarihi</label>
+                                    <span disabled class="form-control">  {{ vm.account.UpdatedAt === null ? 'Yok' : vm.account.UpdatedAt | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    <label>Son giriş tarihi</label>
+                                    <span disabled class="form-control">  {{ globals.currentUser.lastLoginDate === null ? 'Yok' : globals.currentUser.lastLoginDate | date:'yyyy/MM/dd HH:mm:ss' }} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group">
+                                    <button class="btn btn-info float-right" type="submit">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="../../../system/assets/img/bg5.jpg" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a href="#!/profile">
+                            <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                            <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                            <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
+                                    
+                            <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--ng-model="vm.account.photoUrl"-->
+                            <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
+                            <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
+                                   <!-- <h5 class="title"> {{ vm.account.firstName }} {{ vm.account.lastName }}</h5> -->
+                        </a>
+                        <input type="file" id="file" accept="image/png, image/gif, image/jpeg, image/jpg" file-model="vm.myFile" onchange="angular.element(this).scope().vm.uploadFile(this.files)" style="display:none;" name="file" />
+                        <p class="description">
+                            #{{  vm.account.nickname }}
+                        </p>
+                    </div>
+                    <hr><br>
+                    <div ng-if="!globals.currentUser.hasId" class="container justify-content-center text-center">
+                        <form id="RegisterValidation" ng-submit="vm.submitZOE()">
+                            <div class="row">
+                                <div class="col-md-12 px-1">
+                                    <div class="form-group">
+                                        <label>Mevcut şifre</label>
+                                        <input type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 px-1">
+                                    <div class="form-group">
+                                        <label>Yeni şifre</label>
+                                        <input type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 px-1">
+                                    <div class="form-group">
+                                        <label>Yeni şifre tekrar</label>
+                                        <input type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 px-1">
+                                    <div class="form-group">
+                                        <button class="btn btn-warning" type="submit">Güncelle</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="../../../../system/requires/file.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script> 

@@ -1,0 +1,212 @@
+﻿<div class="content">
+  <style>
+    .one-fine-dot::before {
+      content: "\25cf";
+    }
+
+    .one-fine-green-dot::before {
+      content: "\25cf";
+      color: green;
+    }
+
+    .one-fine-red-dot::before {
+      content: "\25cf";
+      color: red;
+    }
+
+    .one-fine-empty-dot::before {
+      content: "\25cb";
+    }
+
+    .lead .one-fine-dot {
+      font-size: 1.5em;
+    }
+
+    .fieldOrder:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Üye listesi</h4>
+        </div>
+
+        <div class="card-body"
+          style="border-radius: 15px; margin: 14px; border-style: solid; border-width: 1px; border-color: burlywood; padding: 5px;">
+          <div class="row" style="padding: 15px;">
+            <div class="col-md-2 text-left">
+              Sayfa gösterim sayısı
+            </div>
+            <div class="col-md-2 text-left">
+              <select ng-model="vm.pageSize" id="pageSize" class="form-control">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+            <div class="col-md-4 text-right">
+              <input ng-model="vm.q" id="search" class="form-control" placeholder="Ara..">
+            </div>
+            <div class="col-md-4 text-right">
+              Listelenen toplam kayıt sayısı {{ vm.members.length }}
+            </div>
+          </div>
+          <hr>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th class="text-center" style="border:#cccccc solid 1px;">
+                  #
+                </th>
+                <th style="border:#cccccc solid 1px;">
+                  Üye fotoğrafı
+                </th>
+                <th class="text-center fieldOrder" ng-click="vm.orderbyField('nickname')"
+                  style="border:#cccccc solid 1px;">
+                  Takma adı
+                </th>
+                <th class="text-center fieldOrder" ng-click="vm.orderbyField('email')"
+                  style="border:#cccccc solid 1px;">
+                  E-Posta adresi
+                </th>
+                <th class="fieldOrder" ng-click="vm.orderbyField('roleId')" style="border:#cccccc solid 1px;">
+                  Rolü
+                </th>
+                <th class="fieldOrder" ng-click="vm.orderbyField('projectName')" style="border:#cccccc solid 1px;">
+                  Proje adı
+                </th>
+                <th class="fieldOrder" ng-click="vm.orderbyField('projectInfo')" style="border:#cccccc solid 1px;">
+                  Proje bilgileri
+                </th>
+                <th class="text-center fieldOrder" ng-click="vm.orderbyField('active')"
+                  style="border:#cccccc solid 1px;">
+                  Aktif/Pasif
+                </th>
+                <th class="text-left fieldOrder" ng-click="vm.orderbyField('createdDate')"
+                  style="border:#cccccc solid 1px;">
+                  Kayıt tarihi
+                </th>
+                <th class="text-left fieldOrder" ng-click="vm.orderbyField('createByName')"
+                  style="border:#cccccc solid 1px;">
+                  Kayıt eden
+                </th>
+                <th class="text-left fieldOrder" ng-click="vm.orderbyField('lastLoginDate')"
+                  style="border:#cccccc solid 1px;">
+                  Son giriş tarihi
+                </th>
+                <th class="text-center fieldOrder" ng-click="vm.orderbyField('updatedAt')"
+                  style="border:#cccccc solid 1px;">
+                  Son değişiklik
+                </th>
+                <th class="text-center fieldOrder" ng-click="vm.orderbyField('updatedByName')"
+                  style="border:#cccccc solid 1px;">
+                  Değiştiren
+                </th>
+                <th class="text-right" style="border:#cccccc solid 1px;">
+                  Aksiyonlar
+                </th>
+              </thead>
+              <tbody>
+                <tr
+                  ng-repeat="member in vm.members | orderBy: vm.orderQ | filter:vm.q | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+                  <td style="border:#cccccc solid 1px;">
+                    {{ $index + 1 }}
+                  </td>
+                  <td class="text-center" style="border:#cccccc solid 1px;">
+                    <img ng-if="member.photoUrl != null" class="avatar border-gray"
+                      style="width: 50px; height: 50px;" ng-src="/{{member.photoUrl}}">
+                    <img ng-if="member.photoUrl == null" class="avatar border-gray" style="width: 50px; height: 50px;"
+                      src="../../../templates/assets/img/default-avatar.png">
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.nickname }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.email }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{  vm.getAsName(member.roleId) }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.projectName }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.projectInfo }}
+                  </td>
+                  <td class="text-center" style="border:#cccccc solid 1px;">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input disabled type="checkbox" class="form-check-input" ng-model="member.active">
+                        <span class="form-check-sign"></span>
+                      </label>
+                  </div>
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.createdAt | date:'yyyy/MM/dd HH:mm:ss' }}
+                  </td>
+                  <td class="text-center" style="border:#cccccc solid 1px;">
+                    {{ member.createdByName }}
+                  </td>
+                  <td class="text-left" style="border:#cccccc solid 1px;">
+                    {{ member.lastLoginDate | date:'yyyy/MM/dd HH:mm:ss' }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.updatedAt | date:'yyyy/MM/dd HH:mm:ss' }}
+                  </td>
+                  <td style="border:#cccccc solid 1px;">
+                    {{ member.updatedByName }}
+                  </td>
+                  <td class="text-right" style="border:#cccccc solid 1px;">
+                    <ul style="list-style-type: none; display: flex;">
+                      <li>
+                        <button type="button" rel="tooltip" ng-click="vm.editMember(member.id)"
+                          class="btn btn-info btn-icon btn-sm " data-toggle="tooltip" data-placement="top"
+                          title="Düzenle" style="padding: 2px;">
+                          <i class="now-ui-icons users_single-02"></i>
+                        </button>
+                      </li>
+                      <li>
+                        <button ng-if="!member.isActive" type="button" rel="tooltip"
+                          ng-click="vm.activeOrPassive(member)" class="btn btn-success btn-icon btn-sm "
+                          data-toggle="tooltip" data-placement="top" style="padding: 2px;" title="Aktif et">
+                          <i class="now-ui-icons ui-2_settings-90"></i>
+                        </button>
+                      </li>
+                      <li>
+                        <button ng-if="member.isActive" type="button" rel="tooltip"
+                          ng-click="vm.activeOrPassive(member)" class="btn btn-secondary btn-icon btn-sm "
+                          data-toggle="tooltip" data-placement="top" style="padding: 2px;" title="Pasife al">
+                          <i class="now-ui-icons ui-2_settings-90"></i>
+                        </button>
+                      </li>
+                      <li>
+                        <button type="button" rel="tooltip" ng-click="vm.removeMember(member)"
+                          class="btn btn-danger btn-icon btn-sm" data-toggle="tooltip" data-placement="top" style="padding: 2px;" title="Sil">
+                          <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                      </li>
+                    </ul>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1">
+              Geri
+            </button> {{vm.currentPage+1}}/{{vm.numberOfPages()}}
+            <button ng-disabled="vm.currentPage >= vm.getData().length/vm.pageSize - 1"
+              ng-click="vm.currentPage=vm.currentPage+1">
+              İleri
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

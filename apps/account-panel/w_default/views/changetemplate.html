@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="../../../system/requires/jquery-3.3.4.min.css">
+<script src="../../../system/requires/jquery-confirm.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function askQuestion(customAlert, setTemplate, template_names){
+
+        var buttons = { Cancel: {
+                    text: 'Vazgeç',
+                    keys : ['esc'],
+                    action: function(){
+                        this.close();
+                        canceled();
+                    }
+                } };
+        template_names.forEach(function(element, i) {
+            if (i == 0) {
+            buttons.Confirm = {
+                    text:  element.charAt(0).toUpperCase() + element.slice(1) + ' şablon',
+                    action : function(){
+                      this.close();
+                      set(element);
+                    }
+                }
+            }
+            if (i == 1) {
+            buttons.Continue = {
+                    text:  element.charAt(0).toUpperCase() + element.slice(1) + ' şablon',
+                    action : function(){
+                      this.close();
+                      set(element);
+                    }
+                }
+            }
+        });
+    
+        $.confirm({
+            title: 'Şablonu değiştir',
+            icon : 'fa fa-info-circle',
+            content : 'Bu bilgisayarda herhangi bir kullanıcı için şablonu sabitle',
+            autoClose: 'Cancel|10000',
+            theme : 'supervan',
+            closeIcon: true,
+            animation: 'scale',
+            type: 'blue',
+            draggable:'true',
+            buttons:buttons,
+            close: function () {;
+              $('.jconfirm').hide();
+              $('.jconfirm').remove();
+                canceled();
+            }
+        });
+    
+        function set(template) { 
+            setTemplate(template, function(result){
+                if (result) {
+                    var appName = window.localStorage.getItem("app");
+                    window.location.replace("./../../../apps/" + appName + "/" + template + "/index.html"); 
+                }   
+                else {
+                    customAlert();
+                }
+            });
+                 
+        };
+  
+        //$.confirm.hide();
+    };
+    
+    function canceled() { 
+      var scope = angular.element(document.getElementById('rootBody')).scope();
+      scope.setNav();
+      window.location.replace("#!/");
+    };
+
+</script>
+    
+            

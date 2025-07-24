@@ -1,0 +1,321 @@
+<style>
+  #containerdashboard {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+
+    opacity: 0.2;
+    z-index: -1;
+  }
+</style>
+
+<div class="container-fluid">
+  <center>
+    <div id="containerdashboard">
+      <img src="./../../../system/assets/img/background.png">
+    </div>
+    <h1> SYSTEM ROOT PANEL </h1>
+
+    <div class="content">
+
+      <table>
+        <tr>
+          <td>
+            <h4 class="card-title">Create Project By New Merchant</h4>
+            <form ng-submit="vm.createProject()">
+              <label>Applications</label>
+              <div>
+                <select ng-model="vm.selectedApplication" style="width: 200px;">
+                  <option disabled selected>Seçiniz</option>
+                  <option ng-repeat="item in vm.applications" value="{{item}}">{{item.appName}}</option>
+                </select>
+              </div>
+              <div hidden><br>
+                <label>Generated Auto Merchant Id</label>
+                <div>
+                  <input size="35" ng-model="vm.project.merchantId" name="merchantId" id="merchantId" disabled
+                    type="text" value="ddcaa8da-3b99-43d3-8ca4-376530c422b2">
+                </div>
+              </div>
+              <br>
+              <label>Project Name</label>
+              <div>
+                <input ng-model="vm.project.projectName" size="35" type="text">
+              </div>
+              <br>
+              <div>
+                <button type="submit"
+                  style="background-color: orangered; color: whitesmoke; border-radius: 20px; width: 70px;">Submit</button>
+              </div>
+            </form>
+          </td>
+          <td>
+
+            <h4 class="card-title">Create New Merchant Admin</h4>
+
+            <form ng-submit="vm.createRole()">
+              <label>Projects</label>
+              <div>
+                <select ng-model="vm.selectedProject" style="width: 200px;">
+                  <option disabled selected>Seçiniz</option>
+                  <option ng-repeat="item in vm.projects" value="{{item}}">{{item.projectName}}</option>
+                </select>
+              </div>
+              <br>
+              <label>Email address</label>
+              <div>
+                <input ng-model="vm.role.email" size="35" type="email">
+              </div>
+              <br>
+              <div>
+                <button style="background-color: orangered; color: whitesmoke;  border-radius: 20px; width: 70px;"
+                  type="submit" class="btn btn-fill btn-primary">Submit</button>
+              </div>
+            </form>
+          </td>
+          <td>
+
+            <h4 class="card-title">Renew Root Session</h4>
+
+            <form ng-submit="vm.renewSession()">
+              <label>Email address</label>
+              <div>
+                <input ng-model="vm.account.email" size="35" disabled type="email" value="....@.......com">
+              </div>
+              <br>
+              <label>Password</label>
+              <div>
+                <input ng-model="vm.account.password" size="35" type="password">
+              </div>
+              <br>
+              <div>
+                <button style="background-color: orangered; color: whitesmoke;  border-radius: 20px; width: 70px;"
+                  type="submit" class="btn btn-fill btn-primary">Submit</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="3">
+            <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header ">
+                  <h4 class="card-title">Projects
+                    <div style="float: right;"><a href="#" ng-click="vm.checkLemorasProject()">Check Lemoras Project</a></div>
+                  </h4>
+                </div>
+                <div class="card-body ">
+
+
+                  <div class="card-body"
+                    style="border-radius: 15px; margin: 14px; border-style: solid; border-width: 1px; border-color: burlywood; padding: 5px;">
+                    <div class="row" style="padding: 15px;">
+                      <div class="col-md-2 text-left">
+                        Sayfa gösterim sayısı
+                      </div>
+                      <div class="col-md-2 text-left">
+                        <select ng-model="vm.pageSize" id="pageSize">
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 text-right">
+                        <input ng-model="vm.q" id="search" placeholder="Ara..">
+                      </div>
+                      <div class="col-md-4 text-right">
+                        Listelenen toplam kayıt sayısı {{ vm.projects.length }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="text-primary">
+                          <th class="text-center" style="border:#cccccc solid 1px;">
+                            #
+                          </th>
+                          <th style="border:#cccccc solid 1px;" ng-click="vm.orderbyField('domains')">
+                            Domains
+                          </th>
+                          <th class="text-center fieldOrder" ng-click="vm.orderbyField('projectName')"
+                            style="border:#cccccc solid 1px;">
+                            Project Name
+                          </th>
+                          <th class="text-center fieldOrder" ng-click="vm.orderbyField('active')"
+                            style="border:#cccccc solid 1px;">
+                            Aktif/Pasif
+                          </th>
+                          <th class="fieldOrder" ng-click="vm.orderbyField('manageMember')"
+                            style="border:#cccccc solid 1px;">
+                            Manage Member
+                          </th>
+                          <th class="fieldOrder" ng-click="vm.orderbyField('isOwnerLemoras')"
+                            style="border:#cccccc solid 1px;">
+                            Is Owner Lemoras
+                          </th>
+                          <th class="fieldOrder" ng-click="vm.orderbyField('updatedByName')"
+                            style="border:#cccccc solid 1px;">
+                            Updated By
+                          </th>
+                          <th class="fieldOrder" ng-click="vm.orderbyField('deletedByName')"
+                            style="border:#cccccc solid 1px;">
+                            Deleted By
+                          </th>
+                          <th class="text-center fieldOrder" ng-click="vm.orderbyField('appId')"
+                            style="border:#cccccc solid 1px;">
+                            App Id
+                          </th>
+                          <th class="text-left fieldOrder" ng-click="vm.orderbyField('merchantId')"
+                            style="border:#cccccc solid 1px;">
+                            Merchant Id
+                          </th>
+                          <th class="text-center fieldOrder" ng-click="vm.orderbyField('updatedAt')"
+                            style="border:#cccccc solid 1px;">
+                            Son değişiklik
+                          </th>
+                          <th class="text-right" style="border:#cccccc solid 1px;">
+                            Aksiyonlar
+                          </th>
+                        </thead>
+                        <tbody>
+                          <tr
+                            ng-repeat="project in vm.projects | orderBy: vm.orderQ | filter:vm.q | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+                            <td style="border:#cccccc solid 1px;">
+                              {{ $index + 1 }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.domains }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.projectName }}
+                            </td>
+                            <td class="text-center" style="border:#cccccc solid 1px;">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input disabled type="checkbox" class="form-check-input" ng-model="project.active">
+                                  <span class="form-check-sign"></span>
+                                </label>
+                              </div>
+                            </td>
+                            <td class="text-center" style="border:#cccccc solid 1px;">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input disabled type="checkbox" class="form-check-input"
+                                    ng-model="project.manageMember">
+                                  <span class="form-check-sign"></span>
+                                </label>
+                              </div>
+                            </td>
+                            <td class="text-center" style="border:#cccccc solid 1px;">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input disabled type="checkbox" class="form-check-input"
+                                    ng-model="project.isOwnerLemoras">
+                                  <span class="form-check-sign"></span>
+                                </label>
+                              </div>
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.updatedByName }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.deletedByName }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.appId }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.merchantId }}
+                            </td>
+                            <td style="border:#cccccc solid 1px;">
+                              {{ project.updatedAt | date:'yyyy/MM/dd HH:mm:ss' }}
+                            </td>
+
+                            <td class="text-right" style="border:#cccccc solid 1px;">
+                              <ul style="list-style-type: none; display: flex;">
+                                <li>
+                                  <button type="button"
+                                    style="background-color: blue; color: white;  border-radius: 20px;" rel="tooltip"
+                                    ng-click="vm.showMerchantAdmins(project.id)" title="Merchant Adminleri göster"
+                                    style="padding: 2px;">
+                                    Show
+                                  </button>
+                                </li>
+                                <li>
+                                  <button ng-if="!project.isActive"
+                                    style="background-color: gray; color: white;  border-radius: 20px;" type="button"
+                                    rel="tooltip" ng-click="vm.activeOrPassive(project)"
+                                    class="btn btn-success btn-icon btn-sm " data-toggle="tooltip" data-placement="top"
+                                    style="padding: 2px;" title="Aktif et">
+                                    Status
+                                  </button>
+                                </li>
+                                <li>
+                                  <button ng-if="project.isActive"
+                                    style="background-color: gray; color: white;  border-radius: 20px;" type="button"
+                                    rel="tooltip" ng-click="vm.activeOrPassive(project)"
+                                    class="btn btn-secondary btn-icon btn-sm " data-toggle="tooltip"
+                                    data-placement="top" style="padding: 2px;" title="Pasife al">
+                                    Status
+                                  </button>
+                                </li>
+                                <li>
+                                  <button type="button" rel="tooltip"
+                                    style="background-color: red; color: white;  border-radius: 20px;"
+                                    ng-click="vm.removeProject(project)" class="btn btn-danger btn-icon btn-sm"
+                                    data-toggle="tooltip" data-placement="top" style="padding: 2px;" title="Sil">
+                                    Del
+                                  </button>
+                                </li>
+                              </ul>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1">
+                        Geri
+                      </button> {{vm.currentPage+1}}/{{vm.numberOfPages()}}
+                      <button ng-disabled="vm.currentPage >= vm.getData().length/vm.pageSize - 1"
+                        ng-click="vm.currentPage=vm.currentPage+1">
+                        İleri
+                      </button>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+</div>
+
+
+<script>
+
+  function generate_uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+      function (c) {
+        var uuid = Math.random() * 16 | 0, v = c == 'x' ? uuid : (uuid & 0x3 | 0x8);
+        return uuid.toString(16);
+      });
+  }
+
+  document.getElementById("merchantId").value = generate_uuidv4();
+
+
+</script>
+</div>

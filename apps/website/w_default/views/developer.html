@@ -1,0 +1,90 @@
+
+
+    <!-- <p ng-bind-html="vm.system"></p> -->
+
+    <!-- <object data="../../system.md" type="text/html"></object> -->
+
+    <!-- <div id="systemNodes"></div>
+
+
+
+    <button type="button" ng-click="vm.showData()">show data</button> -->
+
+
+    <link href="./../../../system//assets/jsonpath/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="./../../../system//assets/jsonpath/jsonpath-picker.min.css" type="text/css" rel="stylesheet"/>
+<br><br>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+            <h1>DEVELOPER PAGE OF SYSTEM</h1>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="generate-button" ng-click="vm.reset()">
+                RESET
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="generate-button" ng-click="vm.fakeLogin()">
+                FAKE LOGIN
+              </button>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="generate-button" ng-click="vm.initSystem()">
+                Initialize to prepare system
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="generate-button" ng-click="vm.test()">
+                Test & turn back to homepage
+              </button>
+        </div>
+    </div>
+    <br> <br>
+    <div class="row">
+        <div class="col-md-6">
+            <button id="btn-json-path-picker" class="generate-button">
+                Generate tree
+              </button>
+        </div>
+        <div class="col-md-6">
+            <div class="content">
+                <textarea id="json-input" class="json-input" autofocus placeholder="Paste JSON here!"></textarea>
+                <pre id="json-renderer" class="json-tree"></pre>
+            </div>
+              
+            <div class="path-container">
+                <input class="path" type="text">
+            </div>
+        </div>
+    </div>    
+</div>
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <div class="content">
+                <textarea id="json-input" class="json-input" autofocus placeholder="Paste JSON here!"></textarea>
+                <pre id="json-renderer" class="json-tree"></pre>
+            </div>
+              
+            <div class="path-container">
+                <input class="path" type="text">
+            </div>
+        </div>
+    </div> -->
+
+          
+
+
+      
+ 
+      
+      
+      
+      <script src="./../../../system//assets/jsonpath/jsonpath-picker.min.js"></script>
+      <script src="./../../../system//assets/jsonpath/scripts.js"></script>

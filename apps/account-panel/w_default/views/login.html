@@ -1,0 +1,188 @@
+﻿
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+    <div class="container-fluid">
+      <div class="navbar-wrapper">
+        <a href="javascript:window.location.replace(window.location.origin + '/#!/home')"> <div ng-if="langKey == 'en'">Back to Home</div>
+          <div ng-if="langKey == 'tr'">Anasayfaya dön</div>
+          <div ng-if="langKey == 'ru'">Вернуться домой</div></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        <span class="navbar-toggler-bar navbar-kebab"></span> 
+        <span class="navbar-toggler-bar navbar-kebab"></span> 
+       </button> 
+       <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav"> 
+          <li class="nav-item"> 
+            <a href="#!/home" class="nav-link">  
+              <div ng-if="langKey == 'en'"> <i class="now-ui-icons design_app"></i> Home</div>
+              <div ng-if="langKey == 'tr'"> <i class="now-ui-icons design_app"></i> Anasayfa</div>
+              <div ng-if="langKey == 'ru'"> <i class="now-ui-icons design_app"></i> домой</div>
+            </a> 
+         </li> 
+          <li class="nav-item "> 
+            <a href="#!/register" class="nav-link"> 
+              <div ng-if="langKey == 'en'"> <i class="now-ui-icons tech_mobile"></i>  Register</div>
+              <div ng-if="langKey == 'tr'"> <i class="now-ui-icons tech_mobile"></i>  Kayıt ol</div>
+              <div ng-if="langKey == 'ru'"> <i class="now-ui-icons tech_mobile"></i>  регистр</div> 
+            </a> 
+          </li> 
+          <li class="nav-item active"> 
+            <a href="#!/login" class="nav-link"> 
+              <div ng-if="langKey == 'en'"> <i class="now-ui-icons users_circle-08"></i> Login</div>
+              <div ng-if="langKey == 'tr'"> <i class="now-ui-icons users_circle-08"></i> Giriş yap</div>
+              <div ng-if="langKey == 'ru'"> <i class="now-ui-icons users_circle-08"></i> Авторизоваться</div>  
+            </a> 
+          </li> 
+          <li class="nav-item"> 
+            <a href="#" ng-click="vm.externalLogin()" class="nav-link"> 
+              <div ng-if="langKey == 'en'"> <i class="now-ui-icons users_circle-08"></i> LOGIN BY LEMORAS</div>
+              <div ng-if="langKey == 'tr'"> <i class="now-ui-icons users_circle-08"></i> Lemoras ile Giriş yap</div>
+              <div ng-if="langKey == 'ru'"> <i class="now-ui-icons users_circle-08"></i> Войти через Lemoras</div>  
+            </a> 
+          </li> 
+       </ul>
+     </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+<div class="wrapper wrapper-full-page ">
+    <div class="full-page login-page section-image" filter-color="black" data-image="../../../templates/w_default/assets/img/kizil.jpg">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="content">
+        <div class="container">
+          <div class="col-md-4 ml-auto mr-auto">
+
+            <div id="preLoginForm" ng-if ="!vm.loginFormDisplay">
+              <form class="form" name="form" ng-submit="vm.login()" role="form">
+                <div class="card card-login card-plain">
+                  <div class="card-header ">
+                    <div class="logo-container">
+                      <img src="../../../templates/w_default/assets/img/lemoras.png" alt="">
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                    <div class="input-group no-border form-control-lg">
+                      <span class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="now-ui-icons users_circle-08"></i>
+                        </div>
+                      </span>
+                      <input   ng-if="langKey == 'en'" type="text" class="form-control" placeholder="E-mail" name="email" id="email" ng-model="vm.email">
+                      <input  ng-if="langKey == 'tr'" type="text" class="form-control" placeholder="E-posta" name="email" id="email" ng-model="vm.email">
+                      <input  ng-if="langKey == 'ru'" type="text" class="form-control" placeholder="Электронная почта" name="email" id="email" ng-model="vm.email">
+                    </div>
+                    <div class="input-group no-border form-control-lg">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="now-ui-icons text_caps-small"></i>
+                        </div>
+                      </div>
+                      <input  ng-if="langKey == 'en'" type="password" name="password" id="password" ng-model="vm.password"  type="text" placeholder="Password" class="form-control">
+                      <input  ng-if="langKey == 'tr'" type="password" name="password" id="password" ng-model="vm.password"  type="text" placeholder="Şifre" class="form-control">
+                      <input  ng-if="langKey == 'ru'" type="password" name="password" id="password" ng-model="vm.password"  type="text" placeholder="Пароль" class="form-control">
+                    </div>
+                  </div>
+                  <div class="card-footer ">
+                    <button type="submit" class="btn btn-primary btn-round btn-lg btn-block mb-3"><div ng-if="langKey == 'en'">Enter</div>
+          <div ng-if="langKey == 'tr'">Giriş</div>
+          <div ng-if="langKey == 'ru'">Входить</div></button>
+                    <div class="pull-left">
+                      <h6><a href="#!/register" class="link footer-link">
+                        <div ng-if="langKey == 'en'">Create Account</div>
+            <div ng-if="langKey == 'tr'">Hesap Oluştur</div>
+            <div ng-if="langKey == 'ru'">Зарегистрироваться</div>
+                      </a></h6>
+                    </div>
+                    <div class="pull-right">
+                      <h6><a href="mailto:iletisim@onuryasar.org" class="link footer-link"><div ng-if="langKey == 'en'">Help!</div>
+          <div ng-if="langKey == 'tr'">Yardım!</div>
+          <div ng-if="langKey == 'ru'">Помощь!</div></a></h6>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          
+          <div id="LoginForm" ng-if ="vm.loginFormDisplay">
+            <h2 class="text-center text-primary">
+              <div ng-if="langKey == 'en'">Application</div>
+    <div ng-if="langKey == 'tr'">Uygulama</div>
+    <div ng-if="langKey == 'ru'">Приложение</div>
+        </h2>
+
+        <form name="form2" ng-submit="vm.buildToken()" role="form" class="form">
+
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                <label style="margin-top: -10px;" for="username"><div ng-if="langKey == 'en'">Application</div>
+    <div ng-if="langKey == 'tr'">Uygulama</div>
+    <div ng-if="langKey == 'ru'">Приложение</div></label>
+    <!-- <select class="form-control" ng-model="vm.selectedApplication" ng-options="x.appName + ' ' + x.projectName for x in vm.allApplication track by x.appId"></select> -->
+                <select class="form-control" ng-model="vm.selectedApplication" ng-options="x.projectName for x in vm.allApplication track by x.projectName"></select>
+            </div>
+
+            <div class="form-check">
+                    <a href="javascript:location.reload();" class="btn btn-link float-left">
+                        <div ng-if="langKey == 'en'">Back to login</div>
+    <div ng-if="langKey == 'tr'">Girişe dön</div>
+    <div ng-if="langKey == 'ru'">Вернуться на страницу авторизации</div>
+                    </a>
+                <button type="submit" class="btn btn-primary float-right">
+                      <div ng-if="langKey == 'en'">Open</div>
+    <div ng-if="langKey == 'tr'">Aç</div>
+    <div ng-if="langKey == 'ru'">Открыть</div>
+                </button>
+            </div>
+
+        </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class=" container-fluid ">
+          <nav> 
+            <ul> 
+              <li> 
+                <a href="http://onuryasar.org"> 
+                 Onur Yasar
+                </a> 
+              </li>
+              <li> 
+                <a ng-if="langKey == 'en'" href="#!/aboutus">
+                 About Us
+               </a>
+                 <a ng-if="langKey == 'tr'" href="#!/aboutus">
+                  Hakkımızda
+                 </a>
+                   <a ng-if="langKey == 'ru'" href="#!/aboutus">
+                 о нас
+                 </a>
+              </li> 
+              <li> 
+                 <a ng-if="langKey == 'en' || langKey == 'tr'" href="#!/blog">
+                 Blog
+                </a>
+                   <a ng-if="langKey == 'ru'" href="#!/blog"> блог </a>
+             </li> 
+            </ul> 
+          </nav> 
+          <div class="copyright" id="copyright">
+            &copy; <script>
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>Designed & Coded by <a href="javascript:window.location.href = 'http://' + mainLandUrl[0]" target="_blank">Lemoras</a> 
+            &nbsp;&nbsp;&nbsp;  <a id='developerpage' href="#!/developer"><i class="fa fa-heart"></i> </a> #<a href="#!/developer"> developer </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      demo.checkFullPageBackgroundImage();
+    });
+  </script>

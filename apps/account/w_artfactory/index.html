@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Template Mo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+    <!--Favicon-->
+    <link rel="icon" href="./../../../templates/w_artfactory/assets/images/favicon.png" type="image/x-icon">
+
+    <title id="configTitle">
+        <!-- Sayfa Yükleniyor.. -->
+    </title>
+    <!--
+
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css"
+        href="./../../../templates/w_artfactory/assets/css/templatemo-art-factory.css">
+    <link rel="stylesheet" type="text/css" href="./../../../templates/w_artfactory/assets/css/owl-carousel.css">
+
+    <link href="./../../../templates/w_default/assets/demo/demo.css" rel="stylesheet" />
+
+    <link href="../../../system/requires/angular-notify.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../../system/requires/loading.js"></script>
+
+</head>
+
+<body id="rootBody" onload="loadProgressBar();" class="login-page sidebar-mini ">
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="#" class="logo"> {{ config.titleName[langKey] }}</a>
+
+                        <div class="dropdown" style="position: absolute; top: -10px;; right: 100px; z-index: 9999;">
+                            <button class="btn btn-link dropdown-toggle logo" type="button" id="appsMenu"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-grid" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                                </svg> </button>
+                            <div class="dropdown-menu dropdown-menu-right scrollable-menu"
+                                aria-labelledby="appsMenu" style="border-radius: 40px;">
+                                <div class="container-fluid">
+                                    <div class="row no-gutters py-2">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(0, 3)">
+                                            <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
+                                                ng-click="loginbyDomain(app.domains[0])">
+                                                <i><img width="32" height="32" ng-src="{{app.icon}}" alt=""></i>
+                                                <small>{{ app.appName }}</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters py-2">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(3, 6)">
+                                            <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
+                                                ng-click="loginbyDomain(app.domains[0])">
+                                                <i><img width="32" height="32" ng-src="{{app.icon}}" alt=""></i>
+                                                <small>{{ app.appName }}</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters py-2">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(6, 9)">
+                                            <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
+                                                ng-click="loginbyDomain(app.domains[0])">
+                                                <i><img ng-src="{{app.icon}}" alt=""></i>
+                                                <small>{{ app.appName }}</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters py-2">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(9, 12)">
+                                            <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
+                                               ng-click="loginbyDomain(app.domains[0])">
+                                                 <i><img ng-src="{{app.icon}}" alt=""></i>
+                                                <small>{{ app.appName }}</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <a ng-if="langKey == 'en'" class="dropdown-item" style="height: auto; margin-bottom: 10px;" href="#!/applications">All Applications</a>
+                                            <a ng-if="langKey == 'tr'" class="dropdown-item" style="height: auto; margin-bottom: 10px;" href="#!/applications">Tüm Uygulamalar</a>
+                                            <a ng-if="langKey == 'ru'" class="dropdown-item" style="height: auto; margin-bottom: 10px;" href="#!/applications">Все приложения</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#!/" style="position: relative; margin-top: -3px; border: 2px solid whitesmoke; border-radius: 5px; padding-left: 10px; padding-right: 10px;" id="countdownTimer"></a></li>
+                            <li ng-class="item.list.length > 0 ?  'submenu' : 'scroll-to-section'"
+                                ng-repeat="item in config.navigation.navList | orderBy: 'index'">
+
+                                <span ng-if="item.value[langKey] == 'menux'" ng-style="{visibility: 'hidden'}">{{ item.value[langKey] }}</span>
+                                
+                                <a ng-if="(item.list.length === 0 || item.list === undefined && (item.allows === undefined || item.allows.includes(globals.currentUser.parsedRoleId))) && item.value[langKey] != 'menux'"
+                                    ng-click="navSelect($index, item.value[langKey])" href="{{ item.link }}" ng-class="item.list.length > 0 ? { 'active': $index == navSelected } : {'active': $index == navSelected }">
+                                    {{ item.value[langKey] }}
+                                </a>
+                                <a ng-if="(item.list.length > 0 && (item.allows === undefined || item.allows.includes(globals.currentUser.parsedRoleId))) && item.value[langKey] != 'menux'"
+                                    href="#M{{$index}}" ng-class="item.list.length > 0 ? { 'active': $index == navSelected } : {'active': $index == navSelected }">. <!--  href="javascript:;" -->
+                                    {{ item.value[langKey] }}
+                                </a>
+
+                                <ul ng-if="(item.list.length > 0 && (item.allows === undefined || item.allows.includes(globals.currentUser.parsedRoleId))) && item.value[langKey] != 'menux'"
+                                    id="M{{$parent.$index}}">
+                                    <li ng-repeat="x in item.list | orderBy: 'index'">
+                                        <a href="{{ x.link }}"
+                                            ng-click="navSelect($parent.$index, item.value[langKey], x.value[langKey])">
+                                            {{ x.value[langKey] }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <a class='menu-trigger'>
+                            <span ng-if="langKey == 'en'">Menu</span>
+                            <span ng-if="langKey == 'tr'">Menü</span>
+                            <span ng-if="langKey == 'ru'">Меню</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div id="pageContent" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0">
+        <ng-view ng-if="config == undefined"></ng-view>
+        <div id="configDisplay" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0"
+            ng-if="config != undefined" data-ng-init="loadProgressBar2()" class="wrapper ">
+            <div class="content">
+                <content ng-view></content>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    <p class="copyright">Copyright &copy; 2025 LEMORAS
+                    </p>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <ul class="social">
+                        <!-- <li><a href="https://www.instagram.com/_lemoras_/"><i class="fa fa-instagram"></i></a></li> -->
+                        <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        <!-- <li><a target="_blank" href="https://www.youtube.com/watch?v=BuUA1wRykFI"><i class="fa fa-youtube"></i></a></li> -->
+                        <!-- <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <input hidden disabled type="text" id="sessionCreatedTime" value="{{ globals.currentUser.createdTime }}">
+
+    <script>
+
+        // Set the date we're counting down to
+        //var countDownDate = new Date("Apr 26, 2024 15:37:25").getTime();
+        // var nowDate = new Date(document.getElementById("sessionCreatedTime").value);
+        //     nowDate.setSeconds(nowDate.getSeconds() + 58);
+
+        // var countDownDate = nowDate.getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            var nowDate = new Date(document.getElementById("sessionCreatedTime").value);
+            nowDate.setSeconds(nowDate.getSeconds() + 58);
+
+            var countDownDate = nowDate.getTime();
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            //   document.getElementById("countdownTimer").innerHTML = days + "d " + hours + "h "
+            //   + minutes + "m " + seconds + "s ";
+
+            document.getElementById("countdownTimer").innerHTML = "00:" + seconds;
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdownTimer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+
+
+    <!-- jQuery -->
+    <script src="./../../../templates/w_artfactory/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="./../../../templates/w_artfactory/assets/js/popper.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="./../../../templates/w_artfactory/assets/js/owl-carousel.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/scrollreveal.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/waypoints.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/jquery.counterup.min.js"></script>
+    <script src="./../../../templates/w_artfactory/assets/js/imgfix.min.js"></script>
+
+    <!-- Global Init -->
+    <script src="./../../../templates/w_artfactory/assets/js/custom.js"></script>
+
+
+    <script src="../../../system/requires/require.min.js"></script>
+    <script type="text/javascript" src="../../../system/requires/code-msg.js"></script>
+    <script type="text/javascript" src="./../../../system/requires/loadapp.js"></script>
+
+</body>
+
+</html>
