@@ -130,10 +130,12 @@ httpRequest.addEventListener("readystatechange", function () {
                 mainAccountUrl = jsonObject.filter(x => x._id == -1 && x.app == paramAccountAppName)[0].domains;
                 mainAccountUrl[0] = mainAccountUrl.find(f => f == paramLocalAccountDomain && workLocalConfig) || mainAccountUrl[0];
             }
-	    if (window.location.port != "") {
-	    	mainLandUrl[0] = mainLandUrl[0] + ":" + window.location.port;
-		mainAccountUrl[0] = mainAccountUrl[0] + ":" + window.location.port;
-	    }
+	    
+            if (window.location.port != "") {
+                mainLandUrl[0] = mainLandUrl[0] + ":" + window.location.port;
+                mainAccountUrl[0] = mainAccountUrl[0] + ":" + window.location.port;
+	        }
+
         } catch (error) {
             console.error(error);
         }
