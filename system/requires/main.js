@@ -8,7 +8,11 @@ var paramLocalDomain = "localhost";
 var paramLocalAccountDomain = "account.localhost";
 var paramLocalAdminSubdomain = "admin";
 
-var workLocalConfig = false;
+var workLocalConfig = null;
+
+if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomain)) {
+    workLocalConfig = true
+}
 
 
 var zoeURL = "https://faas-lon1-917a94a7.doserverless.co/api/v1/web/fn-e58721af-3523-46d2-aed8-6fa95c0711ea/";
