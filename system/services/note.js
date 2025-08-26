@@ -14,9 +14,7 @@
         service.DeleteNote = DeleteNote;
         service.SetNoteCategory = SetNoteCategory;
 
-        var NoteServiceUrl = zoeURL + "internal/";
-
-        NoteServiceUrl = NoteServiceUrl.replace("8080", "8088");
+        var NoteServiceUrl = servicesURL + "services/";
 
         return service;
 
