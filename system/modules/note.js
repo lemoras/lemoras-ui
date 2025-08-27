@@ -102,7 +102,7 @@
                if (response.status) {
                     vm.notes.push(newNote);
 
-                    $scope.$apply();
+                    // $scope.$apply();
                 }
             });
         }
@@ -130,7 +130,7 @@
                         if (response.status){
                             var index = vm.notes.indexOf(note);
                             vm.notes.splice(index, 1);  
-                            $scope.$apply();
+                            // $scope.$apply();
                         }
                     });
                 }
@@ -150,7 +150,7 @@
                 if (response.status) {
                     note.category = categoryId;   
 
-                    $scope.$apply();
+                    // $scope.$apply();
                 }
             });
         }
@@ -173,7 +173,7 @@
                 if (response.status) {
                     note.category = tmpNote.category;   
 
-                    $scope.$apply();
+                    // $scope.$apply();
                 }
             });
             
