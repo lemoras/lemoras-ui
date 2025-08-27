@@ -73,6 +73,7 @@
                 }
             });
 
+            vm.notes = [];
             // vm.notes = [{
             //     "titleName": "Test",
             //     "detailText" : "Notun text alani test",
@@ -101,7 +102,7 @@
             NoteService.CreateNote(newNote, function (response){
                if (response.status) {
                     vm.notes.push(newNote);
-
+                    window.location.reload();
                     // $scope.$apply();
                 }
             });
@@ -130,6 +131,7 @@
                         if (response.status){
                             var index = vm.notes.indexOf(note);
                             vm.notes.splice(index, 1);  
+                            window.location.reload();
                             // $scope.$apply();
                         }
                     });
