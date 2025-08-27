@@ -15,8 +15,9 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
 }
 
 
-var zoeURL = "https://faas-lon1-917a94a7.doserverless.co/api/v1/web/fn-e58721af-3523-46d2-aed8-6fa95c0711ea/";
-var servicesURL = "https://faas-lon1-917a94a7.doserverless.co/api/v1/web/fn-f2ffa986-9b6b-4bc8-b628-5d0d06bd2b71/";
+var workerURL = "https://rate-worker.onxorg.workers.dev/";
+var zoeURL = workerURL;
+var servicesURL = workerURL;
 
 if (window.location.hostname.includes(paramLocalDomain) && workLocalConfig) {
     zoeURL = "http://" + paramLocalDomain + ":8080/";
