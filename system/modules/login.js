@@ -50,41 +50,37 @@
             vm.emailParam = urlParams.email;
             vm.tokenParam = urlParams.token;
             vm.handleLoginParam = urlParams.handleLogin;
-            
+
             if (vm.typeParam != "" && vm.typeParam != undefined && vm.returnParam == "internal") {
                 var returnStringData = vm.typeParam;
                 var returnData = JSON.parse(returnStringData);
-            
-                AuthenticationService.BuildTokenByGET(returnData, function (resp) {
-                                        if (resp.status) {
-                                             AuthenticationService.InternalLogin(returnData, function (response) {
-                                                if (response.status) {
-                                                    FlashService.WriteLocal(false, response.message);
-                                                    openApplication();
-                                                } else {
-                                                    FlashService.Error(response.message, '/');
-                                                    vm.dataLoading = false;
-                                                }
-                                                vm.dataLoading = false;
-                                            });
-                                        } else {
-                                            AuthenticationService.ClearCredentials();
-                                            FlashService.Error(response.message, '/');
-                                            vm.dataLoading = false;
-                                        }
 
-                                        vm.dataLoading = false;
-                                    });
+                AuthenticationService.BuildToken(returnData.account, function (resp) {
+                    if (resp.status) {
+                        AuthenticationService.InternalLogin(returnData, function (response) {
+                            if (response.status) {
+                                FlashService.WriteLocal(false, response.message);
+                                openApplication();
+                            } else {
+                                FlashService.Error(response.message, '/');
+                                vm.dataLoading = false;
+                            }
+                            vm.dataLoading = false;
+                        });
+                    } else {
+                        AuthenticationService.ClearCredentials();
+                        FlashService.Error(response.message, '/');
+                        vm.dataLoading = false;
+                    }
+
+                    vm.dataLoading = false;
+                }, true);
             }
 
             if (vm.emailParam != "" && vm.emailParam != undefined && vm.returnParam == "triggerCallback") {
-                
+
                 var domainStringApps = window.localStorage.getItem("domainApps");
 
-                 debugger;
-                alert("3.part")
-
-                
                 ProjectService.GetMerchantByDomain(function (res) {
                     window.localStorage.setItem("projects", JSON.stringify(res.projects)); //todo:merchant.bkz
 
@@ -109,7 +105,7 @@
                     }
 
                     var externalURL = "http://" + mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData
-                    + "&email=" + vm.emailParam + callbackTokenParam;
+                        + "&email=" + vm.emailParam + callbackTokenParam;
 
                     window.location.replace(externalURL);
                     return;
@@ -117,16 +113,16 @@
             }
 
             if (vm.emailParam != "" && vm.emailParam != undefined && vm.returnParam == "callback") {
-                
-                $(document).ready(function() {
+
+                $(document).ready(function () {
                     document.getElementById("email").disabled = true;
                 });
-                
+
                 vm.email = vm.emailParam;
 
                 if (vm.tokenParam != "" && vm.tokenParam != undefined && vm.returnParam == "callback") {
 
-                    $(document).ready(function() {
+                    $(document).ready(function () {
                         document.getElementById("password").disabled = true;
                     });
                     AuthenticationService.SetSecToken(vm.tokenParam);
@@ -138,13 +134,8 @@
 
             if (vm.handleLoginParam != "" && vm.handleLoginParam != undefined && vm.returnParam == "handleCallback") {
                 var handleLogin = JSON.parse(vm.handleLoginParam);
-       
-                vm.returnUrl = handleLogin.returnUrl;
 
-                 
-                debugger;
-                alert("2.part")
-                alert(handleLogin.returnData.account);
+                vm.returnUrl = handleLogin.returnUrl;
 
                 AuthenticationService.ProfileLogin(handleLogin.returnData.account, handleLogin.firstTakenToken, function (response2) {
                     if (response2.status) {
@@ -157,7 +148,7 @@
                     }
                     vm.dataLoading = false;
                 });
-        
+
             }
 
             if (window.localStorage.getItem("projects") == "undefined" && vm.returnParam != "callback") {
@@ -208,14 +199,14 @@
                                     }
                                     AuthenticationService.ClearCredentials();
                                 } else {
-                                    var roleCaseDomain = response.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-                                    var tmpAppDomains = response.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+                                    var roleCaseDomain = response.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
+                                    var tmpAppDomains = response.account.domains.filter(g => !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
                                     if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
                                         var tmpAppDomain = "";
                                         if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                            tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                                        }else {
-                                            tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                            tmpAppDomain = tmpAppDomains.find(f => f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                        } else {
+                                            tmpAppDomain = tmpAppDomains.find(f => !f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
                                         }
                                         vm.returnUrl = tmpAppDomain;
                                     }
@@ -248,7 +239,7 @@
 
                     AuthenticationService.Login(vm.email, vm.password, function (response) {
                         if (response.status) {
-                            vm.firstTakenToken = response.account.token; 
+                            vm.firstTakenToken = response.account.token;
                             if (response.account.appCount > 1) {
                                 vm.account = response.account;
                                 vm.loginFormDisplay = true;
@@ -310,23 +301,21 @@
                                     AuthenticationService.BuildToken(response.account, function (resp) {
                                         if (resp.status) {
                                             FlashService.WriteLocal(false, resp.message);
-                                            var roleCaseDomain = response.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
+                                            var roleCaseDomain = response.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
 
-                                            var tmpAppDomains = resp.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
-                       
+                                            var tmpAppDomains = resp.account.domains.filter(g => !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+
                                             if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
                                                 var tmpAppDomain = "";
                                                 if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                                                }else {
-                                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                                    tmpAppDomain = tmpAppDomains.find(f => f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                                } else {
+                                                    tmpAppDomain = tmpAppDomains.find(f => !f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
                                                 }
                                                 vm.returnUrl = tmpAppDomain;
                                                 AuthenticationService.ProfileLogin(response.account, vm.firstTakenToken, function (response2) {
                                                     if (response2.status) {
                                                         FlashService.WriteLocal(false, response2.message);
-                                                       debugger;
-                                                    alert("4.part")
                                                         returnDomain(response.account, false);
                                                     } else {
                                                         FlashService.Error(response2.message, '/');
@@ -400,7 +389,7 @@
             if (!vm.account.record && (vm.account.merchantId == "" || vm.account.merchantId == undefined || vm.account.merchantId == null)
                 && vm.account.projectId != "" && vm.account.projectId != undefined && vm.account.projectId != null) {
 
-                var tmpProject = vm.projects.find(x=> x.projectId == vm.account.projectId);
+                var tmpProject = vm.projects.find(x => x.projectId == vm.account.projectId);
 
                 if (vm.account.roleId != undefined && vm.account.merchantId != undefined && vm.account.appId != undefined) {
                     var createMemberData = vm.appIds.find(x => x.type_id == typeRoles.Member && x.type_id == vm.account.roleId && x.appId == vm.account.appId);
@@ -410,37 +399,37 @@
                             merchantId: tmpProject.merchantId
                         };
                         MemberService.CreateRole(createRoleData, function (res) {
-                           if (!res.status) {
+                            if (!res.status) {
                                 FlashService.Error(response.message, '/');
                                 vm.dataLoading = false;
                                 return;
-                            }else {
+                            } else {
                                 vm.account.merchantId = tmpProject.merchantId;
                                 // --test
-                                var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-                                var tmpAppDomains = vm.account.domains.filter(g=> !mainLandUrl.includes(g)  && !mainAccountUrl.includes(g));
-                            
+                                var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
+                                var tmpAppDomains = vm.account.domains.filter(g => !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+
                                 if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
                                     var tmpAppDomain = "";
                                     if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                        tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                                    }else {
-                                        tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                        tmpAppDomain = tmpAppDomains.find(f => f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                    } else {
+                                        tmpAppDomain = tmpAppDomains.find(f => !f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
                                     }
                                     vm.returnUrl = tmpAppDomain;
                                 }
                                 // test
                                 AuthenticationService.BuildToken(vm.account, function (response) {
-                                if (response.status) {
-                                    loginByAccount(response.account, vm.firstTakenToken, vm.returnUrl); // CCCPP
+                                    if (response.status) {
+                                        loginByAccount(response.account, vm.firstTakenToken, vm.returnUrl); // CCCPP
                                         // returnDomain(response.account);
-                                } else {
-                                    FlashService.Error(response.message, $location);
-                                    AuthenticationService.ClearCredentials();
+                                    } else {
+                                        FlashService.Error(response.message, $location);
+                                        AuthenticationService.ClearCredentials();
+                                        vm.dataLoading = false;
+                                    }
                                     vm.dataLoading = false;
-                                }
-                                vm.dataLoading = false;
-                            });
+                                });
                             }
                         });
                     }
@@ -454,18 +443,18 @@
                     if (vm.returnUrl == "" && vm.appIds.length == 0) {
                         FlashService.WriteLocal(false, response.message);
 
-                        var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-                        var tmpAppDomains = vm.account.domains.filter(g=> !mainLandUrl.includes(g)  && !mainAccountUrl.includes(g));
-                       
+                        var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
+                        var tmpAppDomains = vm.account.domains.filter(g => !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+
                         if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
                             var tmpAppDomain = "";
                             if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                            }else {
-                                tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                tmpAppDomain = tmpAppDomains.find(f => f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                            } else {
+                                tmpAppDomain = tmpAppDomains.find(f => !f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
                             }
                             vm.returnUrl = tmpAppDomain;
-                    
+
                             AuthenticationService.ProfileLogin(response.account, vm.firstTakenToken, function (response2) {
                                 if (response2.status) {
                                     FlashService.WriteLocal(false, response2.message);
@@ -479,18 +468,18 @@
 
                             return;
                         };
-                        
+
                         openApplication();
                     } else {
-                        var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-                        var tmpAppDomains = vm.account.domains.filter(g=> !mainLandUrl.includes(g)  && !mainAccountUrl.includes(g));
-                       
+                        var roleCaseDomain = vm.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
+                        var tmpAppDomains = vm.account.domains.filter(g => !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+
                         if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
                             var tmpAppDomain = "";
                             if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                            }else {
-                                tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  &&  f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                tmpAppDomain = tmpAppDomains.find(f => f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                            } else {
+                                tmpAppDomain = tmpAppDomains.find(f => !f.includes(paramLocalAdminSubdomain) && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
                             }
                             vm.returnUrl = tmpAppDomain;
                         }
@@ -540,7 +529,7 @@
         }
 
         function returnDomainByReturnData(returnData) {
-   
+
             var returnString = JSON.stringify(returnData);
 
             window.location.replace("http://" + vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
@@ -573,7 +562,7 @@
             AuthenticationService.ClearCredentials();
 
             var returnString = JSON.stringify(loginbyAccountData);
-
+    
             window.location.replace("http://" + mainAccountUrl[0] + "/#!/login?return=handleCallback&type=handleLogin&handleLogin=" + returnString);
         }
 
@@ -609,7 +598,7 @@
                 window.location.href = '#!/register';
             } else if (vm.returnParam == "callback") {
                 if (mainLandUrl[0] == window.location.hostname) {
-                   window.location.href = "http://" + mainAccountUrl[0] + "/#!/register?return=callback&type=" + vm.typeParam;
+                    window.location.href = "http://" + mainAccountUrl[0] + "/#!/register?return=callback&type=" + vm.typeParam;
                 }
                 window.location.href = "#!/register?return=callback&type=" + vm.typeParam;
             }

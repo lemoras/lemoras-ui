@@ -13,7 +13,6 @@
         service.InternalLogin = InternalLogin;
         service.Login = Login;
         service.BuildToken = BuildToken;
-        service.BuildTokenByGET = BuildTokenByGET;
         service.CreateAccount = CreateAccount;
         service.CreateFullAccount = CreateFullAccount;
         service.SetCredentials = SetCredentials;
@@ -254,74 +253,13 @@
                 });
         }
 
-         function BuildTokenByGET(account, callback) {
+         function BuildToken(account, callback, byGET = false) {
 
-            if (isHttpOnlyAuthCookie) {
-
-            if (account.isRoot) {
-                account.lastLoginDate = account.createdAt;
-
-                var configURL = baseURL + "/system/root-config.json";
-
-                window.localStorage.setItem("loadconfig", configURL);
-
-                service.SetCredentials(account, false);
-                service.GetConfig(account, function (configData) {
-                    var res = { status: true };
-                    res.message = configData;
-                    callback(res);
-                });
-                return;
-            }
-
-            var returnData = JSON.stringify({ appId: account.appId, roleId: account.roleId, merchantId: account.merchantId });
-
-            getjson.getData(authServiceUrl + 'authenticate/' + returnData)
-                .then(function (res) {
-                    if (res.status) { // bu ve ust bilgiler set credentials parametlereleri duzgun bir sekilde duzenlenmeli
-                        account.token = res.account.token;
-                        account.lastLoginDate = res.account.lastLoginDate;
-                        res.account = account;
-                        service.SetCredentials(account, false);
-                        service.GetConfig(account, function (configData) {
-                            res.message = configData;
-                            var roleCaseDomain = res.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-
-                            var tmpAppDomains = res.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
-                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainLandUrl.includes(window.location.hostname)) {
-                                var tmpAppDomain ="";
-
-                                if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                    tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }else {
-                                    tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }
-
-                                service.SetSession(tmpAppDomain);
-                            }
-                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainAccountUrl.includes(window.location.hostname)) {
-                                var tmpAppDomain ="";
-                                if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }else {
-                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }
-                                service.SetSession(tmpAppDomain);
-                            }
-                            callback(res);
-                        });
-                    } else {
-                        callback(res);
-                    }
-                });
-
-            }else {
+            if (byGET && !isHttpOnlyAuthCookie) {
                 var callbackRes = { status: true };
-                callback(callbackRes);
+                callback(callbackRes); 
             }
-        }
-
-        function BuildToken(account, callback) {
+            else {
 
             if (account.isRoot) {
                 account.lastLoginDate = account.createdAt;
@@ -338,9 +276,26 @@
                 });
                 return;
             }
+                    // ---- Authentication isteği ----
+            let authPromise;
+            if (isHttpOnlyAuthCookie) {
+                // GET kullan (parametreyi URL içine göm)
+                var returnData = JSON.stringify({
+                    appId: account.appId,
+                    roleId: account.roleId,
+                    merchantId: account.merchantId,
+                });
+                authPromise = getjson.getData(authServiceUrl + "authenticate/" + returnData);
+            } else {
+                // POST kullan (JSON body)
+                authPromise = getjson.postData(authServiceUrl + "authenticate", {
+                    appId: account.appId,
+                    roleId: account.roleId,
+                    merchantId: account.merchantId,
+                });
+            }
 
-            getjson.postData(authServiceUrl + 'authenticate', { appId: account.appId, roleId: account.roleId, merchantId: account.merchantId })
-                .then(function (res) {
+            authPromise.then(function (res) {
                     if (res.status) { // bu ve ust bilgiler set credentials parametlereleri duzgun bir sekilde duzenlenmeli
                         account.token = res.account.token;
                         account.lastLoginDate = res.account.lastLoginDate;
@@ -377,8 +332,9 @@
                         callback(res);
                     }
                 });
-        }
 
+            }
+        }
 
         function ExternalLogin(email, password, hostname, appIds, projects, callback, authToken = "") {
             Login(email, password, function (res) {
