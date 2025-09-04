@@ -256,6 +256,8 @@
 
          function BuildTokenByGET(account, callback) {
 
+            if (isHttpOnlyAuthCookie) {
+
             if (account.isRoot) {
                 account.lastLoginDate = account.createdAt;
 
@@ -312,8 +314,12 @@
                         callback(res);
                     }
                 });
-        }
 
+            }else {
+                var callbackRes = { status: true };
+                callback(callbackRes);
+            }
+        }
 
         function BuildToken(account, callback) {
 

@@ -54,38 +54,36 @@
             if (vm.typeParam != "" && vm.typeParam != undefined && vm.returnParam == "internal") {
                 var returnStringData = vm.typeParam;
                 var returnData = JSON.parse(returnStringData);
+            
+                AuthenticationService.BuildTokenByGET(returnData, function (resp) {
+                                        if (resp.status) {
+                                             AuthenticationService.InternalLogin(returnData, function (response) {
+                                                if (response.status) {
+                                                    FlashService.WriteLocal(false, response.message);
+                                                    openApplication();
+                                                } else {
+                                                    FlashService.Error(response.message, '/');
+                                                    vm.dataLoading = false;
+                                                }
+                                                vm.dataLoading = false;
+                                            });
+                                        } else {
+                                            AuthenticationService.ClearCredentials();
+                                            FlashService.Error(response.message, '/');
+                                            vm.dataLoading = false;
+                                        }
 
-                alert(returnString);
-
-                // AuthenticationService.BuildTokenByGET(returnData, function (resp) {
-                //                         if (resp.status) {
-                //                             FlashService.WriteLocal(false, resp.message);
-                                           
-                //                             openApplication();
-                //                         } else {
-                //                             AuthenticationService.ClearCredentials();
-                //                             FlashService.Error(response.message, '/');
-                //                             vm.dataLoading = false;
-                //                         }
-
-                //                         vm.dataLoading = false;
-                //                     });
-              
-                AuthenticationService.InternalLogin(returnData, function (response) {
-                    if (response.status) {
-                        FlashService.WriteLocal(false, response.message);
-                        openApplication();
-                    } else {
-                        FlashService.Error(response.message, '/');
-                        vm.dataLoading = false;
-                    }
-                    vm.dataLoading = false;
-                });
+                                        vm.dataLoading = false;
+                                    });
             }
 
             if (vm.emailParam != "" && vm.emailParam != undefined && vm.returnParam == "triggerCallback") {
                 
                 var domainStringApps = window.localStorage.getItem("domainApps");
+
+                 debugger;
+                alert("3.part")
+
                 
                 ProjectService.GetMerchantByDomain(function (res) {
                     window.localStorage.setItem("projects", JSON.stringify(res.projects)); //todo:merchant.bkz
@@ -142,6 +140,11 @@
                 var handleLogin = JSON.parse(vm.handleLoginParam);
        
                 vm.returnUrl = handleLogin.returnUrl;
+
+                 
+                debugger;
+                alert("2.part")
+                alert(handleLogin.returnData.account);
 
                 AuthenticationService.ProfileLogin(handleLogin.returnData.account, handleLogin.firstTakenToken, function (response2) {
                     if (response2.status) {
@@ -322,7 +325,8 @@
                                                 AuthenticationService.ProfileLogin(response.account, vm.firstTakenToken, function (response2) {
                                                     if (response2.status) {
                                                         FlashService.WriteLocal(false, response2.message);
-                                                      
+                                                       debugger;
+                                                    alert("4.part")
                                                         returnDomain(response.account, false);
                                                     } else {
                                                         FlashService.Error(response2.message, '/');
