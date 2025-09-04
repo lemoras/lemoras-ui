@@ -70,7 +70,7 @@
             var res = {
                 status: true,
                 message: null,
-                account: { nickname: "fake", email: "fake@dev.local", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
+                account: { nickname: "fake", email: "fake@localhost", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
             };
 
             service.SetCredentials(res.account);

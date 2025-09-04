@@ -55,30 +55,32 @@
                 var returnStringData = vm.typeParam;
                 var returnData = JSON.parse(returnStringData);
 
-                AuthenticationService.BuildTokenByGET(returnData, function (resp) {
-                                        if (resp.status) {
-                                            FlashService.WriteLocal(false, resp.message);
-                                           
-                                            openApplication();
-                                        } else {
-                                            AuthenticationService.ClearCredentials();
-                                            FlashService.Error(response.message, '/');
-                                            vm.dataLoading = false;
-                                        }
+                alert(returnString);
 
-                                        vm.dataLoading = false;
-                                    });
+                // AuthenticationService.BuildTokenByGET(returnData, function (resp) {
+                //                         if (resp.status) {
+                //                             FlashService.WriteLocal(false, resp.message);
+                                           
+                //                             openApplication();
+                //                         } else {
+                //                             AuthenticationService.ClearCredentials();
+                //                             FlashService.Error(response.message, '/');
+                //                             vm.dataLoading = false;
+                //                         }
+
+                //                         vm.dataLoading = false;
+                //                     });
               
-                // AuthenticationService.InternalLogin(returnData, function (response) {
-                //     if (response.status) {
-                //         FlashService.WriteLocal(false, response.message);
-                //         openApplication();
-                //     } else {
-                //         FlashService.Error(response.message, '/');
-                //         vm.dataLoading = false;
-                //     }
-                //     vm.dataLoading = false;
-                // });
+                AuthenticationService.InternalLogin(returnData, function (response) {
+                    if (response.status) {
+                        FlashService.WriteLocal(false, response.message);
+                        openApplication();
+                    } else {
+                        FlashService.Error(response.message, '/');
+                        vm.dataLoading = false;
+                    }
+                    vm.dataLoading = false;
+                });
             }
 
             if (vm.emailParam != "" && vm.emailParam != undefined && vm.returnParam == "triggerCallback") {
@@ -214,18 +216,16 @@
                                         }
                                         vm.returnUrl = tmpAppDomain;
                                     }
-                                    // AuthenticationService.BuildToken(response.account, function (resRole) {
-                                    //     if (resRole.status) {
-                                    //         loginByAccount(resRole.account, vm.firstTakenToken, vm.returnUrl); // CCCPP
-                                    //         // returnDomain(resRole.account);
-                                    //     } else {
-                                    //         FlashService.Error(response.message, $location);
-                                    //         AuthenticationService.ClearCredentials();
-                                    //     }
-                                    //     vm.dataLoading = false;
-                                    // });
-
-                                    fakeReturnDomain(response.account);
+                                    AuthenticationService.BuildToken(response.account, function (resRole) {
+                                        if (resRole.status) {
+                                            loginByAccount(resRole.account, vm.firstTakenToken, vm.returnUrl); // CCCPP
+                                            // returnDomain(resRole.account);
+                                        } else {
+                                            FlashService.Error(response.message, $location);
+                                            AuthenticationService.ClearCredentials();
+                                        }
+                                        vm.dataLoading = false;
+                                    });
                                 }
                             }
                         } else {
@@ -304,47 +304,45 @@
                                     FlashService.Error(response.message, '/');
                                     vm.dataLoading = false;
                                 } else {
+                                    AuthenticationService.BuildToken(response.account, function (resp) {
+                                        if (resp.status) {
+                                            FlashService.WriteLocal(false, resp.message);
+                                            var roleCaseDomain = response.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
 
-                                    fakeReturnDomain(response.account);
-                                    // AuthenticationService.BuildToken(response.account, function (resp) {
-                                    //     if (resp.status) {
-                                    //         FlashService.WriteLocal(false, resp.message);
-                                    //         var roleCaseDomain = response.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
-
-                                    //         var tmpAppDomains = resp.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+                                            var tmpAppDomains = resp.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
                        
-                                    //         if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
-                                    //             var tmpAppDomain = "";
-                                    //             if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                    //                 tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                                    //             }else {
-                                    //                 tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
-                                    //             }
-                                    //             vm.returnUrl = tmpAppDomain;
-                                    //             AuthenticationService.ProfileLogin(response.account, vm.firstTakenToken, function (response2) {
-                                    //                 if (response2.status) {
-                                    //                     FlashService.WriteLocal(false, response2.message);
+                                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0) {
+                                                var tmpAppDomain = "";
+                                                if (roleCaseDomain == paramLocalAdminSubdomain) {
+                                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                                }else {
+                                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain)  && workLocalConfig) || tmpAppDomains[0];
+                                                }
+                                                vm.returnUrl = tmpAppDomain;
+                                                AuthenticationService.ProfileLogin(response.account, vm.firstTakenToken, function (response2) {
+                                                    if (response2.status) {
+                                                        FlashService.WriteLocal(false, response2.message);
                                                       
-                                    //                     returnDomain(response.account, false);
-                                    //                 } else {
-                                    //                     FlashService.Error(response2.message, '/');
-                                    //                     vm.dataLoading = false;
-                                    //                 }
-                                    //                 vm.dataLoading = false;
-                                    //             });
+                                                        returnDomain(response.account, false);
+                                                    } else {
+                                                        FlashService.Error(response2.message, '/');
+                                                        vm.dataLoading = false;
+                                                    }
+                                                    vm.dataLoading = false;
+                                                });
 
-                                    //             return;
-                                    //         };
+                                                return;
+                                            };
 
-                                    //         openApplication();
-                                    //     } else {
-                                    //         AuthenticationService.ClearCredentials();
-                                    //         FlashService.Error(response.message, '/');
-                                    //         vm.dataLoading = false;
-                                    //     }
+                                            openApplication();
+                                        } else {
+                                            AuthenticationService.ClearCredentials();
+                                            FlashService.Error(response.message, '/');
+                                            vm.dataLoading = false;
+                                        }
 
-                                    //     vm.dataLoading = false;
-                                    // });
+                                        vm.dataLoading = false;
+                                    });
                                 }
                             }
                         } else {
@@ -509,26 +507,6 @@
 
             window.location.href = '../../../apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
             //window.location.href = "http://" + window.location.hostname + '/apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
-        }
-
-        function fakeReturnDomain(account) {
-            alert(1);
-            var returnData = {
-                template: "w_artfactory",
-                appName: "note",
-                xTemplate: "w_artfactory",
-                language: "en",
-                configType: "6",
-                appId: "1",
-                account: account
-            };
-
-        
-            var returnString = JSON.stringify(returnData);
-             alert(returnString);
-             vm.returnUrl = "notes.dev.local"
-  alert(vm.returnUrl);
-            window.location.replace("http://" + vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
         }
 
         function returnDomain(account, isClear = true) {

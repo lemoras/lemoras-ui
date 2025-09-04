@@ -4,8 +4,8 @@ var mainAccountUrl = [];
 var paramMainLandAppName = "mainland";
 var paramAccountAppName = "account";
 
-var paramLocalDomain = "dev.local";
-var paramLocalAccountDomain = "account.dev.local";
+var paramLocalDomain = "localhost";
+var paramLocalAccountDomain = "account.localhost";
 var paramLocalAdminSubdomain = "admin";
 
 var workLocalConfig = null;
@@ -14,7 +14,7 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
     workLocalConfig = true
 }
 
-var isHttpOnlyAuthCookie = true;
+var isHttpOnlyAuthCookie = false;
 
 var workerURL = "https://rate-worker.onxorg.workers.dev/";
 var zoeURL = workerURL;

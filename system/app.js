@@ -114,7 +114,7 @@ function GetTypeRoles(selfRoleId = 0) {
 
             var getData = function (url, isNotNotify = false, giveSuccess = false) {
                 addAuthHeader();
-                return $http.get(url, { withCredentials: true }).
+                return $http.get(url, { withCredentials: isHttpOnlyAuthCookie }).
                     then(function (response) {
                         if (httpResponseCheckNotify(response, isNotNotify))
                             return responseInfo(response, giveSuccess);
@@ -130,7 +130,7 @@ function GetTypeRoles(selfRoleId = 0) {
                 isLogin = window.localStorage.getItem("config") !== "";
 
                 addAuthHeader();
-                return $http.post(url, data, { withCredentials: true }).
+                return $http.post(url, data, { withCredentials: isHttpOnlyAuthCookie }).
                     then(function (response) {
                         if (httpResponseCheckNotify(response, isNotNotify))
                             return responseInfo(response, giveSuccess);
@@ -142,7 +142,7 @@ function GetTypeRoles(selfRoleId = 0) {
 
             var putData = function (url, data, isNotNotify = false, giveSuccess = false) {
                 addAuthHeader();
-                return $http.put(url, data, { withCredentials: true }).
+                return $http.put(url, data, { withCredentials: isHttpOnlyAuthCookie }).
                     then(function (response) {
                         if (httpResponseCheckNotify(response, isNotNotify))
                             return responseInfo(response, giveSuccess);
@@ -154,7 +154,7 @@ function GetTypeRoles(selfRoleId = 0) {
 
             var deleteData = function (url, isNotNotify = false, giveSuccess = false) {
                 addAuthHeader();
-                return $http.delete(url, { withCredentials: true }).
+                return $http.delete(url, { withCredentials: isHttpOnlyAuthCookie }).
                     then(function (response) {
                         if (httpResponseCheckNotify(response, isNotNotify))
                             return responseInfo(response, giveSuccess);
@@ -170,7 +170,7 @@ function GetTypeRoles(selfRoleId = 0) {
                     'headers': {
                         'Content-type': 'application/json;charset=utf-8'
                     },
-                    withCredentials: true 
+                    withCredentials: isHttpOnlyAuthCookie 
                 } || {}, {
                     method: 'DELETE',
                     url: url,
