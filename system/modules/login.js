@@ -57,6 +57,7 @@
 
                 AuthenticationService.BuildToken(returnData.account, function (resp) {
                     if (resp.status) {
+                        debugger;
                         AuthenticationService.InternalLogin(returnData, function (response) {
                             if (response.status) {
                                 FlashService.WriteLocal(false, response.message);
@@ -299,6 +300,7 @@
                                     vm.dataLoading = false;
                                 } else {
                                     AuthenticationService.BuildToken(response.account, function (resp) {
+                                         debugger;
                                         if (resp.status) {
                                             FlashService.WriteLocal(false, resp.message);
                                             var roleCaseDomain = response.account.roleId == typeRoles.Member ? "" : paramLocalAdminSubdomain;
