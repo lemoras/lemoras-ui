@@ -13,6 +13,7 @@
         service.InternalLogin = InternalLogin;
         service.Login = Login;
         service.BuildToken = BuildToken;
+        service.BuildTokenByGET = BuildTokenByGET;
         service.CreateAccount = CreateAccount;
         service.CreateFullAccount = CreateFullAccount;
         service.SetCredentials = SetCredentials;
@@ -69,7 +70,7 @@
             var res = {
                 status: true,
                 message: null,
-                account: { nickname: "fake", email: "fake@localhost", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
+                account: { nickname: "fake", email: "fake@dev.local", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
             };
 
             service.SetCredentials(res.account);
@@ -252,6 +253,67 @@
                     }
                 });
         }
+
+         function BuildTokenByGET(account, callback) {
+
+            if (account.isRoot) {
+                account.lastLoginDate = account.createdAt;
+
+                var configURL = baseURL + "/system/root-config.json";
+
+                window.localStorage.setItem("loadconfig", configURL);
+
+                service.SetCredentials(account, false);
+                service.GetConfig(account, function (configData) {
+                    var res = { status: true };
+                    res.message = configData;
+                    callback(res);
+                });
+                return;
+            }
+
+            var returnData = JSON.stringify({ appId: account.appId, roleId: account.roleId, merchantId: account.merchantId });
+
+            getjson.getData(authServiceUrl + 'authenticate/' + returnData)
+                .then(function (res) {
+                    if (res.status) { // bu ve ust bilgiler set credentials parametlereleri duzgun bir sekilde duzenlenmeli
+                        account.token = res.account.token;
+                        account.lastLoginDate = res.account.lastLoginDate;
+                        res.account = account;
+                        service.SetCredentials(account, false);
+                        service.GetConfig(account, function (configData) {
+                            res.message = configData;
+                            var roleCaseDomain = res.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
+
+                            var tmpAppDomains = res.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainLandUrl.includes(window.location.hostname)) {
+                                var tmpAppDomain ="";
+
+                                if (roleCaseDomain == paramLocalAdminSubdomain) {
+                                    tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }else {
+                                    tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }
+
+                                service.SetSession(tmpAppDomain);
+                            }
+                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainAccountUrl.includes(window.location.hostname)) {
+                                var tmpAppDomain ="";
+                                if (roleCaseDomain == paramLocalAdminSubdomain) {
+                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }else {
+                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }
+                                service.SetSession(tmpAppDomain);
+                            }
+                            callback(res);
+                        });
+                    } else {
+                        callback(res);
+                    }
+                });
+        }
+
 
         function BuildToken(account, callback) {
 
