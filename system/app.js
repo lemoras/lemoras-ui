@@ -303,8 +303,12 @@ function GetTypeRoles(selfRoleId = 0) {
                 link: function (scope, elem, attrs, ngModel) {
                 ngModel.$parsers.push(function (value) {
                     if (!value) return value;
-                    // Örn: script etiketlerini temizle
-                    return value.replace(/<script.*?>.*?<\/script>/gi, "");
+                   
+                    value = value.replace(/<script.*?>.*?<\/script>/gi, '');
+                    value = value.replace(/on\w+=".*?"/gi, '');
+                    value = value.replace(/javascript:/gi, '');
+
+                    return value;
                 });
                 },
             };
