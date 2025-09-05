@@ -14,7 +14,7 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
     workLocalConfig = true
 }
 
-var isHttpOnlyAuthCookie = true;
+var isHttpOnlyAuthCookie = false;
 
 var workerURL = "https://rate-worker.onxorg.workers.dev/";
 var zoeURL = workerURL;
