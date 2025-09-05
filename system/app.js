@@ -296,6 +296,19 @@ function GetTypeRoles(selfRoleId = 0) {
 
             return { log: log };
         })
+        .directive("safeInput", function () {
+            return {
+                restrict: "A",
+                require: "ngModel",
+                link: function (scope, elem, attrs, ngModel) {
+                ngModel.$parsers.push(function (value) {
+                    if (!value) return value;
+                    // Örn: script etiketlerini temizle
+                    return value.replace(/<script.*?>.*?<\/script>/gi, "");
+                });
+                },
+            };
+        })
         .config(config)
         .run(run);
 

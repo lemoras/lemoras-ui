@@ -15,7 +15,7 @@
                                     <label style="color:red">
                                         *
                                     </label>
-                                    <input ng-change="vm.setAutoNickname()" type="email" ng-model="vm.member.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                    <input ng-change="vm.setAutoNickname()" type="email" safe-input ng-model="vm.member.email" name="email" required="true" class="form-control" placeholder="E-Posta">
                                 </div>
                             </div>
                             <div class="col-md-3 px-1">
@@ -30,7 +30,7 @@
                             <div class="col-md-5 pr-1">
                                 <div class="form-group">
                                     <label>Takma ad</label>
-                                    <input type="text" ng-model="vm.member.nickname" required="true" class="form-control" >
+                                    <input type="text" safe-input ng-model="vm.member.nickname" required="true" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                     <label style="color:red">
                                         *
                                     </label>
-                                    <input type="text" class="form-control" required="true" ng-model="vm.member.aboutMe" placeholder="Hakkında" value="Hakkında.....">
+                                    <input type="text" class="form-control" required="true" safe-input ng-model="vm.member.aboutMe" placeholder="Hakkında" value="Hakkında.....">
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="author">
                         <a href="#!/createmember">
-                            <img ng-if="vm.member.photoUrl !== undefined && vm.member.photoUrl !== null && vm.member.photoUrl !== ''" ng-click="vm.browseFile()" title="Fotoğrafı değiştir" class="avatar border-gray" ng-src="{{vm.member.photoUrl}}" alt="..."> <!--ng-model="vm.member.photoUrl"-->
+                            <img ng-if="vm.member.photoUrl !== undefined && vm.member.photoUrl !== null && vm.member.photoUrl !== ''" ng-click="vm.browseFile()" title="Fotoğrafı değiştir" class="avatar border-gray" ng-src="{{vm.member.photoUrl}}" alt="..."> <!--safe-input ng-model="vm.member.photoUrl"-->
                             <img id="photoUrl" ng-if="vm.member.photoUrl === undefined || vm.member.photoUrl === null  || vm.member.photoUrl === ''" src="../../../templates/assets/img/default-avatar.png" ng-click="vm.browseFile()" title="Fotoğraf yükle" class="avatar border-gray" alt="...">
                             <h6 ng-click="vm.browseFile()" class="description">Fotoğraf seç</h6>
                             <h5 class="title"> {{ vm.member.firstName }} {{ vm.member.lastName }}</h5>
@@ -72,7 +72,7 @@
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Şifre</label>
-                                        <input type="password" name="password" id="registerPassword" required="true" ng-model="vm.member.password" class="form-control" placeholder="Şifre">
+                                        <input type="password" name="password" id="registerPassword" required="true" safe-input ng-model="vm.member.password" class="form-control" placeholder="Şifre">
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Şifre tekrar</label>
-                                        <input type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.tmpMember.rePassword" class="form-control" placeholder="Şifre tekrar">
+                                        <input type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" safe-input ng-model="vm.tmpMember.rePassword" class="form-control" placeholder="Şifre tekrar">
                                     </div>
                                 </div>
                             </div>

@@ -29,9 +29,9 @@
                                             <span  ng-if="globals.currentUser.hasId && langKey == 'en'" disabled class="form-control">  {{ vm.account.email === undefined ? 'None' :  vm.account.email }} </span>
                                             <span  ng-if="globals.currentUser.hasId && langKey == 'tr'" disabled class="form-control">  {{ vm.account.email === undefined ? 'Yok' :  vm.account.email }} </span>
                                             <span  ng-if="globals.currentUser.hasId && langKey == 'ru'" disabled class="form-control">  {{ vm.account.email === undefined ? 'Никто' :  vm.account.email }} </span>
-                                            <input ng-if="!globals.currentUser.hasId && langKey == 'en'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Mail">
-                                            <input ng-if="!globals.currentUser.hasId && langKey == 'tr'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
-                                            <input ng-if="!globals.currentUser.hasId && langKey == 'ru'" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="Электронная почта">
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'en'" type="email" safe-input ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Mail">
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'tr'" type="email" safe-input ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                            <input ng-if="!globals.currentUser.hasId && langKey == 'ru'" type="email" safe-input ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="Электронная почта">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pr-1">
@@ -42,9 +42,9 @@
                                             <label style="color:red">
                                                 *
                                             </label>
-                                            <input ng-if="langKey == 'en'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
-                                            <input ng-if="langKey == 'tr'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="takma ad">
-                                            <input ng-if="langKey == 'ru'" type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="прозвище">
+                                            <input ng-if="langKey == 'en'" type="input" safe-input ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
+                                            <input ng-if="langKey == 'tr'" type="input" safe-input ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="takma ad">
+                                            <input ng-if="langKey == 'ru'" type="input" safe-input ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="прозвище">
                                         </div>
                                     </div>
                                     <div class="col-md-3 px-1">
@@ -67,9 +67,9 @@
                                             <label style="color:red">
                                                 *
                                             </label>
-                                            <input ng-if="langKey == 'en'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="about me" value="">
-                                            <input ng-if="langKey == 'tr'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="hakkında" value="">
-                                            <input ng-if="langKey == 'ru'" type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="Обо" value="">
+                                            <input ng-if="langKey == 'en'" type="text" class="form-control" safe-input ng-model="vm.account.aboutMe" placeholder="about me" value="">
+                                            <input ng-if="langKey == 'tr'" type="text" class="form-control" safe-input ng-model="vm.account.aboutMe" placeholder="hakkında" value="">
+                                            <input ng-if="langKey == 'ru'" type="text" class="form-control" safe-input ng-model="vm.account.aboutMe" placeholder="Обо" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                     <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
                                     <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
                                     
-                                    <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--ng-model="vm.account.photoUrl"-->
+                                    <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--safe-input ng-model="vm.account.photoUrl"-->
                                     <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
                                     <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
                                 
@@ -150,9 +150,9 @@
                                                 <label ng-if="langKey == 'en'">Current password</label>
                                                 <label ng-if="langKey == 'tr'">Mevcut şifre</label>
                                                 <label ng-if="langKey == 'ru'">Текущий пароль</label>
-                                                <input ng-if="langKey == 'en'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Current password">
-                                                <input ng-if="langKey == 'tr'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
-                                                <input ng-if="langKey == 'ru'" type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Текущий пароль">
+                                                <input ng-if="langKey == 'en'" type="password" safe-input ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Current password">
+                                                <input ng-if="langKey == 'tr'" type="password" safe-input ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
+                                                <input ng-if="langKey == 'ru'" type="password" safe-input ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Текущий пароль">
                                             </div>
                                         </div>
                                     </div>
@@ -162,9 +162,9 @@
                                                 <label ng-if="langKey == 'en'">New password</label>
                                                 <label ng-if="langKey == 'tr'">Yeni şifre</label>
                                                 <label ng-if="langKey == 'ru'">Новый пароль</label>
-                                                <input ng-if="langKey == 'en'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="New password">
-                                                <input ng-if="langKey == 'tr'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
-                                                <input ng-if="langKey == 'ru'" type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Новый пароль">
+                                                <input ng-if="langKey == 'en'" type="password" name="password" id="registerPassword" required="true" safe-input ng-model="vm.zoe.newPassword" class="form-control" placeholder="New password">
+                                                <input ng-if="langKey == 'tr'" type="password" name="password" id="registerPassword" required="true" safe-input ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
+                                                <input ng-if="langKey == 'ru'" type="password" name="password" id="registerPassword" required="true" safe-input ng-model="vm.zoe.newPassword" class="form-control" placeholder="Новый пароль">
                                             </div>
                                         </div>
                                     </div>
@@ -174,9 +174,9 @@
                                                 <label ng-if="langKey == 'en'">New password again</label>
                                                 <label ng-if="langKey == 'tr'">Yeni şifre tekrar</label>
                                                 <label ng-if="langKey == 'ru'">Новый пароль снова</label>
-                                                <input ng-if="langKey == 'en'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="New password again">
-                                                <input ng-if="langKey == 'tr'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
-                                                <input ng-if="langKey == 'ru'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Новый пароль снова">
+                                                <input ng-if="langKey == 'en'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" safe-input ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="New password again">
+                                                <input ng-if="langKey == 'tr'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" safe-input ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
+                                                <input ng-if="langKey == 'ru'" type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" safe-input ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Новый пароль снова">
                                             </div>
                                         </div>
                                     </div>

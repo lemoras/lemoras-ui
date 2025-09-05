@@ -50,11 +50,11 @@
                           </div>
                         </span>
                         <input ng-if="langKey == 'en'" type="text" class="form-control" placeholder="E-mail"
-                          name="email" id="email" ng-model="vm.email">
+                          name="email" id="email" safe-input ng-model="vm.email">
                         <input ng-if="langKey == 'tr'" type="text" class="form-control" placeholder="E-posta"
-                          name="email" id="email" ng-model="vm.email">
+                          name="email" id="email" safe-input ng-model="vm.email">
                         <input ng-if="langKey == 'ru'" type="text" class="form-control" placeholder="Электронная почта"
-                          name="email" id="email" ng-model="vm.email">
+                          name="email" id="email" safe-input ng-model="vm.email">
                       </div>
                       <div class="input-group no-border form-control-lg">
                         <div class="input-group-prepend">
@@ -63,11 +63,11 @@
                           </div>
                         </div>
                         <input ng-if="langKey == 'en'" type="password" name="password" id="password"
-                          ng-model="vm.password" type="text" placeholder="Password" class="form-control">
+                          safe-input ng-model="vm.password" type="text" placeholder="Password" class="form-control">
                         <input ng-if="langKey == 'tr'" type="password" name="password" id="password"
-                          ng-model="vm.password" type="text" placeholder="Şifre" class="form-control">
+                          safe-input ng-model="vm.password" type="text" placeholder="Şifre" class="form-control">
                         <input ng-if="langKey == 'ru'" type="password" name="password" id="password"
-                          ng-model="vm.password" type="text" placeholder="Пароль" class="form-control">
+                          safe-input ng-model="vm.password" type="text" placeholder="Пароль" class="form-control">
                       </div>
                     </div>
                     <div class="card-footer">
@@ -95,19 +95,19 @@
                       </h4>
                       <br>
                       <div ng-if="langKey == 'en'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
-                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input"  safe-input ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                          View
                         </label>
                       </div>
                       <div ng-if="langKey == 'tr'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
-                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input"  safe-input ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                          Görünüm
                         </label>
                       </div>
                       <div ng-if="langKey == 'ru'" class="form-check form-switch" style="position: absolute; top:50px; right: 10px;">
-                        <input class="form-check-input"  ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input"  safe-input ng-model="vm.viewSelectApp"  type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                          Вид
                         </label>
@@ -116,9 +116,9 @@
                     <div class="card-body ">
                       <div class="form-group">
 
-                        <!-- <select class="form-control" ng-model="vm.selectedApplication" ng-options="x.appName + ' ' + x.projectName for x in vm.allApplication track by x.appId"></select> -->
+                        <!-- <select class="form-control" safe-input ng-model="vm.selectedApplication" ng-options="x.appName + ' ' + x.projectName for x in vm.allApplication track by x.appId"></select> -->
                         <select ng-if="!vm.viewSelectApp" class="form-control"
-                          ng-model="vm.selectedApplication" ng-options="x.projectName for x in vm.allApplication track by x.projectName"></select>
+                          safe-input ng-model="vm.selectedApplication" ng-options="x.projectName for x in vm.allApplication track by x.projectName"></select>
 
                         <div ng-if="vm.viewSelectApp">
                           <div style="position: absolute; z-index: 10; left: 0px; top: 150px;"><svg

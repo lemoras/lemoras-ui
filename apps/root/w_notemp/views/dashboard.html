@@ -37,14 +37,14 @@
               <div hidden><br>
                 <label>Generated Auto Merchant Id</label>
                 <div>
-                  <input size="35" ng-model="vm.project.merchantId" name="merchantId" id="merchantId" disabled
+                  <input size="35" safe-input ng-model="vm.project.merchantId" name="merchantId" id="merchantId" disabled
                     type="text" value="ddcaa8da-3b99-43d3-8ca4-376530c422b2">
                 </div>
               </div>
               <br>
               <label>Project Name</label>
               <div>
-                <input ng-model="vm.project.projectName" size="35" type="text">
+                <input safe-input ng-model="vm.project.projectName" size="35" type="text">
               </div>
               <br>
               <div>
@@ -68,7 +68,7 @@
               <br>
               <label>Email address</label>
               <div>
-                <input ng-model="vm.role.email" size="35" type="email">
+                <input safe-input ng-model="vm.role.email" size="35" type="email">
               </div>
               <br>
               <div>
@@ -84,12 +84,12 @@
             <form ng-submit="vm.renewSession()">
               <label>Email address</label>
               <div>
-                <input ng-model="vm.account.email" size="35" disabled type="email" value="....@.......com">
+                <input safe-input ng-model="vm.account.email" size="35" disabled type="email" value="....@.......com">
               </div>
               <br>
               <label>Password</label>
               <div>
-                <input ng-model="vm.account.password" size="35" type="password">
+                <input safe-input ng-model="vm.account.password" size="35" type="password">
               </div>
               <br>
               <div>
@@ -127,7 +127,7 @@
                         </select>
                       </div>
                       <div class="col-md-4 text-right">
-                        <input ng-model="vm.q" id="search" placeholder="Ara..">
+                        <input safe-input ng-model="vm.q" id="search" placeholder="Ara..">
                       </div>
                       <div class="col-md-4 text-right">
                         Listelenen toplam kayıt sayısı {{ vm.projects.length }}
@@ -198,7 +198,7 @@
                             <td class="text-center" style="border:#cccccc solid 1px;">
                               <div class="form-check">
                                 <label class="form-check-label">
-                                  <input disabled type="checkbox" class="form-check-input" ng-model="project.active">
+                                  <input disabled type="checkbox" class="form-check-input" safe-input ng-model="project.active">
                                   <span class="form-check-sign"></span>
                                 </label>
                               </div>
@@ -207,7 +207,7 @@
                               <div class="form-check">
                                 <label class="form-check-label">
                                   <input disabled type="checkbox" class="form-check-input"
-                                    ng-model="project.manageMember">
+                                    safe-input ng-model="project.manageMember">
                                   <span class="form-check-sign"></span>
                                 </label>
                               </div>
@@ -216,7 +216,7 @@
                               <div class="form-check">
                                 <label class="form-check-label">
                                   <input disabled type="checkbox" class="form-check-input"
-                                    ng-model="project.isOwnerLemoras">
+                                    safe-input ng-model="project.isOwnerLemoras">
                                   <span class="form-check-sign"></span>
                                 </label>
                               </div>
