@@ -280,6 +280,7 @@
             let authPromise;
             if (isHttpOnlyAuthCookie) {
                 debugger;
+                if (byGET) {
                 // GET kullan (parametreyi URL içine göm)
                 var returnData = JSON.stringify({
                     appId: account.appId,
@@ -287,6 +288,43 @@
                     merchantId: account.merchantId,
                 });
                 authPromise = getjson.getData(authServiceUrl + "authenticate/" + returnData);
+                }
+                else {
+                    debugger;
+                    var res = { account: {}, status: true };
+                account.token = account.token;
+                        account.lastLoginDate = account.lastLoginDate;
+                        res.account = account;
+                        service.SetCredentials(account, false);
+                        service.GetConfig(account, function (configData) {
+                            res.message = configData;
+                            var roleCaseDomain = res.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
+
+                            var tmpAppDomains = res.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
+                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainLandUrl.includes(window.location.hostname)) {
+                                var tmpAppDomain ="";
+
+                                if (roleCaseDomain == paramLocalAdminSubdomain) {
+                                    tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }else {
+                                    tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }
+
+                                service.SetSession(tmpAppDomain);
+                            }
+                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainAccountUrl.includes(window.location.hostname)) {
+                                var tmpAppDomain ="";
+                                if (roleCaseDomain == paramLocalAdminSubdomain) {
+                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }else {
+                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
+                                }
+                                service.SetSession(tmpAppDomain);
+                            }
+                            callback(res);
+                        });
+                        return;
+                        }
             } else {
                 // POST kullan (JSON body)
                 authPromise = getjson.postData(authServiceUrl + "authenticate", {
@@ -294,6 +332,7 @@
                     roleId: account.roleId,
                     merchantId: account.merchantId,
                 });
+                
             }
 
             authPromise.then(function (res) {
