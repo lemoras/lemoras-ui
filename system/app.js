@@ -337,6 +337,7 @@ function GetTypeRoles(selfRoleId = 0) {
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', '$route', 'getjson', 'AuthenticationService', 'FlashService', 'watchcontrol'];
     function run($rootScope, $location, $cookies, $http, $route, getjson, AuthenticationService, FlashService, watchcontrol) {
 
+        $rootScope.mainLandUrl = mainLandUrl[0];
         $rootScope.staticPage = { isNonHome: false };
         $rootScope.users = [];
         $rootScope.reloadUserInfo = "";

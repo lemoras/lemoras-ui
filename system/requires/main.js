@@ -254,9 +254,11 @@ function loadApplications(projects) {
         var icon = "./../../../system/assets/appicon/icon.png";
         icon = icon.replace("/icon", "/" + appName);
 
+        var appInfoName = groups[0].info.appName;
+
         domains = domains.filter(x => x.includes(mainLandUrl[0]) && !x.includes("admin"));
 
-        mainProjects.push({ appId: appId, appName: appName, domains: domains, icon: icon });
+        mainProjects.push({ label: groups[0].info.label, landingPage:groups[0].landingPage, publish: groups[0].publish, appId: appId, appInfoName:appInfoName, appName: appName, domains: domains, icon: icon });
     });
 
     var strApps = JSON.stringify(mainProjects);

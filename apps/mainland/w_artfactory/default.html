@@ -105,13 +105,13 @@
                             </li>
                             <li class="scroll-to-section">
                                 <a ng-if="langKey == 'en'"
-                                    href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/register'">ACCOUNT
+                                    ng-href="{{ 'http://account.' + mainLandUrl + '/#!/register'}}">ACCOUNT
                                     REGISTRATION</a>
                                 <a ng-if="langKey == 'tr'"
-                                    href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/register'">Hesap
+                                    ng-href="{{ 'http://account.' + mainLandUrl + '/#!/register'}}">Hesap
                                     Kayıt</a>
                                 <a ng-if="langKey == 'ru'"
-                                    href="javascript:window.location.href = 'http://account.' + mainLandUrl[0] + '/#!/register'">РЕГИСТРАЦИЯ
+                                    ng-href="{{ 'http://account.' + mainLandUrl + '/#!/register'}}">РЕГИСТРАЦИЯ
                                     УЧЕТНОЙ ЗАПИСИ</a>
                             </li>
                         </ul>
