@@ -69,7 +69,7 @@
             var res = {
                 status: true,
                 message: null,
-                account: { nickname: "fake", email: "fake@localhost", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
+                account: { nickname: "fake", email: "fake@dev.local", token: fakeToken, photoUrl: null, firstName: "Admin", lastName: "Lemoras", hasId: null, appId: fakeAppId, roleId: 6, merchantId: "16f91fa6-de66-4000-8742-9ece0b312db4" },
             };
 
             service.SetCredentials(res.account);
@@ -109,11 +109,11 @@
                             //return;// TODO:inspect just acccount profilelogin
                         }
 
-                      res.account.appCount = appList.length;
+                        res.account.appCount = appList.length;
 
                         if (appList.length >= 1) {
 
-                            var appRoleList = [{ domains:undefined, record: false, appId: 0, roleId: 0, merchantId: 0, appName: "", projectId: 0, projectName: "", icon:"" }]
+                            var appRoleList = [{ domains: undefined, record: false, appId: 0, roleId: 0, merchantId: 0, appName: "", projectId: 0, projectName: "", icon: "" }]
                             appRoleList.shift();
                             appList.forEach(function (app) {
                                 var appRole = app.split(":");
@@ -125,15 +125,15 @@
                                         appName: "",
                                         projectId: parseInt(appRole[3].trim()),
                                         projectName: appRole[4].trim(),
-                                        record:true,
-                                        domains:undefined,
+                                        record: true,
+                                        domains: undefined,
                                         icon: "./../../../system/assets/appicon/icon.png"
                                     });
                                 }
                             });
 
                             if (returnUrl != "" && appIds.length > 0 && !mainLandUrl.includes(returnUrl)) {
-                                appRoleList = appRoleList.filter(x => projects.map(d=> d.projectId).includes(x.projectId) && appIds.map(y => y.appId).includes(x.appId) && appIds.map(y => y.type_id).includes(x.roleId != typeRoles.Member ? 5 : typeRoles.Member));
+                                appRoleList = appRoleList.filter(x => projects.map(d => d.projectId).includes(x.projectId) && appIds.map(y => y.appId).includes(x.appId) && appIds.map(y => y.type_id).includes(x.roleId != typeRoles.Member ? 5 : typeRoles.Member));
                             }
 
                             // var merchantCheck = toFindDuplicates(appRoleList.map(x => x.merchantId)); // appId ile ayni uygualamay ait farkli merchantlar var mi 
@@ -199,16 +199,16 @@
 
                                         var appConfigs = appIds.filter(c => c.appId == x.appId && c.type_id == x._id);
 
-                                        appConfigs.forEach(function(appConfig){
+                                        appConfigs.forEach(function (appConfig) {
 
-                                            projects.forEach(function(xProject) {
+                                            projects.forEach(function (xProject) {
 
                                                 if (appConfig.type_id == typeRoles.Member && xProject.appId == appConfig.appId) {
 
-                                                    var checkDoplicationApp = appRoleList.find(cd=> cd.projectId == xProject.projectId 
+                                                    var checkDoplicationApp = appRoleList.find(cd => cd.projectId == xProject.projectId
                                                         && cd.appId == xProject.appId && cd.merchantId == xProject.merchantId && cd.roleId == typeRoles.Member)
 
-                                                    if (checkDoplicationApp == ""|| checkDoplicationApp == undefined || checkDoplicationApp == null) {
+                                                    if (checkDoplicationApp == "" || checkDoplicationApp == undefined || checkDoplicationApp == null) {
 
                                                         appRoleList.push({
                                                             appId: appConfig.appId,
@@ -219,20 +219,20 @@
                                                             projectName: "NEW -- " + x.app,
                                                             record: false,
                                                             domains: x.domains,
-                                                            icon:"./../../../system/assets/appicon/"+ x.app +".png"
+                                                            icon: "./../../../system/assets/appicon/" + x.app + ".png"
                                                         });
                                                     }
                                                 }
                                             });
                                         })
                                     });
-                                    
+
                                     res.account.appCount = appRoleList.length;
                                 }
 
                                 $rootScope.applications = appRoleList;
 
-                                if (appRoleList.length == 1 && appRoleList.filter(f=> !f.record).length == 0) {
+                                if (appRoleList.length == 1 && appRoleList.filter(f => !f.record).length == 0) {
 
                                     res.account.appCount = appRoleList.length;
 
@@ -253,62 +253,109 @@
                 });
         }
 
-        function BuildToken(account, callback) {
+        function BuildToken(account, callback, byGET = false) {
 
+            if (byGET && !isHttpOnlyAuthCookie) {
+                var callbackRes = { status: true };
+                callback(callbackRes); 
+                return;
+            }
+           
             if (account.isRoot) {
                 account.lastLoginDate = account.createdAt;
 
                 var configURL = baseURL + "/system/root-config.json";
-
                 window.localStorage.setItem("loadconfig", configURL);
 
                 service.SetCredentials(account, false);
                 service.GetConfig(account, function (configData) {
-                    var res = { status: true };
-                    res.message = configData;
-                    callback(res);
+                    callback({ status: true, message: configData });
                 });
                 return;
             }
 
-            getjson.postData(authServiceUrl + 'authenticate', { appId: account.appId, roleId: account.roleId, merchantId: account.merchantId })
+            var authPromise;
+
+            if (isHttpOnlyAuthCookie) {
+                if (byGET) {
+                 
+                    var returnData = JSON.stringify({
+                        appId: account.appId,
+                        roleId: account.roleId,
+                        merchantId: account.merchantId,
+                    });
+                    authPromise = getjson.getData(authServiceUrl + "authenticate/" + returnData);
+                } else {
+                    account.lastLoginDate = account.lastLoginDate;
+                    var fakeRes = { account: account, status: true };
+                    authPromise = Promise.resolve(fakeRes);
+                }
+            } else {
+                authPromise = getjson.postData(authServiceUrl + "authenticate", {
+                    appId: account.appId,
+                    roleId: account.roleId,
+                    merchantId: account.merchantId,
+                });
+            }
+
+            authPromise
                 .then(function (res) {
-                    if (res.status) { // bu ve ust bilgiler set credentials parametlereleri duzgun bir sekilde duzenlenmeli
-                        account.token = res.account.token;
-                        account.lastLoginDate = res.account.lastLoginDate;
+                    if (res.status) {
+                        account.token = (res.account && res.account.token) || account.token;
+                        account.lastLoginDate = (res.account && res.account.lastLoginDate) || account.lastLoginDate;
                         res.account = account;
+
                         service.SetCredentials(account, false);
+
                         service.GetConfig(account, function (configData) {
                             res.message = configData;
-                            var roleCaseDomain = res.account.roleId == typeRoles.Member ? "": paramLocalAdminSubdomain;
 
-                            var tmpAppDomains = res.account.domains.filter(g=> !mainLandUrl.includes(g) && !mainAccountUrl.includes(g));
-                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainLandUrl.includes(window.location.hostname)) {
-                                var tmpAppDomain ="";
-
-                                if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                    tmpAppDomain = tmpAppDomains.find(f=> f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }else {
-                                    tmpAppDomain = tmpAppDomains.find(f=> !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }
-
-                                service.SetSession(tmpAppDomain);
-                            }
-                            if (tmpAppDomains != undefined && tmpAppDomains.length > 0 && mainAccountUrl.includes(window.location.hostname)) {
-                                var tmpAppDomain ="";
-                                if (roleCaseDomain == paramLocalAdminSubdomain) {
-                                    tmpAppDomain = tmpAppDomains.find(f=>  f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }else {
-                                    tmpAppDomain = tmpAppDomains.find(f=>  !f.includes(paramLocalAdminSubdomain)  && f.includes(paramLocalDomain) && workLocalConfig) || tmpAppDomains[0];
-                                }
-                                service.SetSession(tmpAppDomain);
-                            }
+                            handleDomainSession(res.account);
                             callback(res);
                         });
                     } else {
                         callback(res);
                     }
+                })
+                .catch(function (err) {
+                    console.error("BuildToken error:", err);
+                    callback({ status: false, message: err.message || "Unexpected error" });
                 });
+        }
+
+        function handleDomainSession(account) {
+            var roleCaseDomain = account.roleId === typeRoles.Member ? "" : paramLocalAdminSubdomain;
+            var tmpAppDomains =
+                (account.domains || []).filter(function (d) {
+                    return !mainLandUrl.includes(d) && !mainAccountUrl.includes(d);
+                }) || [];
+
+            if (!tmpAppDomains.length) return;
+
+            function findDomain(domains, isAdmin) {
+                if (isAdmin) {
+                    return (
+                        domains.find(function (d) {
+                            return d.includes(paramLocalAdminSubdomain) && d.includes(paramLocalDomain) && workLocalConfig;
+                        }) || domains[0]
+                    );
+                }
+                return (
+                    domains.find(function (d) {
+                        return !d.includes(paramLocalAdminSubdomain) && d.includes(paramLocalDomain) && workLocalConfig;
+                    }) || domains[0]
+                );
+            }
+
+            if (mainLandUrl.includes(window.location.hostname)) {
+                var tmp = findDomain(tmpAppDomains, roleCaseDomain === paramLocalAdminSubdomain);
+                service.SetSession(tmp);
+            }
+
+            if (mainAccountUrl.includes(window.location.hostname)) {
+                var tmp2 = findDomain(tmpAppDomains, roleCaseDomain === paramLocalAdminSubdomain);
+                service.SetSession(tmp2);
+            }
         }
 
 
@@ -446,20 +493,20 @@
         }
 
         function SetSession(domain) {
-         
+
             var strSessions = window.localStorage.getItem("sessions") || "";
             if (strSessions != "") {
-                
+
                 var sessions = JSON.parse(strSessions);
-       
-                var checkSession = sessions.find(x=> x == domain);
+
+                var checkSession = sessions.find(x => x == domain);
 
                 if (checkSession == undefined || checkSession == null || checkSession == "" || checkSession == "undefined") {
                     sessions.push(domain);
                     var modifyStrSession = JSON.stringify(sessions);
                     window.localStorage.setItem("sessions", modifyStrSession);
                 }
-            }else {
+            } else {
                 var newSessions = [];
                 newSessions.push(domain);
                 var newStrSession = JSON.stringify(newSessions);
