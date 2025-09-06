@@ -50,7 +50,7 @@
               </select>
             </div>
             <div class="col-md-4 text-right">
-              <input ng-model="vm.q" id="search" class="form-control" placeholder="Ara..">
+              <input safe-input ng-model="vm.q" id="search" class="form-control" placeholder="Ara..">
             </div>
             <div class="col-md-4 text-right">
               Listelenen toplam kayıt sayısı {{ vm.members.length }}
@@ -141,7 +141,7 @@
                   <td class="text-center" style="border:#cccccc solid 1px;">
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input disabled type="checkbox" class="form-check-input" ng-model="member.active">
+                        <input disabled type="checkbox" class="form-check-input" safe-input ng-model="member.active">
                         <span class="form-check-sign"></span>
                       </label>
                   </div>

@@ -113,7 +113,7 @@
 
 </head>
 
-<body id="rootBody" onload="loadProgressBar();" id="page-top" class=" sidebar-mini">
+<body id="rootBody"  id="page-top" class=" sidebar-mini">
 
     <div id="pageContent" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0" class="wrapper">
         <div ng-if="config == undefined" ng-view></div>
@@ -215,7 +215,7 @@
                                     <div class="form-group has-label">
                                         <pre>Seçilen: {{reloadUserInfo | json}}</pre>
 
-                                        <input type="text" ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" class="form-control" list="dataList">
+                                        <input type="text" safe-input ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" class="form-control" list="dataList">
 
                                         <datalist id="dataList">
                                             <option ng-repeat="user in users" value="{{user.firstName}} {{user.lastName}}">{{user.firstName}} {{user.lastName}}</option>
@@ -230,7 +230,7 @@
                             </div> -->
                             <div ng-if="isMerchantAdmin || isAdmin || isSuperuser || hasId">
                                 <div class="input-group no-border">
-                                    <input type="text" value="" ng-keyup="searchKeyup($event)" class="form-control" placeholder="Ara..." ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" list="dataList">
+                                    <input type="text" value="" ng-keyup="searchKeyup($event)" class="form-control" placeholder="Ara..." safe-input ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" list="dataList">
                                     <div class="input-group-append" ng-click="changeUser()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -260,7 +260,7 @@
                                                 <div class="form-group has-label">
                                                     <pre>Seçilen: {{reloadUserInfo | json}}</pre>
 
-                                                    <input type="text" ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" class="form-control" list="dataList">
+                                                    <input type="text" safe-input ng-model="reloadUserInfo" ng-change="changeReloadUser(reloadUserInfo)" class="form-control" list="dataList">
 
                                                     <datalist id="dataList">
                                                         <option ng-repeat="user in users">{{user.nickname}}</option>

@@ -16,7 +16,7 @@
                                         *
                                     </label>
                                     <span  ng-if="globals.currentUser.hasId" disabled class="form-control">  {{ vm.account.email === undefined ? 'Yok' :  vm.account.email }} </span>
-                                    <input ng-if="!globals.currentUser.hasId" type="email" ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
+                                    <input ng-if="!globals.currentUser.hasId" type="email" safe-input ng-model="vm.account.email" name="email" required="true" class="form-control" placeholder="E-Posta">
                                 </div>
                             </div>
                             <div class="col-md-4 pr-1">
@@ -25,7 +25,7 @@
                                     <label style="color:red">
                                         *
                                     </label>
-                                    <input type="input" ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
+                                    <input type="input" safe-input ng-model="vm.account.nickname" name="nickname" required="true" class="form-control" placeholder="nickname">
                                 </div>
                             </div>
                             <div class="col-md-3 px-1">
@@ -42,7 +42,7 @@
                                     <label style="color:red">
                                         *
                                     </label>
-                                    <input type="text" class="form-control" ng-model="vm.account.aboutMe" placeholder="aboutMe" value="">
+                                    <input type="text" class="form-control" safe-input ng-model="vm.account.aboutMe" placeholder="aboutMe" value="">
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                             <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
                             <img ng-if="(vm.account.photoUrl != null && vm.account.photoUrl != '' && vm.account.photoUrl != undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="{{vm.account.photoUrl}}" alt="...">
                                     
-                            <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--ng-model="vm.account.photoUrl"-->
+                            <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == '' || vm.account.photoUrl == undefined) && langKey == 'en'" ng-click="vm.browseFile()" title="Change photo" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> <!--safe-input ng-model="vm.account.photoUrl"-->
                             <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'tr'" ng-click="vm.browseFile()" title="Fotografı değiştir" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
                             <img ng-if="(vm.account.photoUrl == null || vm.account.photoUrl == ''  || vm.account.photoUrl == undefined) && langKey == 'ru'" ng-click="vm.browseFile()" title="Изменить фото" class="avatar border-gray" ng-src="../../../system/assets/img/default-avatar.png" alt="..."> 
                                    <!-- <h5 class="title"> {{ vm.account.firstName }} {{ vm.account.lastName }}</h5> -->
@@ -106,7 +106,7 @@
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Mevcut şifre</label>
-                                        <input type="password" ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
+                                        <input type="password" safe-input ng-model="vm.zoe.currentPassword" class="form-control" placeholder="Mevcut şifre">
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Yeni şifre</label>
-                                        <input type="password" name="password" id="registerPassword" required="true" ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
+                                        <input type="password" name="password" id="registerPassword" required="true" safe-input ng-model="vm.zoe.newPassword" class="form-control" placeholder="Yeni şifre">
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                 <div class="col-md-12 px-1">
                                     <div class="form-group">
                                         <label>Yeni şifre tekrar</label>
-                                        <input type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
+                                        <input type="password" name="password_confirmation" id="registerPasswordConfirmation" required="true" equalTo="#registerPassword" safe-input ng-model="vm.zoe.reNewPassword" class="form-control" placeholder="Yeni şifre tekrar">
                                     </div>
                                 </div>
                             </div>
