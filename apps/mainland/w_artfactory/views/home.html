@@ -59,7 +59,7 @@
                          </div>
                     </a>
                 </div>
-                <div id="expandApp1" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%);  padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
+                <div id="expandApp1" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
                     <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;"><span ng-if="langKey == 'en'">Within the Plan</span>
                         <span ng-if="langKey == 'tr'">Plan Dahilinde</span>
                         <span ng-if="langKey == 'ru'">В рамках плана</span></div>
@@ -71,7 +71,7 @@
                         <h5 ng-if="langKey== 'ru'" class="service-title">Электронная почта</h5>
                     </div>
                 </div>
-                <div id="expandApp2" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%);  padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
+                <div id="expandApp2" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
                     <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;"><span ng-if="langKey == 'en'">Within the Plan</span>
                         <span ng-if="langKey == 'tr'">Plan Dahilinde</span>
                         <span ng-if="langKey == 'ru'">В рамках плана</span></div>
@@ -83,7 +83,7 @@
                         <h5 ng-if="langKey== 'ru'" class="service-title">Чат</h5>
                     </div>
                 </div>
-                <div id="expandApp3" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%);  padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
+                <div id="expandApp3" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
                     <div style="position: absolute; margin-left: -10px; margin-top: -10px; z-index:2; border-radius: 30px; background-color: gray; color: white; padding: 3px;;"><span ng-if="langKey == 'en'">Within the Plan</span>
                         <span ng-if="langKey == 'tr'">Plan Dahilinde</span>
                         <span ng-if="langKey == 'ru'">В рамках плана</span></div>
@@ -473,9 +473,9 @@
 
     <script>
   function myFunction() {
-    // var expandApp1 = document.getElementById("expandApp1");
-    // var expandApp2 = document.getElementById("expandApp2");
-    // var expandApp3 = document.getElementById("expandApp3");
+    var expandApp1 = document.getElementById("expandApp1");
+    var expandApp2 = document.getElementById("expandApp2");
+    var expandApp3 = document.getElementById("expandApp3");
     var expandApp4 = document.getElementById("expandApp4");
     var expandApp5 = document.getElementById("expandApp5");
     var expandApp6 = document.getElementById("expandApp6");
@@ -491,9 +491,9 @@
 
 
     if (expandApp4.style.display === "none") {
-    //   expandApp1.style.display = "inline";
-    //   expandApp2.style.display = "inline";
-    //   expandApp3.style.display = "inline";
+      expandApp1.style.display = "inline";
+      expandApp2.style.display = "inline";
+      expandApp3.style.display = "inline";
       expandApp4.style.display = "inline";
       expandApp5.style.display = "inline";
       expandApp6.style.display = "inline";
@@ -508,9 +508,9 @@
       
     } else {
 
-    //   expandApp1.style.display = "none";
-    //   expandApp2.style.display = "none";
-    //   expandApp3.style.display = "none";
+      expandApp1.style.display = "none";
+      expandApp2.style.display = "none";
+      expandApp3.style.display = "none";
       expandApp4.style.display = "none";
       expandApp5.style.display = "none";
       expandApp6.style.display = "none";
@@ -521,7 +521,6 @@
       expandApp11.style.display = "none";
       expandApp12.style.display = "none";
 
-      // Aşağı ok ikonu göster (SVG path değerini değiştiriyoruz)
       iconPath.setAttribute("d", "M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z");
     }
   }
