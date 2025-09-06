@@ -66,7 +66,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/mail.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">E-Posta</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">E-Mail</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">E-Posta</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Электронная почта</h5>
                     </div>
                 </div>
                 <div id="expandApp2" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%);  padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -76,7 +78,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/chat.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Sohbet</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Chat</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Sohbet</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Чат</h5>
                     </div>
                 </div>
                 <div id="expandApp3" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%);  padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -86,7 +90,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/career.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Kariyer</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Career</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Kariyer</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Карьера</h5>
                     </div>
                 </div>
                 <div id="expandApp4" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -96,7 +102,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/coach.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Koç Danışmanlığı</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Coach Consulting</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Koç Danışmanlığı</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Тренерский консалтинг</h5>
                     </div>
                 </div>
                 <div id="expandApp5" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -106,7 +114,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/agile.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Çevik - Planlayıcı</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Agile - Planner</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Çevik - Planlayıcı</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Agile - Планировщик</h5>
                     </div>
                 </div>
                 <div id="expandApp6" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -116,7 +126,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/dues.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Aidat Takip</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Fee Tracking</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Aidat Takip</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Отслеживание сборов</h5>
                     </div>
                 </div>
                 <div id="expandApp7" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -126,7 +138,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/smartlock.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Akıllı Kilit</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Smart Lock</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Akıllı Kilit</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Умный замок</h5>
                     </div>
                 </div>
                 <div id="expandApp8" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -136,7 +150,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/renovation.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Ev Tadilat</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Home Renovation</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Ev Tadilat</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Ремонт дома</h5>
                     </div>
                 </div>
                 <div id="expandApp9" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -146,7 +162,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/search.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">İnternet Arama</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Internet Search</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">İnternet Arama</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Интернет-поиск</h5>
                     </div>
                 </div>
                 <div id="expandApp10" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -156,7 +174,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/vpn.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Kripto Özel Ağ - VPN</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Crypto Private Network - VPN</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Kripto Özel Ağ - VPN</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Криптографическая частная сеть — VPN</h5>
                     </div>
                 </div>
                 <div id="expandApp11" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -166,7 +186,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/remotepc.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Uzak PC Bağlantısı</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">Remote PC Connection</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Uzak PC Bağlantısı</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Удаленное подключение к ПК</h5>
                     </div>
                 </div>
                 <div id="expandApp12" style="opacity: 0.8; pointer-events: none; filter: grayscale(30%); display: none; padding-bottom: 40px;" class=".col col-lg-3 col-md-4 col-sm-6">
@@ -176,7 +198,9 @@
                      <div class="item service-item gridapphover" style="border-radius: 50px;">
                         <i><img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/meeting.png" alt=""></i>
                         <br><br>
-                        <h5 class="service-title">Birebir Toplantı</h5>
+                        <h5 ng-if="langKey== 'en'" class="service-title">One-on-One Meeting</h5>
+                        <h5 ng-if="langKey== 'tr'" class="service-title">Birebir Toplantı</h5>
+                        <h5 ng-if="langKey== 'ru'" class="service-title">Встреча один на один</h5>
                     </div>
                 </div>
             </div>
