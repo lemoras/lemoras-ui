@@ -14,15 +14,15 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
     workLocalConfig = true
 }
 
-var isHttpOnlyAuthCookie = false;
+var isHttpOnlyAuthCookie = true;
 
 var workerURL = "https://rate-worker.onxorg.workers.dev/";
 var zoeURL = workerURL;
 var servicesURL = workerURL;
 
 if (window.location.hostname.includes(paramLocalDomain) && workLocalConfig) {
-    zoeURL = "http://" + paramLocalDomain + ":8080/";
-    servicesURL = "http://" + paramLocalDomain + ":8088/";
+    zoeURL = "http://api." + paramLocalDomain + "/";
+    servicesURL = "http://api." + paramLocalDomain + "/";
 }
 
 var str = window.location.host;
