@@ -23,8 +23,8 @@ var zoeURL = apiGatewayURL;
 var servicesURL = apiGatewayURL;
 
 if (window.location.hostname.includes(paramLocalDomain) && workLocalConfig) {
-    zoeURL = "http://" + serverApiNamePrefix + + paramLocalDomain + "/";
-    servicesURL = "http://" + serverApiNamePrefix + + paramLocalDomain + "/";
+    zoeURL = "http://" + serverApiNamePrefix + paramLocalDomain + "/";
+    servicesURL = "http://" + serverApiNamePrefix + paramLocalDomain + "/";
 }
 
 var str = window.location.host;
