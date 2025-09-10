@@ -14,15 +14,17 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
     workLocalConfig = true
 }
 
-var isHttpOnlyAuthCookie = false;
+var isHttpOnlyAuthCookie = true;
 
-var workerURL = "https://rate-worker.onxorg.workers.dev/";
-var zoeURL = workerURL;
-var servicesURL = workerURL;
+var serverApiNamePrefix = "api" + ".";
+
+var apiGatewayURL = "https://" +  serverApiNamePrefix + "lemoras.com"; // "https://rate-worker.onxorg.workers.dev/";
+var zoeURL = apiGatewayURL;
+var servicesURL = apiGatewayURL;
 
 if (window.location.hostname.includes(paramLocalDomain) && workLocalConfig) {
-    zoeURL = "http://" + paramLocalDomain + ":8080/";
-    servicesURL = "http://" + paramLocalDomain + ":8088/";
+    zoeURL = "http://" + serverApiNamePrefix + paramLocalDomain; // + ":8080/";
+    servicesURL = "http://" + serverApiNamePrefix + paramLocalDomain; // + ":8088/";
 }
 
 var str = window.location.host;
