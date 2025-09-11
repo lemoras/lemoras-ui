@@ -279,12 +279,11 @@
             if (isHttpOnlyAuthCookie) {
                 if (byGET) {
                  
-                    var returnData = JSON.stringify({
-                        appId: account.appId,
-                        roleId: account.roleId,
-                        merchantId: account.merchantId,
-                    });
-                    authPromise = getjson.getData(authServiceUrl + "authenticate/" + returnData);
+                authPromise = getjson.postData(authServiceUrl + "authenticate", {
+                    appId: account.appId,
+                    roleId: account.roleId,
+                    merchantId: account.merchantId,
+                });
                 } else {
                     account.lastLoginDate = account.lastLoginDate;
                     var fakeRes = { account: account, status: true };
