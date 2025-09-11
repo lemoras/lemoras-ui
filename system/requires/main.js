@@ -15,16 +15,30 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
 }
 
 var isHttpOnlyAuthCookie = true;
+var isWorkSpaceEnv = isHttpOnlyAuthCookie;
 
 var serverApiNamePrefix = "api" + ".";
+var httpProtocolPrefix = "http://";
 
-var apiGatewayURL = "https://" +  serverApiNamePrefix + "lemoras.com"; // "https://rate-worker.onxorg.workers.dev/";
+var zoeURLDirectPort = "";
+var servicesURLDirectPort = "";
+
+if (!isWorkSpaceEnv) {
+    zoeURLDirectPort = ":8080";
+    servicesURLDirectPort = ":8088";
+}
+
+if (isHttpOnlyAuthCookie) {
+    httpProtocolPrefix = "https://";
+}
+
+var apiGatewayURL = httpProtocolPrefix +  serverApiNamePrefix + "lemoras.com"; // "https://rate-worker.onxorg.workers.dev/";
 var zoeURL = apiGatewayURL;
 var servicesURL = apiGatewayURL;
 
 if (window.location.hostname.includes(paramLocalDomain) && workLocalConfig) {
-    zoeURL = "https://" + serverApiNamePrefix + paramLocalDomain + "/";
-    servicesURL = "https://" + serverApiNamePrefix + paramLocalDomain + "/";
+    zoeURL = httpProtocolPrefix + serverApiNamePrefix + paramLocalDomain + zoeURLDirectPort + "/";
+    servicesURL = httpProtocolPrefix + serverApiNamePrefix + paramLocalDomain + servicesURLDirectPort + "/";
 }
 
 var str = window.location.host;
