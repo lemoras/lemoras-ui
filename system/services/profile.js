@@ -10,7 +10,7 @@
     var updateUrl = zoeURL + 'security/account';
     var passwordUrl = zoeURL + 'security/account';
     var getUrl = zoeURL + 'security/account';
-    var logoutApiUrl = zoeURL + '/api/logout';
+    var logoutApiUrl = zoeURL + 'api/logout';
 
     ProfileService.$inject = ['getjson', 'notification'];
     function ProfileService(getjson, notification) {
@@ -48,10 +48,10 @@
             });            
         }
 
-        function Logout() {
-            // getjson.getData(logoutApiUrl, true).then(function (res) {
-
-            // });
+        function Logout(callback) {
+            getjson.postData(logoutApiUrl, {}, true).then(function (res) {
+                callback(res);  
+            });
         }
     }
 

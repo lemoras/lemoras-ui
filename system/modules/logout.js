@@ -11,44 +11,48 @@
 
         var logout = function () {
            
-            ProfileService.Logout();
+            ProfileService.Logout(function (res){
+                if (res.status) {
+                    var strSessions = window.localStorage.getItem("sessions") || "";
+                    AuthenticationService.ClearCredentials();
 
-            var strSessions = window.localStorage.getItem("sessions") || "";
-            AuthenticationService.ClearCredentials();
+                    if (!mainAccountUrl.includes(window.location.hostname)) {
+                
+                        var externalURL = "http://" + mainAccountUrl[0] + "/#!?return=" + window.location.hostname + "&type=logoutAuth";
 
-            if (!mainAccountUrl.includes(window.location.hostname)) {
-         
-                var externalURL = "http://" + mainAccountUrl[0] + "/#!?return=" + window.location.hostname + "&type=logoutAuth";
+                        window.location.replace(externalURL);
+                    }else {
+                    
+                        var strOriginReturn = window.location.origin;
+                        var modifystrOriginReturn = "&originReturn=" + window.location.hostname;
+                        if (strSessions != "") {
+                            var sessions = JSON.parse(strSessions);
 
-                window.location.replace(externalURL);
-            }else {
-               
-                var strOriginReturn = window.location.origin;
-                var modifystrOriginReturn = "&originReturn=" + window.location.hostname;
-                if (strSessions != "") {
-                    var sessions = JSON.parse(strSessions);
+                            sessions = sessions.filter(x=> !mainAccountUrl.includes(x) && x != window.location.host);
 
-                    sessions = sessions.filter(x=> !mainAccountUrl.includes(x) && x != window.location.host);
+                            if (sessions.length == 0) {
+                                window.location.replace(strOriginReturn + "/#!/login");
+                                return;
+                            };
 
-                     if (sessions.length == 0) {
-                        window.location.replace(strOriginReturn + "/#!/login");
-                        return;
-                    };
+                            var eDomain = sessions[0];
 
-                    var eDomain = sessions[0];
+                            sessions = sessions.filter(x=> x != eDomain);
+                            var newStrSession = JSON.stringify(sessions);
 
-                    sessions = sessions.filter(x=> x != eDomain);
-                    var newStrSession = JSON.stringify(sessions);
+                            var externalURL = "http://" + eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + modifystrOriginReturn;
 
-                    var externalURL = "http://" + eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + modifystrOriginReturn;
+                            window.location.replace(externalURL);
+                            return;
 
-                    window.location.replace(externalURL);
-                    return;
-
-                }else {
-                    window.location.replace(strOriginReturn + "/#!/login");
+                        }else {
+                            window.location.replace(strOriginReturn + "/#!/login");
+                        }
+                    }
+                } else {
+                    alert(res.messsage);
                 }
-            }
+            });
         };
 
    
