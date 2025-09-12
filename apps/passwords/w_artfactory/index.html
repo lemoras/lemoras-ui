@@ -74,7 +74,7 @@
                                 aria-labelledby="appsMenu" style="border-radius: 40px;">
                                 <div class="container-fluid">
                                     <div class="row no-gutters py-2">
-                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(0, 3)">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(0, 3) | filter:{publish:true}">
                                             <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
                                                 ng-click="loginbyDomain(app.domains[0])">
                                                 <i><img width="32" height="32" ng-src="{{app.icon}}" alt=""></i>
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="row no-gutters py-2">
-                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(3, 6)">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(3, 6) | filter:{publish:true}">
                                             <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
                                                 ng-click="loginbyDomain(app.domains[0])">
                                                 <i><img width="32" height="32" ng-src="{{app.icon}}" alt=""></i>
@@ -92,7 +92,7 @@
                                         </div>
                                     </div>
                                     <div class="row no-gutters py-2">
-                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(6, 9)">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(6, 9) | filter:{publish:true}">
                                             <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
                                                 ng-click="loginbyDomain(app.domains[0])">
                                                 <i><img ng-src="{{app.icon}}" alt=""></i>
@@ -101,7 +101,7 @@
                                         </div>
                                     </div>
                                     <div class="row no-gutters py-2">
-                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(9, 12)">
+                                        <div class="col-4 text-center" ng-repeat="app in  lemorasApps.slice(9, 12) | filter:{publish:true}">
                                             <a class="dropdown-item d-flex flex-column align-items-center justify-content-center p-0"
                                                ng-click="loginbyDomain(app.domains[0])">
                                                  <i><img ng-src="{{app.icon}}" alt=""></i>
