@@ -17,7 +17,7 @@ if (workLocalConfig == null && window.location.hostname.includes(paramLocalDomai
 var isHttpOnlyAuthCookie = true;
 var isWorkSpaceEnv = isHttpOnlyAuthCookie;
 
-var serverApiNamePrefix = "api" + ".";
+var serverApiNamePrefix = "worker" + ".";
 var httpProtocolPrefix = "http://";
 
 var zoeURLDirectPort = "";
@@ -32,7 +32,7 @@ if (isHttpOnlyAuthCookie) {
     httpProtocolPrefix = "https://";
 }
 
-var apiGatewayURL =  "https://rate-worker.onxorg.workers.dev/"; // httpProtocolPrefix +  serverApiNamePrefix + "lemoras.com";
+var apiGatewayURL =  httpProtocolPrefix +  serverApiNamePrefix + "lemoras.com";
 var zoeURL = apiGatewayURL;
 var servicesURL = apiGatewayURL;
 
