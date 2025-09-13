@@ -32,7 +32,7 @@ if (isHttpOnlyAuthCookie) {
     httpProtocolPrefix = "https://";
 }
 
-var apiGatewayURL =  httpProtocolPrefix +  serverApiNamePrefix + "lemoras.com";
+var apiGatewayURL =  httpProtocolPrefix +  serverApiNamePrefix + "lemoras.com/";
 var zoeURL = apiGatewayURL;
 var servicesURL = apiGatewayURL;
 
