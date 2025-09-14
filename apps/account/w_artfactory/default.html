@@ -77,7 +77,7 @@
                                 <a ng-if="langKey == 'ru'" href="javascript:;">ПРИЛОЖЕНИЯ</a>
                                 <ul>
                                   <li ng-repeat="app in lemorasApps | filter:{landingPage:true}">
-                                        <a ng-href="{{'http://' + app.appName + '.' + mainLandUrl }}">{{ app.appInfoName[langKey] }}</a>
+                                        <a ng-href="{{ httpProtocolPrefix + app.appName + '.' + mainLandUrl }}">{{ app.appInfoName[langKey] }}</a>
                                     </li>
                                 </ul>
                             </li>

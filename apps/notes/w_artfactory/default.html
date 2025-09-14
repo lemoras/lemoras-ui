@@ -102,25 +102,8 @@
                                 <a ng-if="langKey == 'tr'" href="javascript:;">Uygulamalar</a>
                                 <a ng-if="langKey == 'ru'" href="javascript:;">ПРИЛОЖЕНИЯ</a>
                                 <ul>
-                                    <li>
-                                        <a ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Notes</a>
-                                        <a ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Notlar</a>
-                                        <a ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">Примечания</a>
-                                    </li>
-                                    <li>
-                                        <a ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Storage</a>
-                                        <a ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Depolama</a>
-                                        <a ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">Хранилище</a>
-                                    </li>
-                                    <li>
-                                        <a  ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Passwords</a>
-                                        <a  ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Şifreler</a>
-                                        <a  ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">Пароли</a>
-                                    </li>
-                                    <li>
-                                        <a  ng-if="langKey == 'en'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Planner</a>
-                                        <a  ng-if="langKey == 'tr'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Planlayıcı</a>
-                                        <a  ng-if="langKey == 'ru'" href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">Планировщик</a>
+                                  <li ng-repeat="app in lemorasApps | filter:{landingPage:true}">
+                                        <a ng-href="{{ httpProtocolPrefix + app.appName + '.' + mainLandUrl }}">{{ app.appInfoName[langKey] }}</a>
                                     </li>
                                 </ul>
                             </li>

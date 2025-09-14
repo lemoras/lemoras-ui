@@ -76,13 +76,13 @@
                                 <ul>
                                     <li>
                                         <a ng-if="langKey == 'en'"
-                                            href="javascript:window.location.href = 'http://account.' + mainLandUrl[0]">Lemoras
+                                            ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl }}">Lemoras
                                             Account</a>
                                         <a ng-if="langKey == 'tr'"
-                                            href="javascript:window.location.href = 'http://account.' + mainLandUrl[0]">Lemoras
+                                            ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl }}">Lemoras
                                             Hesap</a>
                                         <a ng-if="langKey == 'ru'"
-                                            href="javascript:window.location.href = 'http://account.' + mainLandUrl[0]">Счет
+                                            ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl }}">Счет
                                             Лемораса</a>
                                     </li>
                                     <li>

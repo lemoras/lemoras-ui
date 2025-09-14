@@ -339,6 +339,7 @@ function GetTypeRoles(selfRoleId = 0) {
 
         $rootScope.mainLandUrl = mainLandUrl[0];
         $rootScope.paramAccountAppName = paramAccountAppName;
+        $rootScope.httpProtocolPrefix = httpProtocolPrefix;
         $rootScope.staticPage = { isNonHome: false };
         $rootScope.users = [];
         $rootScope.reloadUserInfo = "";
