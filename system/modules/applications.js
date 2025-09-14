@@ -30,7 +30,7 @@
         }
 
         function login(domain) {
-            var externalURL = "http://" + mainAccountUrl[0] + "/#!/applications?type=loginbydomain&domain=" + domain;
+            var externalURL = httpProtocolPrefix+ mainAccountUrl[0] + "/#!/applications?type=loginbydomain&domain=" + domain;
             window.location.replace(externalURL);
             return;
         }

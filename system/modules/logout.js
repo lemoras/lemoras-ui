@@ -18,7 +18,7 @@
 
                     if (!mainAccountUrl.includes(window.location.hostname)) {
                 
-                        var externalURL = "http://" + mainAccountUrl[0] + "/#!?return=" + window.location.hostname + "&type=logoutAuth";
+                        var externalURL = httpProtocolPrefix+ mainAccountUrl[0] + "/#!?return=" + window.location.hostname + "&type=logoutAuth";
 
                         window.location.replace(externalURL);
                     }else {
@@ -40,7 +40,7 @@
                             sessions = sessions.filter(x=> x != eDomain);
                             var newStrSession = JSON.stringify(sessions);
 
-                            var externalURL = "http://" + eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + modifystrOriginReturn;
+                            var externalURL = httpProtocolPrefix+ eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + modifystrOriginReturn;
 
                             window.location.replace(externalURL);
                             return;

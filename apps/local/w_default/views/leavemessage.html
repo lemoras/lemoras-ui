@@ -13,7 +13,7 @@
                       <div class="col-md-5">
                         <div class="form-group">
                             <Label class="bmd-Label-floating">{{ config.module.leaveMessage.compose.subject }}</Label>
-                          <input type="text" class="form-control" required>
+                          <input type="text" class="form-control" safe-input required>
                         </div>
                       </div>
                     </div>
@@ -23,7 +23,7 @@
                             <Label>{{ config.module.leaveMessage.compose.message }}</Label>
                           <div class="form-group">
                               <Label class="bmd-Label-floating"> {{ config.module.leaveMessage.compose.messageDetail }}</Label>
-                            <textarea class="form-control" rows="5" required></textarea>
+                            <textarea class="form-control" rows="5" safe-input required></textarea>
                           </div>
                         </div>
                       </div>

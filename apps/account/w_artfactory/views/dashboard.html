@@ -9,7 +9,7 @@
                     <span ng-if="langKey == 'tr'">Çok yakında</span>
                     <span ng-if="langKey == 'ru'">Очень скоро</span>
                 </div> -->
-                <!-- <a href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]"> 
+                <!-- <a ng-href="{{ httpProtocolPrefix + 'notes.' + mainLandUrl }}"> 
                  <div class="item service-item gridapphover" style="border-radius: 50px;">
                     <div class="icon">
                         <i><img src="./../../../templates/w_artfactory/assets/images/notes.png" alt=""></i>
@@ -27,7 +27,7 @@
                     <span ng-if="langKey == 'tr'">Çok yakında</span>
                     <span ng-if="langKey == 'ru'">Очень скоро</span>
                 </div>
-                <a href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">
+                <a ng-href="{{ httpProtocolPrefix + 'drive.' + mainLandUrl }}">
                  <div class="item service-item gridapphover" style="border-radius: 50px;">
                     <div class="icon">
                         <i><img src="./../../../templates/w_artfactory/assets/images/drive.png" alt=""></i>
@@ -44,7 +44,7 @@
                     <span ng-if="langKey == 'tr'">Yakında</span>
                     <span ng-if="langKey == 'ru'">Скоро</span>
                 </div>
-                <a href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">
+                <a ng-href="{{ httpProtocolPrefix + 'passwords.' + mainLandUrl }}">
                  <div class="item service-item gridapphover" style="border-radius: 50px;">
                     <div class="icon">
                         <i><img src="./../../../templates/w_artfactory/assets/images/password.png" alt=""></i>
@@ -61,7 +61,7 @@
                     <span ng-if="langKey == 'tr'">Yakında</span>
                     <span ng-if="langKey == 'ru'">Скоро</span>
                 </div>
-                <a href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">
+                <a ng-href="{{ httpProtocolPrefix + 'planner.' + mainLandUrl }}">
                  <div class="item service-item gridapphover" style="border-radius: 50px;">
                     <div class="icon">
                         <i><img src="./../../../templates/w_artfactory/assets/images/checklist.png" alt=""></i>

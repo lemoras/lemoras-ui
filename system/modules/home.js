@@ -41,7 +41,7 @@
             };
             var externalStringData = JSON.stringify(externalData);
 
-            var externalURL = "http://" + mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData;
+            var externalURL = httpProtocolPrefix+ mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData;
             
             window.location.replace(externalURL);
         }

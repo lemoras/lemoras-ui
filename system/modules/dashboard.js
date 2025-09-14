@@ -49,7 +49,7 @@
 
                 sessions = sessions.filter(x => !mainAccountUrl.includes(x));
 
-                var externalURL = "http://" + domain;
+                var externalURL = httpProtocolPrefix+ domain;
                 sessions.forEach((e, index) => {
                     if (domain == e) {
                         notFound = true;
@@ -76,7 +76,7 @@
                 loginbyTokenUrlParam = "&token=" + token;
             }
 
-            var externalURL = "http://" + domain + "/#!/login?return=triggerCallback&email=" + email + loginbyTokenUrlParam;
+            var externalURL = httpProtocolPrefix+ domain + "/#!/login?return=triggerCallback&email=" + email + loginbyTokenUrlParam;
 
             window.location.replace(externalURL);
         }

@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
     <div class="container-fluid">
       <div class="navbar-wrapper">
-        <a href="javascript:window.location.replace(window.location.origin + '/#!/home')"> <div ng-if="langKey == 'en'">Back to Home</div>
+        <a href="#!/home"> <div ng-if="langKey == 'en'">Back to Home</div>
           <div ng-if="langKey == 'tr'">Anasayfaya dön</div>
           <div ng-if="langKey == 'ru'">Вернуться домой</div></a>
       </div>
@@ -173,7 +173,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>Designed & Coded by <a href="javascript:window.location.href = 'http://' + mainLandUrl[0]" target="_blank">Lemoras</a> 
+            </script>Designed & Coded by <a ng-href="{{ httpProtocolPrefix + mainLandUrl }}" target="_blank">Lemoras</a> 
             &nbsp;&nbsp;&nbsp;  <a id='developerpage' href="#!/developer"><i class="fa fa-heart"></i> </a> #<a href="#!/developer"> developer </a>
           </div>
         </div>

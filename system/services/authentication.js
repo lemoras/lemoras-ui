@@ -27,9 +27,11 @@
         service.SetSession = SetSession;
         service.GetSecTokenFromScope = GetSecTokenFromScope;
         service.SetSecToken = SetSecToken;
+        service.Logout = Logout;
 
 
         var authServiceUrl = zoeURL + "security/";
+        var logoutApiUrl = zoeURL + 'api/logout';
 
         var isFakeLogin = false;
 
@@ -389,6 +391,12 @@
             return parseInt(String.fromCharCode(String(roleId).charCodeAt(0)));
         }
 
+        function Logout(callback) {
+            getjson.postData(logoutApiUrl, {}, true).then(function (res) {
+                callback(res);  
+            });
+        }
+
         function SetCredentials(account, hasId = false, hasIdUser = {}) {
 
             ClearSecToken();
@@ -548,7 +556,7 @@
                 } catch (error) {
                     ClearCredentials();
                     alert("xx:ERROR!!");
-                    window.location.replace("http://" + mainAccountUrl[0]);
+                    window.location.replace(httpProtocolPrefix+ mainAccountUrl[0]);
                     return;
                 }
 

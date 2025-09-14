@@ -302,7 +302,7 @@
                                             <label ng-if="langKey == 'en'">Note Title</label>
                                             <label ng-if="langKey == 'tr'">Not Başlığı</label>
                                             <label ng-if="langKey == 'ru'">Заголовок заметки</label>
-                                            <input type="text" id="note-has-title" class="form-control" minlength="25" placeholder="{{langKey == 'en' ? 'Title' : langKey == 'tr' ? 'Başlık' : langKey == 'ru' ? 'Заголовок' : '' }}" />
+                                            <input type="text" safe-input id="note-has-title" class="form-control" minlength="25" placeholder="{{langKey == 'en' ? 'Title' : langKey == 'tr' ? 'Başlık' : langKey == 'ru' ? 'Заголовок' : '' }}" />
                                         </div>
                                     </div>
 

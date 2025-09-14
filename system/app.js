@@ -338,7 +338,7 @@ function GetTypeRoles(selfRoleId = 0) {
     function run($rootScope, $location, $cookies, $http, $route, getjson, AuthenticationService, FlashService, watchcontrol) {
 
         $rootScope.mainLandUrl = mainLandUrl[0];
-        $rootScope.paramAccountAppName = paramAccountAppName;
+        $rootScope.mainAccountUrl = mainAccountUrl[0];
         $rootScope.httpProtocolPrefix = httpProtocolPrefix;
         $rootScope.staticPage = { isNonHome: false };
         $rootScope.users = [];
@@ -374,7 +374,7 @@ function GetTypeRoles(selfRoleId = 0) {
         // };
 
         $rootScope.gotoAccount = function () {
-            window.location.replace("http://" + mainAccountUrl[0]);
+            window.location.replace(httpProtocolPrefix+ mainAccountUrl[0]);
         };
 
         $rootScope.checkMenuRole = function (allows) {
@@ -448,7 +448,7 @@ function GetTypeRoles(selfRoleId = 0) {
                 $rootScope.gotoAccount();
             }
 
-            var externalURL = "http://" + mainAccountUrl[0] + "/#!/applications?type=loginbydomain&domain=" + domain;
+            var externalURL = httpProtocolPrefix+ mainAccountUrl[0] + "/#!/applications?type=loginbydomain&domain=" + domain;
             window.location.replace(externalURL);
             return;
         };
@@ -480,7 +480,7 @@ function GetTypeRoles(selfRoleId = 0) {
                     sessions = sessions.filter(x => !mainAccountUrl.includes(x) && x != urlParams.return);
 
                     if (sessions.length == 0) {
-                        window.location.replace("http://" + urlParams.return);
+                        window.location.replace(httpProtocolPrefix+ urlParams.return);
                         return;
                     };
 
@@ -489,13 +489,13 @@ function GetTypeRoles(selfRoleId = 0) {
                     sessions = sessions.filter(x => x != eDomain);
                     var newStrSession = JSON.stringify(sessions);
 
-                    var externalURL = "http://" + eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + strOriginReturn;
+                    var externalURL = httpProtocolPrefix+ eDomain + "/#!?return=" + window.location.hostname + "&type=logoutAuth&sessions=" + newStrSession + strOriginReturn;
 
                     window.location.replace(externalURL);
                     return;
                 }
 
-                window.location.replace("http://" + urlParams.return);
+                window.location.replace(httpProtocolPrefix+ urlParams.return);
                 return;
             }
         }
@@ -511,7 +511,7 @@ function GetTypeRoles(selfRoleId = 0) {
 
                 var returnString = JSON.stringify(handleLogin.returnData);
 
-                window.location.replace("http://" + handleLogin.returnUrl + "/#!/login?return=internal&type=" + returnString);
+                window.location.replace(httpProtocolPrefix+ handleLogin.returnUrl + "/#!/login?return=internal&type=" + returnString);
 
                 return;
             }
@@ -595,10 +595,14 @@ function GetTypeRoles(selfRoleId = 0) {
                 }
             }
         } else {
-            $rootScope.public_config = public_data.config;
-            $rootScope.public_config.navigation = public_data.config.template_configs[0]; // !important
-            document.getElementById("configTitle").innerHTML = public_data.config.titleName[$rootScope.langKey];
-            setRoute(public_data.config.route);
+            // AuthenticationService.Logout(function (res) { 
+            //     if (res.status) {
+                    $rootScope.public_config = public_data.config;
+                    $rootScope.public_config.navigation = public_data.config.template_configs[0]; // !important
+                    document.getElementById("configTitle").innerHTML = public_data.config.titleName[$rootScope.langKey];
+                    setRoute(public_data.config.route);
+            //     }
+            //  });
         }
 
         var strApps = window.localStorage.getItem("lemorasApplications");

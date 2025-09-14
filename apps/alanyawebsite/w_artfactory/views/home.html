@@ -11,9 +11,9 @@
                   <p ng-if="langKey == 'en'">Access freedom through simple, secure, ad-free, frequently used digital-era applications that are free for life. </p>
                   <p ng-if="langKey == 'tr'">Sade, güvenli, reklam içermeyen, dijital dönemde sıklıkla kullanılan ve ömür boyu bedava uygulamalar ile özgürlüğe erişin. </p>
                   <p ng-if="langKey == 'ru'">Получите свободу благодаря простым, безопасным, без рекламы, часто используемым приложениям цифровой эпохи, которые бесплатны на всю жизнь. </p>
-                  <a ng-if="langKey == 'en'" ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl + '/#!/login' }}" class="main-button-slider">Account Login</a>
-                  <a ng-if="langKey == 'tr'" ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl + '/#!/login' }}" class="main-button-slider">Hesaba Giriş</a>
-                  <a ng-if="langKey == 'ru'" ng-href="{{ httpProtocolPrefix + paramAccountAppName + '.' + mainLandUrl + '/#!/login' }}" class="main-button-slider">Вход в учетную запись</a>
+                  <a ng-if="langKey == 'en'" ng-href="{{ httpProtocolPrefix + mainAccountUrl + '/#!/login' }}" class="main-button-slider">Account Login</a>
+                  <a ng-if="langKey == 'tr'" ng-href="{{ httpProtocolPrefix + mainAccountUrl + '/#!/login' }}" class="main-button-slider">Hesaba Giriş</a>
+                  <a ng-if="langKey == 'ru'" ng-href="{{ httpProtocolPrefix + mainAccountUrl + '/#!/login' }}" class="main-button-slider">Вход в учетную запись</a>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                   <img src="./../../../templates/w_artfactory/assets/images/rootrenkli_orjinal2.png" class="rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
@@ -51,7 +51,7 @@
                         <span ng-if="langKey == 'tr'">Çok yakında</span>
                         <span ng-if="langKey == 'ru'">Очень скоро</span>
                     </div> -->
-                    <a href="javascript:window.location.href = 'http://notes.' + mainLandUrl[0]">
+                    <a ng-href="{{ httpProtocolPrefix + 'notes.' + mainLandUrl }}">
                     <div class="item service-item gridapphover" style="border-radius: 50px;">
                       
                         <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/notes.png" alt="">
@@ -70,7 +70,7 @@
                         <span ng-if="langKey == 'tr'">Çok yakında</span>
                         <span ng-if="langKey == 'ru'">Очень скоро</span>
                     </div>
-                    <a href="javascript:window.location.href = 'http://drive.' + mainLandUrl[0]">
+                    <a ng-href="{{ httpProtocolPrefix + 'drive.' + mainLandUrl }}">
                     <div class="item service-item gridapphover" style="border-radius: 50px;">
                        
                         <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/drive.png" alt="">
@@ -87,7 +87,7 @@
                         <span ng-if="langKey == 'tr'">Yakında</span>
                         <span ng-if="langKey == 'ru'">Скоро</span>
                     </div>
-                    <a href="javascript:window.location.href = 'http://passwords.' + mainLandUrl[0]">
+                    <a ng-href="{{ httpProtocolPrefix + 'passwords.' + mainLandUrl }}">
                     <div class="item service-item gridapphover" style="border-radius: 50px;">
                        
                         <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/password.png" alt="">
@@ -104,7 +104,7 @@
                         <span ng-if="langKey == 'tr'">Yakında</span>
                         <span ng-if="langKey == 'ru'">Скоро</span>
                     </div>
-                    <a href="javascript:window.location.href = 'http://planner.' + mainLandUrl[0]">
+                    <a ng-href="{{ httpProtocolPrefix + 'planner.' + mainLandUrl }}">
                     <div class="item service-item gridapphover" style="border-radius: 50px;">
                        
                         <img width="72" height="72" src="./../../../templates/w_artfactory/assets/images/checklist.png" alt="">

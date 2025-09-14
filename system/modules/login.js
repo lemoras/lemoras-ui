@@ -105,7 +105,7 @@
                         callbackTokenParam = "&token=" + vm.tokenParam;
                     }
 
-                    var externalURL = "http://" + mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData
+                    var externalURL = httpProtocolPrefix+ mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData
                         + "&email=" + vm.emailParam + callbackTokenParam;
 
                     window.location.replace(externalURL);
@@ -501,7 +501,7 @@
             var appName = window.localStorage.getItem("app");
 
             window.location.href = '../../../apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
-            //window.location.href = "http://" + window.location.hostname + '/apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
+            //window.location.href = httpProtocolPrefix+ window.location.hostname + '/apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
         }
 
         function returnDomain(account, isClear = true) {
@@ -527,14 +527,14 @@
             }
             var returnString = JSON.stringify(returnData);
 
-            window.location.replace("http://" + vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
+            window.location.replace(httpProtocolPrefix+ vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
         }
 
         function returnDomainByReturnData(returnData) {
 
             var returnString = JSON.stringify(returnData);
 
-            window.location.replace("http://" + vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
+            window.location.replace(httpProtocolPrefix+ vm.returnUrl + "/#!/login?return=internal&type=" + returnString);
         }
 
         function loginByAccount(account, firstTakenToken, returnUrl) {
@@ -565,7 +565,7 @@
 
             var returnString = JSON.stringify(loginbyAccountData);
     
-            window.location.replace("http://" + mainAccountUrl[0] + "/#!/login?return=handleCallback&type=handleLogin&handleLogin=" + returnString);
+            window.location.replace(httpProtocolPrefix+ mainAccountUrl[0] + "/#!/login?return=handleCallback&type=handleLogin&handleLogin=" + returnString);
         }
 
         function loadAllApplication() {
@@ -590,7 +590,7 @@
             };
             var externalStringData = JSON.stringify(externalData);
 
-            var externalURL = "http://" + mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData;
+            var externalURL = httpProtocolPrefix+ mainLandUrl[0] + "/#!/login?return=callback&type=" + externalStringData;
 
             window.location.replace(externalURL);
         }
@@ -600,7 +600,7 @@
                 window.location.href = '#!/register';
             } else if (vm.returnParam == "callback") {
                 if (mainLandUrl[0] == window.location.hostname) {
-                    window.location.href = "http://" + mainAccountUrl[0] + "/#!/register?return=callback&type=" + vm.typeParam;
+                    window.location.href = httpProtocolPrefix+ mainAccountUrl[0] + "/#!/register?return=callback&type=" + vm.typeParam;
                 }
                 window.location.href = "#!/register?return=callback&type=" + vm.typeParam;
             }
