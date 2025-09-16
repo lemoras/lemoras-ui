@@ -24,7 +24,7 @@
 ```bash
 git clone https://github.com/lemoras/lemoras-ui.git
 cd lemoras-ui
-
+```
 
 ## 📄 Lisans / License
 
