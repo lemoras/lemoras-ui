@@ -1,40 +1,100 @@
-
 <!DOCTYPE html>
-<html lang="en">
- 
+<html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title id="configTitle">
-      Wellcome to Panel | Lemoras
-    </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--  <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' 'unsafe-eval'; 
-        style-src 'self' 'unsafe-inline';
-        img-src 'self' data:;
-        font-src 'self';
-        connect-src 'self' https://api.lemoras.com;">-->
-
-  <script>
-    var resetAction = this.window.location.href.substring(this.window.location.href.lastIndexOf('/') + 1);
-    if (resetAction == "reset") {
-      window.location.href = '../../../../../../../../../../../reset.html';
+  <meta charset="UTF-8">
+  <title>Servis Geçici Olarak Kapalı / Service Temporarily Unavailable</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
-  </script>
-  
-  <script type="text/javascript" src="system/requires/loading.js"></script>
+    .card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      max-width: 750px;
+    }
+    h1 {
+      color: #e67e22;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.05em;
+      margin: 10px 0;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 25px;
+      padding: 12px;
+      border-top: 1px dashed #ccc;
+    }
+    .signature {
+      font-size: 0.9em;
+      color: #444;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    .lang-section {
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
+<body>
+  <div class="card">
+    <!-- Türkçe -->
+    <div class="lang-section">
+      <h1>Servis Geçici Olarak Kapalı</h1>
+      <p>Sevgili ziyaretçimiz,</p>
+      <p>
+        BTK’nın dijital yer sağlayıcı ve KVKK düzenlemeleri kapsamında yerine getirilmesi gereken yükümlülükler nedeniyle 
+        Türkiye’den erişim sağlanamamaktadır. Anlayışınız için teşekkür ederiz.
+      </p>
 
-<body id="rootBody" >
+      <p>
+        Ayrıca, şu an için geçici süreliğine Türkiye dışından erişime de kapalı durumdadır.
+      </p>
+    </div>
 
-  <div id="pageContent" style="display: none" width="50" border="0" cellspacing="0" cellpadding="0"></div> 
-  
-  <script src="system/requires/require.min.js"></script>
-  <script type="text/javascript" src="system/requires/main.js"></script>
-	
+    <div class="note">
+      <strong>Not:</strong> 5651 Sayılı Kanun’un getirdiği yükümlülükler nedeniyle 
+      Türkiye’den erişim şu an mümkün değil. 
+      Ayrıca iş planındaki bazı değişiklikler sebebiyle dünya genelinde de geçici bir kesinti yaşanıyor. 
+      Dijital özgürlüklerin sürmesi adına gösterilen anlayış için teşekkürler.
+
+      <div class="signature">Dijital Özgürlük Savunucusu</div>
+    </div>
+
+    <!-- English -->
+    <div class="lang-section">
+      <h1>Service Temporarily Unavailable</h1>
+      <p>Dear visitor,</p>
+      <p>
+        Access from Turkey is currently not available due to obligations under BTK's digital hosting provider regulations and KVKK requirements. Thank you for your understanding.
+      </p>
+
+
+      <p>
+        At the moment, our services are also temporarily unavailable from outside Türkiye.
+      </p>
+    </div>
+
+    <div class="note">
+      <strong>Note:</strong> Access from Turkey is currently not available due to obligations under Law No. 5651. 
+      Additionally, due to some changes in the operational plan, there is a temporary service interruption worldwide. 
+      Thank you for your understanding in support of digital freedoms.
+
+      <div class="signature">Digital Freedom Advocate</div>
+    </div>
+
+  </div>
 </body>
-
 </html>
