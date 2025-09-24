@@ -51,6 +51,27 @@
             vm.tokenParam = urlParams.token;
             vm.handleLoginParam = urlParams.handleLogin;
 
+            if (vm.typeParam == "fakeEnter" && vm.fakeAppParam != undefined && vm.fakeAppParam != "") {
+                var fakeAppId = 0;
+                        if (vm.fakeAppParam != null || vm.fakeAppParam == undefined
+                            || vm.fakeAppParam != "" || vm.fakeAppParam != nil) {
+                            fakeAppId = parseInt(vm.fakeAppParam);
+                        }
+                        AuthenticationService.FakeLogin("demo@demo.com", "12345678", fakeAppId, function (response) {
+
+                            if (response.status) {
+                                FlashService.WriteLocal(false, response.message);
+                                var template = window.localStorage.getItem("template");
+                                var appName = window.localStorage.getItem("app");
+                                window.location.href = '../../../apps/' + appName + '/' + template + '/index.html';  //$location.path('/load');
+                            } else {
+                                FlashService.Error(response.message, '/');
+                                vm.dataLoading = false;
+                            }
+                            vm.dataLoading = false;
+                        });
+            }
+
             if (vm.typeParam != "" && vm.typeParam != undefined && vm.returnParam == "internal") {
                 var returnStringData = vm.typeParam;
                 var returnData = JSON.parse(returnStringData);

@@ -302,7 +302,7 @@
                                             <label ng-if="langKey == 'en'">Note Title</label>
                                             <label ng-if="langKey == 'tr'">Not Başlığı</label>
                                             <label ng-if="langKey == 'ru'">Заголовок заметки</label>
-                                            <input type="text" safe-input id="note-has-title" class="form-control" minlength="25" placeholder="{{langKey == 'en' ? 'Title' : langKey == 'tr' ? 'Başlık' : langKey == 'ru' ? 'Заголовок' : '' }}" />
+                                            <input type="text"  id="note-has-title" class="form-control" minlength="25" placeholder="{{langKey == 'en' ? 'Title' : langKey == 'tr' ? 'Başlık' : langKey == 'ru' ? 'Заголовок' : '' }}" />
                                         </div>
                                     </div>
 
@@ -393,9 +393,9 @@
                                            <label ng-if="langKey == 'en'">Note Title</label>
                                             <label ng-if="langKey == 'tr'">Not Başlığı</label>
                                             <label ng-if="langKey == 'ru'">Заголовок заметки</label>
-                                             <input safe-input ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'en'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Title" />
-                                            <input safe-input ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'tr'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Başlık" />
-                                            <input safe-input ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'ru'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Заголовок" />
+                                             <input  ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'en'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Title" />
+                                            <input  ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'tr'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Başlık" />
+                                            <input  ng-model="vm.tmpViewNote.titleName" disabled ng-if="langKey == 'ru'" type="text" id="note-has-title" class="form-control" minlength="25" placeholder="Заголовок" />
                                         </div>
                                     </div>
 
@@ -404,9 +404,9 @@
                                            <label ng-if="langKey == 'en'">Note Description</label>
                                             <label ng-if="langKey == 'tr'">Not Açıklaması</label>
                                             <label ng-if="langKey == 'ru'">Примечание Описание</label>
-                                            <textarea safe-input ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'en'"  id="note-has-description" class="form-control" minlength="60" placeholder="Description" rows="10"></textarea>
-                                            <textarea safe-input ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'tr'"  id="note-has-description" class="form-control" minlength="60" placeholder="Tanım" rows="10"></textarea>
-                                            <textarea safe-input ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'ru'"  id="note-has-description" class="form-control" minlength="60" placeholder="Описание" rows="10"></textarea>
+                                            <textarea  ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'en'"  id="note-has-description" class="form-control" minlength="60" placeholder="Description" rows="10"></textarea>
+                                            <textarea  ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'tr'"  id="note-has-description" class="form-control" minlength="60" placeholder="Tanım" rows="10"></textarea>
+                                            <textarea  ng-model="vm.tmpViewNote.detailText" disabled ng-if="langKey == 'ru'"  id="note-has-description" class="form-control" minlength="60" placeholder="Описание" rows="10"></textarea>
                                         </div>
                                     </div>
                     
