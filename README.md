@@ -1,6 +1,6 @@
 # lemoras-ui
 
-> **Author:** Onur Yaşar ([@onxorg](https://github.com/onxorg))
+> **Author:** Onur Yaşar ([@onurid](https://github.com/onurid))
 > **Part of:** [Lemoras](https://lemoras.com) — Identity-powered application ecosystem
 > Built on [Rymory](https://rymory.org) identity infrastructure
 > © 2017–2026 Onur Yaşar. All rights reserved.
